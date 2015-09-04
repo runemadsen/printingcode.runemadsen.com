@@ -1,0 +1,12 @@
+name: Printing Code
+highlighter: pygments
+permalink: /:title
+exclude: [Gemfile, Gemfile.lock]
+imageproxy_url: http://assets.runemadsen.com/600x
+assets:
+  js_compressor:  uglifier
+  css_compressor: sass
+  sources:
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/images
