@@ -59,23 +59,23 @@ Assignment Constraints
 
 As an example, let's look at film directors. Most people think that super creative people sit alone in a room until creativity strikes them - like something that is blessed from above. On the other hand we can look at a director like Lars Von Trier.
 
-<img src="{{ imageproxy_url }}/vontrier-e096f96456c4d0fee6af460925553596.jpg"  />
+<img src="{{ site.imageproxy_url }}/vontrier-e096f96456c4d0fee6af460925553596.jpg"  />
 
 Whenever he makes a movie, he approaches it from a very constrained angle. Like his Dogme-movies that was shot only with a hand-held camera and with no audio dubbing allowed:
 
-<img src="{{ imageproxy_url }}/theidiots-eab360e4fa168d3527014ebb8844bb0d.jpg"  />
+<img src="{{ site.imageproxy_url }}/theidiots-eab360e4fa168d3527014ebb8844bb0d.jpg"  />
 
 Or Dogville, where the set was simple chalk drawings on the floor.
 
-<img src="{{ imageproxy_url }}/dogville-dcb0de1997a496b80d3904de6b4b8711.jpg"  />
+<img src="{{ site.imageproxy_url }}/dogville-dcb0de1997a496b80d3904de6b4b8711.jpg"  />
 
 Or "The Five Obstructions" where he challenges Jørgen Leth into recreating his famous movie in 5 different ways.
 
-<img src="{{ imageproxy_url }}/obstructions1-e1dd13c2c6b45a2de7ca10d3ac309535.png"  />
+<img src="{{ site.imageproxy_url }}/obstructions1-e1dd13c2c6b45a2de7ca10d3ac309535.png"  />
 
-<img src="{{ imageproxy_url }}/obstructions2-178433a01c6a542e84ef4f602c3420ff.jpg"  />
+<img src="{{ site.imageproxy_url }}/obstructions2-178433a01c6a542e84ef4f602c3420ff.jpg"  />
 
-<img src="{{ imageproxy_url }}/obstructions3-a2a986e3a00cbe3672af119ff194a376.jpg"  />
+<img src="{{ site.imageproxy_url }}/obstructions3-a2a986e3a00cbe3672af119ff194a376.jpg"  />
 
 It's easy to see that he doesn't do all of this for no reason. He sets himself a challenge, and operating within these constraints makes him more creative. It's like cooking. Grabbing mustard, pickles and apples from your fridge doesn't make you a great cook. Careful planning and experimentation with flavors will.
 

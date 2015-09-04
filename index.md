@@ -64,9 +64,9 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 ### Readings for this week
 
-* [Form + Content]({% asset_path readings/rand_form_content.pdf %}) by Paul Rand (Design, Form and Chaos)
+* [Form + Content](http://files.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
 * [Software Structures](http://artport.whitney.org/commissions/softwarestructures/text.html) by Casey Reas
-* [Computers, Pencils, and Brushes]({% asset_path readings/rand_computers.pdf %}) by Paul Rand (Design, Form and Chaos)
+* [Computers, Pencils, and Brushes](http://files.runemadsen.com/rand_computers.pdf) by Paul Rand (Design, Form and Chaos)
 
 ### Class Overview
 
@@ -82,7 +82,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * Please join the [Printing Code Google Group](https://groups.google.com/forum/?fromgroups#!forum/printing-code)
 * Set up a Github repository where you'll post all your code. Send me an email with the link.
 * On ITP's laser printer, print a PDF file generated via a Processing sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
-* Read [Paul Rand - Conversations with Students]({% asset_path readings/rand_conversations.pdf %})
+* Read [Paul Rand - Conversations with Students](http://files.runemadsen.com/rand_conversations.pdf)
 
 Week 2: Form
 ------------
@@ -116,7 +116,7 @@ In this class we'll dive into color theory and look at color handling in Process
 
 ### Assignment for next week
 
-* This week you'll create an abstract representation ([examples]({% asset_path color/assignment.jpg %})) of your identity. Pick one of the color schemes from today's lecture and write a Processing sketch that outputs abstract forms in colors using your chosen scheme. The only constraint - besides that it needs to as simple as possible - is that the colors have to be different every time you run your sketch. This means that you will need to use "random()". This is an exercise in writing code that is generative, but within constraints. Every output should be different, but still effectively communicate who you are. You have to at least used the TColor class from the Toxiclibs library. Print the result that you like the most, and bring to class a poster that you feel expresses who you are as a person.
+* This week you'll create an abstract representation of your identity. Pick one of the color schemes from today's lecture and write a Processing sketch that outputs abstract forms in colors using your chosen scheme. The only constraint - besides that it needs to as simple as possible - is that the colors have to be different every time you run your sketch. This means that you will need to use "random()". This is an exercise in writing code that is generative, but within constraints. Every output should be different, but still effectively communicate who you are. You have to at least used the TColor class from the Toxiclibs library. Print the result that you like the most, and bring to class a poster that you feel expresses who you are as a person.
 
 
 Week 4: Typography
