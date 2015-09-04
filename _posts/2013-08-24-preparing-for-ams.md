@@ -47,30 +47,30 @@ In order to convert your file, you will need to have Photoshop on your computer.
 
 First, open up the PDF file.
 
-<img src="{{ site.imageproxy_url }}/tif0-98e59b87006d0ee80cb2b0feacd4e54a.png" />
+{% picture tif0-98e59b87006d0ee80cb2b0feacd4e54a.png %}
 
 Photoshop will prompt you with a "PDF Import" dialog. Here you need to make sure that the image is in 300 pixels per inch, and that the width and height matches your print size.
 
-<img src="{{ site.imageproxy_url }}/tif1-c95020a1c163b2591b90fc2ec02879c1.png" />
+{% picture tif1-c95020a1c163b2591b90fc2ec02879c1.png %}
 
 This will open up your PDF as a bitmap. Now you need to convert the color profile. You'll find that option in the "Edit" menu.
 
-<img src="{{ site.imageproxy_url }}/tif2-3643704167f014b6f13a0a0884a4e1f0.png" />
+{% picture tif2-3643704167f014b6f13a0a0884a4e1f0.png %}
 
 Make sure to convert into the Adobe RGB 1998 color profile. You can leave all the other settings to their defaults.
 
-<img src="{{ site.imageproxy_url }}/tif3-6508934b016259aa82c7f3db5cdd4738.png" />
+{% picture tif3-6508934b016259aa82c7f3db5cdd4738.png %}
 
 Now you need to save the image as a TIF image. First press "Save As".
 
-<img src="{{ site.imageproxy_url }}/tif4-5a825d70c18be8d152f81acd61fef58c.png" />
+{% picture tif4-5a825d70c18be8d152f81acd61fef58c.png %}
 
 Choose to save a TIF without layers.
 
-<img src="{{ site.imageproxy_url }}/tif5-7c4c0c4dd104aa755598608e534b5587.png" />
+{% picture tif5-7c4c0c4dd104aa755598608e534b5587.png %}
 
 Press ok when this dialog shows up.
 
-<img src="{{ site.imageproxy_url }}/tif6-b7670222f8faa426a54ffd83f9b81793.png" />
+{% picture tif6-b7670222f8faa426a54ffd83f9b81793.png %}
 
 That's it! You now have a TIF ready for print!
