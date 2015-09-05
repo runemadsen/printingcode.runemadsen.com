@@ -15,7 +15,7 @@ Color is way too subjective and dynamic to allow for so simple definitions. Actu
 * Learn to, simply, observe color and its characteristics.
 * Learn how the ideas of color combination springs from simple rules performed on the color spectrum
 
-<iframe width="600" height="338" src="http://www.youtube.com/embed/MXQozTxQSiE" frameborder="0" > </iframe>
+{% youtube MXQozTxQSiE %}
 
 The woman in the red dress is a character in a training program built by the rebels in the Matrix. More specifically, [Mouse](http://en.wikipedia.org/wiki/List_of_minor_characters_in_the_Matrix_series#Mouse) designed her... and he picked the color red for her dress. Although many find it hard to work creatively with color, very few people would question why he chose this. It's attractive, erotic, wild and draws attention.
 

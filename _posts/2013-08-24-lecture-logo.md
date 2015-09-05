@@ -48,7 +48,7 @@ The difficult thing when creating generative logos is setting up constraints to 
 
 ### Lava Sans Avec
 
-<iframe src="http://player.vimeo.com/video/23500126?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0" > </iframe>
+{% vimeo 23500126 %}
 
 {% picture lava-e1d2d5423117d9e9eb8405bb85ee11d0.jpg %}
 
@@ -65,7 +65,7 @@ The difficult thing when creating generative logos is setting up constraints to 
 
 Here's a dynamic identity for ITI, which is basically just multiple variations of an unfolded box (hello Sol Lewitt!).
 
-<iframe src="http://player.vimeo.com/video/32502124?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="600" height="375" frameborder="0" > </iframe>
+{% vimeo 32502124 %}
 
 {% picture iti-a20a8ef57e3718dff21086e22325d736.jpg %}
 
@@ -87,7 +87,7 @@ Identity for the city of Melbourne. All variations are built around the points o
 
 ### Function Engineering
 
-<iframe src="http://player.vimeo.com/video/80205762?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="600" height="375" frameborder="0" > </iframe>
+{% vimeo 80205762 %}
 
 {% picture function1-ac37089eacf3de3d4ded586014fe2636.jpg %}
 
@@ -134,7 +134,7 @@ However, this code has a few problems. The biggest one is that the same dot can 
 
 ### The MIT Logo
 
-<iframe src="http://player.vimeo.com/video/20250134?title=0&amp;byline=0&amp;portrait=0" width="600" height="339" frameborder="0"> </iframe>
+{% vimeo 20250134 %}
 
 Each person at MIT can get his own logo. 40,000 permutations.
 
@@ -162,7 +162,7 @@ Here's a Processing sketch that recreates the basic output of the MIT logo. A lo
 
 ### Casa de Musica
 
-<iframe width="600" height="338" src="http://www.youtube.com/embed/URmKSyKAK5w" frameborder="0" > </iframe>
+{% youtube URmKSyKAK5w %}
 
 Based on the building.
 

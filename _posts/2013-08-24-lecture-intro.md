@@ -210,11 +210,11 @@ Paul Rand released numerous books (see _[Recommended Readings](/printing-code)_)
 
 Another hugely important designer from this period is **Saul Bass**, who is best known for his movie poster designs. He later started making title sequences for movies, all animated with paper cutouts. Here's the trailer for "The Man with the Golden Arm".
 
-<iframe width="560" height="338" src="http://www.youtube.com/embed/eGnpJ_KdqZE" frameborder="0" > </iframe>
+{% youtube eGnpJ_KdqZE %}
 
 .. and here's the trailer for "Psycho" from 1960.
 
-<iframe width="560" height="338" src="http://www.youtube.com/embed/Tek8QmKRODw" frameborder="0" > </iframe>
+{% youtube Tek8QmKRODw %}
 
 The Swiss Style
 ---------------
@@ -229,7 +229,7 @@ This graphic aesthetic and method was the second wave of European Modernism to i
 
 The _Swiss Style_ distilled graphic design into a series of simple constraints and rules. Use Helvetica. Use a grid system. It was a return to the purely functional graphic arts, in a way that it has been described as _Bauhaus applied_. The _Swiss Style_ had a profound impact on American corporations, as explained in this video from the movie _Helvetica_.
 
-<iframe width="560" height="338" src="http://www.youtube.com/embed/VDLPAE9wLEU" frameborder="0" > </iframe>
+{% youtube VDLPAE9wLEU %}
 
 One extremely important designer is **Josef Muller-Brockmann**, who's book _Grid Systems_ suggested the use of strict grid systems to order graphic elements on the page. This is something we'll be talking a lot about in the grid systems class.
 
@@ -302,7 +302,7 @@ The user could manipulate geometric shapes on the screen by using a light-pen. I
 
 Xerox PARC was a research center established in 1971 as a research division of the Xerox Corporation. It's widely famous for its contributions to computer science, which include the UI, the mouse, the laser printer, etc. 
 
-<iframe width="600" height="450" src="http://www.youtube.com/embed/1MPJZ6M52dI" frameborder="0" > </iframe>
+{% youtube 1MPJZ6M52dI %}
 
 Here it's Douglas Englebart from Standford University (later PARC) introducing the computer mouse for the first time.
 
@@ -332,7 +332,7 @@ The Macintosh turned out so well because the people working on it were musicians
 
 He invited designers to participate! Made these tools available. 
 
-<iframe width="600" height="450" src="http://www.youtube.com/embed/2B-XwPjn9YY" frameborder="0" > </iframe>
+{% youtube 2B-XwPjn9YY %}
 
 The computer became a tool for creation.
 
@@ -478,8 +478,7 @@ From this...
 
 ... to this.
 
-<iframe src="http://player.vimeo.com/video/4707422?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0" > </iframe>
-
+{% vimeo 4707422 %}
 
 ### Jonathan Puckey
 
@@ -495,7 +494,7 @@ Here are some examples of code automation in printed books.
 
 {% picture generative_cover-d0dbdce85e6c70c15a768f5118336ddd.jpg %}
 
-<iframe src="http://player.vimeo.com/video/18223862?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0" > </iframe>
+{% vimeo 18223862 %}
 
 {% picture google1-7f13eaef68d80b1c64d27da02a14058e.jpg %}
 

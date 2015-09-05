@@ -12,7 +12,7 @@ In this class we'll investigate what happens when we use motion or animation tec
 
 I've been exploring this in my own work. Here's a simple, generative logo made with the physics library Box2D.
 
-<iframe src="http://player.vimeo.com/video/9513121?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0" > </iframe>
+{% vimeo 9513121 %}
 
 Here's an image of a series of graphic prints created with randomized, moving arcs.
 

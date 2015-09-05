@@ -10,14 +10,13 @@ Typography
 
 I'm not sure that anything successful can come out of generative typography, but hey, let's do a class on it. The presentation is mostly a collection of things I think are interesting, and not so much a world-view of computational typography.
 
-<iframe src="http://player.vimeo.com/video/20759580?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0" > </iframe>
+{% vimeo 20759580 %}
 
 Obviously, when we see footage like this, we realize that fonts - almost above anything else - have the widest range of expression. They are at the same time purely functional and purely aesthetic.  
 
 Today we'll look at ways to make type systems: fonts created by using some kind of rule, instead of a manual plotting of the polygon outlines. This can be many things.
 
-<iframe width="600" height="338" src="http://www.youtube.com/embed/up1d_fagy6Q" frameborder="0" > </iframe>
-
+{% youtube up1d_fagy6Q %}
 
 Short Introduction to Typography
 ---------------------------------
@@ -380,7 +379,7 @@ Here's his project "Tile Tool" that draws patterns on top of black and white bas
 
 This next project is really great. It's a dynamic typeface made for the small film studio "Lava Films". It's based on the concept of natural disasters: Things moving to non-anticipated places. So is the font.
 
-<iframe src="http://player.vimeo.com/video/23500126?title=0&amp;byline=0&amp;portrait=0" width="600" height="338" frameborder="0"> </iframe>
+{% vimeo 23500126 %}
 
 {% picture lava-e1d2d5423117d9e9eb8405bb85ee11d0.jpg %}
 
