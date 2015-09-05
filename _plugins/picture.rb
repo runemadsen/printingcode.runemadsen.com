@@ -9,12 +9,12 @@ module Jekyll
 
     def render(context)
 
-      small = "#{@url}/600x/#{@img}"
+      small = "#{@url}/750x/#{@img}"
       large = "#{@url}/1440x/#{@img}"
 
       # Render a responsive image tag that basically only renders 600px.
       # But, add a bigger size I can use for slideshows.
-      "<img src=\"#{small}\" srcset=\"#{small} 600w, #{large} 1440w\" sizes=\"600px\" />"
+      "<img src=\"#{small}\" srcset=\"#{small} 750w, #{large} 1440w\" sizes=\"600px\" />"
     end
   end
 end

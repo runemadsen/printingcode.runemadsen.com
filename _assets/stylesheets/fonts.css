@@ -34,6 +34,11 @@ main {
   color: #333;
 }
 
+main img {
+  max-width: 100%;
+  border: 1px solid #EAEAEA;
+}
+
 a {
   color: #045284;
   text-decoration: none;
@@ -41,11 +46,11 @@ a {
 }
 
 blockquote {
-  background-color: #F5F6F9;
+  border-left: 3px solid #D0CFCF;
   font-size: 0.85em;
   font-style: italic;
   font-family: Georgia;
-  color: #808F9C;
+  color: #969696;
   padding: 0.1em 1em;
   margin: 0;
 }
@@ -55,10 +60,11 @@ blockquote {
 a[href*="https://github.com/runemadsen/printing-code/tree/master"] {
   display: block;
   padding: 10px;
-  background-color: rgb(209, 220, 229);
-  color: black;
+  background-color: #EFEFEF;
+  color: #7185A0;
   text-align: center;
-  font-size: 18px;
+  border-bottom: 2px solid #CAD5E0;
+  font-family: "Fjalla One";
 }
 
 img[data-slideshow] {
