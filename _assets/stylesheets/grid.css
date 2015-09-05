@@ -1,0 +1,131 @@
+/* Reset
+-------------------------------------------------- */
+
+body {
+  margin: 0;
+}
+
+/* Natural box sizing
+-------------------------------------------------- */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Mobile default
+-------------------------------------------------- */
+
+header {
+  font-family: 'Fjalla One', sans-serif;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 5px 10px 0px;
+  padding: 0.5em;
+  text-align: center;
+  margin-bottom: 3em;
+  text-transform: uppercase;
+}
+
+header #logo {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  color: #333;
+  font-size: 1.2em;
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 1em;
+  list-style: none;
+  font-size: 0.95em;
+}
+
+header ul li {
+  display: inline;
+  margin-left: 0.5em;
+}
+
+header ul li:first-child {
+  margin-left: 0;
+}
+
+header ul li:nth-child(6):after {
+  content:"\A";
+  white-space:pre;
+}
+
+header ul li a {
+  border-bottom: none;
+  color: #333;
+}
+
+.container {
+  padding: 0% 7.5%;
+}
+
+aside {
+  display: none;
+}
+
+/* Bigger menu
+-------------------------------------------------- */
+
+@media (min-width: 650px) {
+
+  header {
+    padding: 1em;
+  }
+
+  header #logo {
+    font-size: 1.4em;
+  }
+
+  header ul {
+    font-size: 1.1em;
+  }
+
+}
+
+/* Side by side
+-------------------------------------------------- */
+
+@media (min-width: 860px) {
+
+  body {
+    padding: 0 1.2em;
+  }
+
+  header {
+    box-shadow: none;
+  }
+
+  header #logo {
+    font-size: 1.8em;
+  }
+
+  header ul li:nth-child(6):after {
+    content:"";
+  }
+
+  .container {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1040px;
+  }
+
+  main {
+    float: left;
+    width: 60%;
+  }
+
+  aside {
+    display: block;
+    float: right;
+    width: 40%;
+    padding-left: 7%;
+  }
+
+}

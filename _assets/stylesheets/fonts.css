@@ -1,0 +1,111 @@
+body {
+  font-family: 'Average', sans-serif;
+  font-size: 100%;
+}
+
+/* Headings
+----------------------------------------------------- */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin: 1.2em 0 0.7em 0;
+}
+
+h3 {
+  color: #54647D;
+  font-size: 1.5em;
+}
+
+/* Body
+----------------------------------------------------- */
+
+main {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #333;
+}
+
+a {
+  color: #045284;
+  text-decoration: none;
+  border-bottom: 1px solid #C5E0FF;
+}
+
+blockquote {
+  background-color: #F5F6F9;
+  font-size: 0.85em;
+  font-style: italic;
+  font-family: Georgia;
+  color: #808F9C;
+  padding: 0.1em 1em;
+  margin: 0;
+}
+
+/* Style Github Examples */
+
+a[href*="https://github.com/runemadsen/printing-code/tree/master"] {
+  display: block;
+  padding: 10px;
+  background-color: rgb(209, 220, 229);
+  color: black;
+  text-align: center;
+  font-size: 18px;
+}
+
+img[data-slideshow] {
+  border: 1px solid #EBEBEB;
+}
+
+/* Lists
+----------------------------------------------------- */
+
+ul {
+  padding-left: 30px;
+}
+
+/* TOC
+------------------------------------------------------------- */
+
+#toc {
+  margin-top: 5.5em;
+}
+
+#toc h3 {
+  color: #99AAB1;
+}
+
+#toc ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#toc li {
+  margin-bottom: 6px;
+  padding-left: 1em;
+  text-indent: -.7em;
+}
+
+#toc li:before {
+  content: "•  ";
+  color: #99AAB1;
+}
+
+#toc li a {
+  border-bottom: none;
+  color: #99AAB1;
+}
+
+.launch-slideshow {
+  font-size: 13px;
+  color: #ababab;
+}

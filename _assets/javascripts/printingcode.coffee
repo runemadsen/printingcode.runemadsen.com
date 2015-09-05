@@ -10,13 +10,13 @@ class PrintingCode extends Backbone.View
 
   init_toc: ->
 
-    @$("#left").append("<ul id='toc'></ul>")
+    @$("#toc").append("<ul></ul>")
 
     _.each(@$("h2"), (heading) =>
       jheading = $(heading)
       slug = jheading.attr("id")
       txt = jheading.text()
-      @$("#toc").append("<li><a href='#"+slug+"'>"+txt+"</a></li>")
+      @$("#toc ul").append("<li><a href='#"+slug+"'>"+txt+"</a></li>")
     )
 
   # Images
