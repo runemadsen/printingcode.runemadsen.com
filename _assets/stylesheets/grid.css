@@ -52,7 +52,7 @@ header ul li:first-child {
   margin-left: 0;
 }
 
-header ul li:nth-child(6):after {
+header ul li:nth-child(7):after {
   content:"\A";
   white-space:pre;
 }
@@ -60,6 +60,10 @@ header ul li:nth-child(6):after {
 header ul li a {
   border-bottom: none;
   color: #333;
+}
+
+header ul li a:hover {
+  color: #97CAEA;
 }
 
 .container {
@@ -106,10 +110,6 @@ aside {
     font-size: 1.8em;
   }
 
-  header ul li:nth-child(6):after {
-    content:"";
-  }
-
   .container {
     padding: 0;
     margin: 0 auto;
@@ -128,4 +128,10 @@ aside {
     padding-left: 7%;
   }
 
+}
+
+@media (min-width: 920px) {
+  header ul li:nth-child(7):after {
+    content:"";
+  }
 }
