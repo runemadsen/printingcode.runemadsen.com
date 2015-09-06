@@ -18,12 +18,19 @@
 
 <!-- This is the example code -->
 <script type="text/javascript">
-
 {{ content }}
-
 </script>
 
-<a href="/examples">Back to examples</a>
+<!-- This is codemirror so you can see the code -->
+<textarea id="examplecode">{{ content }}</textarea>
+
+<script type="text/javascript">
+  var editor = CodeMirror.fromTextArea(document.getElementById("examplecode"), {
+    theme: "monokai"
+  });
+</script>
+
+<a href="/examples" class="back">&lt; Back to examples</a>
 
 </body>
 </html>

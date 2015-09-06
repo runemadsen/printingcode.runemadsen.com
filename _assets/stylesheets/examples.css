@@ -1,5 +1,15 @@
+/* Natural box sizing
+-------------------------------------------------- */
+
+//= require codemirror
+//= require monokai
+
 body {
   background-color: #EAEAEA;
+}
+
+#canvas {
+  margin-bottom: 1em;
 }
 
 #canvas svg {
@@ -21,8 +31,18 @@ p {
   margin: 0.4em 0 1em;
 }
 
-a {
+a.back {
   font-family: "Average";
   color: #333;
   text-decoration: none;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+
+.CodeMirror {
+  padding: 1em 1em 0 1em;
+  width: 800px;
+  font-size: 1.1em;
 }
