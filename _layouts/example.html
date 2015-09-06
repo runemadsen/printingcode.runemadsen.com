@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rune.js</title>
+  <link href='http://fonts.googleapis.com/css?family=Average|Fjalla+One' rel='stylesheet' type='text/css'>
+  {% stylesheet examples %}
+  {% javascript examples %}
+</head>
+<body>
+
+  <h1>{{ page.title }}</h1>
+
+  <p>{{page.description}}</p>
+
+<!-- This is the canvas where the SVG is generated -->
+<div id="canvas"></div>
+
+<!-- This is the example code -->
+<script type="text/javascript">
+
+{{ content }}
+
+</script>
+
+<a href="/examples">Back to examples</a>
+
+</body>
+</html>

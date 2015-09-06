@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<h1>Examples</h1>
+
+{% for category in page.toc %}
+  <h2>{{ category.name }}</h2>
+  <ul>
+  {% for example in category.examples %}
+    <li><a href="{{ example.url }}">{{ example.title }}</a> - {{ example.description }}</li>
+  {% endfor %}
+  </ul>
+{% endfor %}

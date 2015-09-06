@@ -62,6 +62,10 @@ header ul li a {
   color: #333;
 }
 
+header ul li:last-child a {
+  color: #72A9CC;
+}
+
 header ul li a:hover {
   color: #97CAEA;
 }

@@ -1,0 +1,28 @@
+body {
+  background-color: #EAEAEA;
+}
+
+#canvas svg {
+  background-color: white;
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.06),inset -1px -1px 1px 0 rgba(0, 0, 0, 0.02);
+  border: 1px solid #E2E2E2;
+  border-bottom-color: #CECECE;
+}
+
+h1 {
+  font-family: "Fjalla One";
+  font-size: 1.8em;
+  margin: 0;
+}
+
+p {
+  font-family: "Average";
+  color: #333;
+  margin: 0.4em 0 1em;
+}
+
+a {
+  font-family: "Average";
+  color: #333;
+  text-decoration: none;
+}
