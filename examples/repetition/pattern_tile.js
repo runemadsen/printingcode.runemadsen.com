@@ -28,7 +28,7 @@ function drawTile(x, y, size)
       .lineTo(0, 0)
       .lineTo(0, size)
       .lineTo(size, size)
-      .fill(r.random(255), r.random(1))
+      .fill(Rune.random(255), Rune.random(1))
       .rotate(i * 90, x, y)
       .stroke(false);
 
@@ -36,7 +36,7 @@ function drawTile(x, y, size)
       .lineTo(0, 0)
       .lineTo(size, 0)
       .lineTo(size, size)
-      .fill(r.random(255), r.random(1))
+      .fill(Rune.random(255), Rune.random(1))
       .rotate(i * 90, x, y)
       .stroke(false);
   }

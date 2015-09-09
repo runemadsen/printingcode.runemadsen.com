@@ -25,7 +25,7 @@ var colorlist = [
 ]
 
 function randomColor() {
-  var index = Math.round(r.random(colorlist.length-1));
+  var index = Math.round(Rune.random(colorlist.length-1));
   return colorlist[index];
 }
 

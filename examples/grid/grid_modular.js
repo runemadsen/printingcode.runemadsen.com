@@ -27,14 +27,14 @@ var size = 40;
 
 for(var i = 0; i < 50; i++)
 {
-  var color = new Rune.Color(r.random(0, 255), r.random(0, 255), r.random(0, 255));
-  var x = r.random(size, grid.vars.moduleWidth - size);
-  var y = r.random(size, grid.vars.moduleHeight - size);
+  var color = new Rune.Color(Rune.random(0, 255), Rune.random(0, 255), Rune.random(0, 255));
+  var x = Rune.random(size, grid.vars.moduleWidth - size);
+  var y = Rune.random(size, grid.vars.moduleHeight - size);
   var circle = r.circle(x, y, size).fill(color).stroke(false);
 
   // we use .ceil because numbers start at 1
-  var randomCol = Math.ceil(r.random(grid.vars.columns));
-  var randomRow = Math.ceil(r.random(grid.vars.rows));
+  var randomCol = Math.ceil(Rune.random(grid.vars.columns));
+  var randomRow = Math.ceil(Rune.random(grid.vars.rows));
   grid.add(circle, randomCol, randomRow);
 }
 

@@ -38,7 +38,7 @@ for(var i = 0; i < colors.length; i++)
     .stroke(false);
 
   y += height + spacing;
-  x = Math.round(r.random(100, 130));
+  x = Math.round(Rune.random(100, 130));
 }
 
 

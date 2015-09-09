@@ -11,7 +11,7 @@ var r = new Rune({
 });
 
 for(var i = 0; i < 30; i++) {
-  r.circle(r.random(r.width), r.random(r.height), 30);
+  r.circle(Rune.random(r.width), Rune.random(r.height), 30);
 }
 
 r.draw();

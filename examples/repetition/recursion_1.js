@@ -17,7 +17,7 @@ function drawCircle(x, y, size)
 
   // draw circle
   r.circle(x, y, size)
-    .fill(r.random(30, 200))
+    .fill(Rune.random(30, 200))
     .stroke(false);
 
   // call the function again. We need an if statement,

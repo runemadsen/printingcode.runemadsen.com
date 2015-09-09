@@ -29,8 +29,8 @@ for(var i = 0; i < numPoints; i++) {
 r.on('draw', function(stage) {
   poly = poly.copy();
   for(var i = 0; i < poly.vars.vectors.length; i++){
-    poly.vars.vectors[i].x += r.random(-2,2);
-    poly.vars.vectors[i].y += r.random(-2,2);
+    poly.vars.vectors[i].x += Rune.random(-2,2);
+    poly.vars.vectors[i].y += Rune.random(-2,2);
   }
 });
 

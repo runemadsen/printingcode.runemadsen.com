@@ -26,9 +26,9 @@ var size = 40;
 
 for(var i = 0; i < 50; i++)
 {
-  var color = new Rune.Color(r.random(0, 255), r.random(0, 255), r.random(0, 255));
-  var x = r.random(size, grid.vars.width - size);
-  var y = r.random(size, grid.vars.height - size);
+  var color = new Rune.Color(Rune.random(0, 255), Rune.random(0, 255), Rune.random(0, 255));
+  var x = Rune.random(size, grid.vars.width - size);
+  var y = Rune.random(size, grid.vars.height - size);
   var circle = r.circle(x, y, size).fill(color).stroke(false);
   grid.add(circle, 1, 1);
 }

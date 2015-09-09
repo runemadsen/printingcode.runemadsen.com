@@ -6,21 +6,13 @@ title: Rune Madsen
 About the class
 ===============
 
-**Printing Code** is a graduate course taught at the Interactive Telecommunications Program at New York University. In this course students explore the use of computational techniques to produce physical prints, focusing on the intersection between graphic design and code. Class time will be divided between exploring design topics like colors, grids and typefaces, and applying these towards computational topics like randomization, repetition, transformation and generative form.
+**Printing Code** is a graduate course focused on programming design systems. Class time is divided between design topics like color, grid systems, and typefaces, and more computational topics like randomization, repetition, transformation and generative form. The students work to write software that abstract these design theories into code, and print the output on paper for design critique.
 
 Weekly readings include relevant writings from the history of graphic design ([Josef Muller-Brockmann](http://bit.ly/KR2jkA), [Paul Rand](http://bit.ly/KzNyhy)), articles from the history of computation ([Vannevar Bush](http://bit.ly/9Zat9h), [Douglas Englebart](http://bit.ly/B4HDX)) and everything in between ([Sol Lewitt](http://bit.ly/BX1iy), [Edward Tufte](http://bit.ly/49i1Xj)).
 
 Weekly homework can be produced using the digital printers at [NYU’s Advanced Media Studio](http://bit.ly/Krjjhh), however students are encouraged to utilize whatever physical printing techniques they prefer, that being stencils, letter press, silk screen, weaving or home-made printers.
 
 The class aims not only to teach the students how to create physical prints via code, but also to have something interesting to say about it. The class requires ICM or similar programming background.
-
-
-### Github Repository
-
-All code examples and frameworks used in the class can be found on Github:
-
-* [https://github.com/runemadsen/printing-code](https://github.com/runemadsen/printing-code)
-
 
 ### Teacher Info
 
@@ -39,15 +31,13 @@ All code examples and frameworks used in the class can be found on Github:
 Introduction
 ------------
 
-> It’s important to use your hands, this is what distinguishes you from a cow or a computer operator - Paul Rand
+Until recently, the term Graphic Designer was used to describe artists firmly rooted in the fine arts. Aspiring design students graduated with MFA degrees, and their curriculums were based on traditions taught by painting, sculpture and architecture. Paul Rand once famously said: *"It’s important to use your hands. This is what distinguishes you from a cow or a computer operator"*. At best, this teaches the designer not to be dictated by their given tool. At worst, the designer is institutionalized to think of themselves as ideators: the direct opposite to a technical person.
 
-For many years graphic design education has been a separate field. You learn about color, grids, form, scale, typography, and books on the subject are geared towards individuals with visual creativity. The opposite can be said about the field of programming that for a long time has been geared towards technically skilled people. During the last decade this line has obviously blurred, but not to the degree one would expect. 
+This has obviously changed with the advent of computers (and the field of web design in particular), but not to the degree that one would expect. Despite recent efforts in defining digital-first design vocabularies, like Google’s Material Design, the legacy of the printed page is still omnipresent. Even the most adept companies are organized around principles inherited from desktop publishing, and, when the lines are drawn, we still have separate design and engineering departments. Products start as static layouts in the former and become dynamic implementations in the latter. Designers use tools modeled after manual processes that came way before the computer while engineers work in purely text-based environments. I believe this approach to design will change in a fundamental way and, like Donald Knuth, I’ll call this the transition from design to meta-design.
 
-For someone who grew up as a part of the computer generation, this divide might seem problematic. My first experiments with color and form was also when learning HTML and CSS, so how do I know where design stops and programming begins? Graphic design and programming are so intermingled today that a term like *Computational Design* seems like a much better explanation of the two merging fields. [Design is how it works](http://daringfireball.net/2012/02/walter_isaacson_steve_jobs), not just a last layer of make-up.
+So what is meta-design? In a traditional design practice, the designer works directly on a design product. Be it a logo, website, or a set of posters, the designer is the instrument to produce the final artifact. A meta-designer works to distill this instrumentation into a design system, often written in software, that can create the final artifact. Instead of drawing it manually, she is programming the system to draw it. These systems can then be used within different contexts to generate a range of design products without much effort.
 
-As I've grown more experienced as a graphic designer, it has become obvious that a great deal of this experience is built on a very systematic approach to design. Graphic design can at times seem like algorithms controlled by a creative vision. Grids are just basic measurements. Typography is spacing and curves. Color schemes are proportional spacings placed on the color spectrum. This class is about investigating what happens when we start creating graphic art only by writing code. It's an experiment in replacing already exiting tools (that too long has dictated the visual look of computational design - hello drop shadow) with our own software programs. We will investigate graphic design systems, distill them into algorithms, and eventually let them spin out of control.
-
-It's important to note that this class is not so much about generative design, as it's about graphic design through code. I see no value in splattering a shape 5000 times on a canvas, calling it generative art, just because we can. It's about distilling already existing graphic design techniques into code, making valid and reasonable assumptions, and then - only then - letting things spin out of control.
+[Read more](http://runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/)
 
 
 Week 1: Hello World
@@ -63,7 +53,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 * [Form + Content](http://files.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
 * [Software Structures](http://artport.whitney.org/commissions/softwarestructures/text.html) by Casey Reas
-* [Computers, Pencils, and Brushes](http://files.runemadsen.com/rand_computers.pdf) by Paul Rand (Design, Form and Chaos)
+* [On meta-design and algorithmic design systems](http://runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/) by Rune Madsen
 
 ### Class Overview
 
@@ -71,8 +61,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * [About the class](/about-the-class)
 * Syllabus Walk-Through
 * Lecture: **[The History of Graphic Design and Computational Form](/lecture-intro)**
-* Generating PDFs with Processing
-* Readings
+* Introduction to [Rune.js](http://runemadsen.github.io/rune.js/)
 
 ### Assignment for next week
 

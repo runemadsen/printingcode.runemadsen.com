@@ -21,8 +21,8 @@ function drawRect(x, y, w, h)
     .strokeWidth(3);
 
   // then figure out if we need to draw another
-  var splitWidth = r.random(1) > 0.5;
-  var splitWhere = r.random(0.3, 0.8);
+  var splitWidth = Rune.random(1) > 0.5;
+  var splitWhere = Rune.random(0.3, 0.8);
 
   // if we're splitting the width
   if(splitWidth && w > 100)

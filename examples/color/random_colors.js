@@ -12,7 +12,7 @@ var r = new Rune({
 });
 
 function randomColor() {
-  return new Rune.Color('hsv', r.random(0, 360), r.random(20, 100), r.random(20, 100));
+  return new Rune.Color('hsv', Rune.random(0, 360), Rune.random(20, 100), Rune.random(20, 100));
 }
 
 // Draw the color scheme
