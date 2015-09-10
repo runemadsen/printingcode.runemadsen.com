@@ -30,7 +30,7 @@ h3 {
 ----------------------------------------------------- */
 
 main {
-  font-size: 1.2em;
+  font-size: 1.15em;
   line-height: 1.5em;
   color: #333;
 }
@@ -66,10 +66,6 @@ a[href*="https://github.com/runemadsen/printing-code/tree/master"] {
   text-align: center;
   border-bottom: 2px solid #CAD5E0;
   font-family: "Fjalla One";
-}
-
-img[data-slideshow] {
-  border: 1px solid #EBEBEB;
 }
 
 /* Media
@@ -127,9 +123,4 @@ ul {
 #toc li a {
   border-bottom: none;
   color: #99AAB1;
-}
-
-.launch-slideshow {
-  font-size: 13px;
-  color: #ababab;
 }

@@ -30,8 +30,8 @@ r.rect(r.width / golden, 0, rectSize, rectSize);
 r.circle(r.width / 2, r.height / 2, circleRadius);
 
 // draw an ellipse on the edge of the other ellipse, on 45 degrees
-var x = Math.cos(r.radians(45)) * circleRadius;
-var y = Math.sin(r.radians(45)) * circleRadius;
+var x = Math.cos(Rune.radians(45)) * circleRadius;
+var y = Math.sin(Rune.radians(45)) * circleRadius;
 r.circle((r.width / 2) + x, (r.height/2) + y, 10);
 
 r.draw();

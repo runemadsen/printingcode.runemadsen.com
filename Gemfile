@@ -5,3 +5,4 @@ gem 'jekyll-assets'
 gem "coffee-script"
 gem 'sass'
 gem 'uglifier'
+gem 'nokogiri'

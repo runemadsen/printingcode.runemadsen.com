@@ -21,8 +21,8 @@ var poly = r.polygon(200, 200)
   .stroke(0, 0, 0, 0.5);
 
 for(var i = 0; i < numPoints; i++) {
-  var x = Math.cos(r.radians(angle * i)) * circleSize;
-  var y = Math.sin(r.radians(angle * i)) * circleSize;
+  var x = Math.cos(Rune.radians(angle * i)) * circleSize;
+  var y = Math.sin(Rune.radians(angle * i)) * circleSize;
   poly.lineTo(x, y);
 }
 

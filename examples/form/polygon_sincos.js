@@ -19,8 +19,8 @@ for(var i = 0; i < points.length; i++) {
   var spacing = 360/points[i];
 
   for(var j = 0; j < points[i]; j++) {
-    var x = Math.cos(r.radians(j * spacing)) * radius;
-    var y = Math.sin(r.radians(j * spacing)) * radius;
+    var x = Math.cos(Rune.radians(j * spacing)) * radius;
+    var y = Math.sin(Rune.radians(j * spacing)) * radius;
     shape.lineTo(x, y);
   }
 

@@ -1,5 +1,5 @@
 ---
-layout:     default
+layout:     [default, slides]
 title:      Preparing Images for Printing at AMS
 date:       2013-08-24 19:15:22
 categories: printing-code

@@ -19,6 +19,8 @@ class PrintingCode extends Backbone.View
       @$("#toc ul").append("<li><a href='#"+slug+"'>"+txt+"</a></li>")
     )
 
+    @$("#toc ul").append("<li><a href='slides'>Go to slideshow</a></li>")
+
   # Images
   # ---------------------------------------------------------------------------------
 
@@ -26,42 +28,6 @@ class PrintingCode extends Backbone.View
     _.each(@$("img"), (img) =>
       $(img).addClass("img-responsive")
     )
-
-  # Slideshow
-  # ---------------------------------------------------------------------------------
-
-  init_slideshow_link: ->
-    @$("#left").append("<a href='#' class='launch-slideshow'>Launch Slideshow</a>")
-    @$(".launch-slideshow").click( (e) =>
-      e.preventDefault()
-      @start_slideshow()
-    )
-
-  start_slideshow: ->
-
-    # save all content and clear body and normal js and css
-    slideshow_content = @$("#right *[data-slideshow], #right h2, #right h3")
-    $('head script, head link').remove()
-
-    # add deckjs stuff
-    @$el.html('<div class="deck-container"></div>')
-    $('head').append('<script src="'+window.deckjs.javascript+'"></script>')
-    $('head').append('<link href="'+window.deckjs.stylesheet+'" rel="stylesheet" type="text/css">')
-
-    slides = _.map(slideshow_content, (el) =>
-      slide = $('<div class="slide"><div>')
-      if el.nodeName is "IMG"
-        slide.append('<img src="'+$(el).attr("data-slideshow")+'" />')
-      else
-        slide.append(el)
-      slide
-    )
-
-    $(".deck-container").append(slides)
-    $.deck('.slide')
-
-    # needed because initial scale is terrible
-    $(window).trigger('resize')
 
 $ ->
   window.app = new PrintingCode(el:"body")

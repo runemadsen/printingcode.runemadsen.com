@@ -12,7 +12,7 @@ var r = new Rune({
 
 var sideLength = 100;
 var a = sideLength / 2;
-var b = Math.sin(r.radians(60)) * sideLength;
+var b = Math.sin(Rune.radians(60)) * sideLength;
 
 var hexagon = r.polygon(100, 100)
   .lineTo(0, b)
