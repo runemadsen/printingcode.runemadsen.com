@@ -2,8 +2,6 @@ class PrintingCode extends Backbone.View
 
   initialize: ->
     @init_toc()
-    @init_slideshow_link()
-    @init_responsive_images()
 
   # TOC
   # ---------------------------------------------------------------------------------
@@ -20,14 +18,6 @@ class PrintingCode extends Backbone.View
     )
 
     @$("#toc ul").append("<li><a href='slides'>Go to slideshow</a></li>")
-
-  # Images
-  # ---------------------------------------------------------------------------------
-
-  init_responsive_images: ->
-    _.each(@$("img"), (img) =>
-      $(img).addClass("img-responsive")
-    )
 
 $ ->
   window.app = new PrintingCode(el:"body")
