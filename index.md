@@ -68,6 +68,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 * Follow [these instructions](https://github.com/runemadsen/printing-code-projects) to set up your own projects folder.
 * On ITP's laser printer, print your first generated Rune.js sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
+* Read [Getting started with Rune.js](http://runemadsen.github.io/rune.js/)
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 Week 2: Form 1
