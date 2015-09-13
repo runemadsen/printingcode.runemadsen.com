@@ -60,7 +60,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * Introductions
 * [About the class](/about-the-class)
 * Syllabus Walk-Through
-* Lecture: **[The History of Graphic Design and Computational Form](/lecture-intro)**
+* Lecture: **[A History of Design Systems](/lecture-intro)**
 * A look at the [printing-code-projects](https://github.com/runemadsen/printing-code-projects) repo and the web console
 * [Preparing your image for print](/preparing-for-ams)
 

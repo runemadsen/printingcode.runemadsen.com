@@ -6,8 +6,8 @@ categories: printing-code
 ---
 
 
-The History of Graphic Design and Computational Form
-====================================================
+A History of Design Systems
+=============================
 
 Graphic design is a relatively young way of expression, primarily a response to the needs of the industrial revolution. 
 
