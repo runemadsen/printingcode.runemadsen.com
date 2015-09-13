@@ -51,7 +51,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 ### Readings for this week
 
-* [Form + Content](http://files.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
+* [Form + Content](http://assets.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
 * [Software Structures](http://artport.whitney.org/commissions/softwarestructures/text.html) by Casey Reas
 * [On meta-design and algorithmic design systems](http://runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/) by Rune Madsen
 
@@ -68,7 +68,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * Please join the [Printing Code Google Group](https://groups.google.com/forum/?fromgroups#!forum/printing-code)
 * Set up a Github repository where you'll post all your code. Send me an email with the link.
 * On ITP's laser printer, print a PDF file generated via a Processing sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
-* Read [Paul Rand - Conversations with Students](http://files.runemadsen.com/rand_conversations.pdf)
+* Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 Week 2: Form 1
 --------------
