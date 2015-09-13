@@ -61,7 +61,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * [About the class](/about-the-class)
 * Syllabus Walk-Through
 * Lecture: **[The History of Graphic Design and Computational Form](/lecture-intro)**
-* Getting started with [Rune.js](http://runemadsen.github.io/rune.js/) and the [printing-code-projects](https://github.com/runemadsen/printing-code-projects) repo
+* A look at the [printing-code-projects](https://github.com/runemadsen/printing-code-projects) repo
 * [Preparing your image for print](/preparing-for-ams)
 
 ### Assignment for next week
