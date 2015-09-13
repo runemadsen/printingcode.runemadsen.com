@@ -1,5 +1,5 @@
 ---
-layout:     default
+layout:     [default, slides]
 title:      About the Class
 date:       2013-08-24 19:15:22
 categories: printing-code

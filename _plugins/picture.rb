@@ -14,7 +14,7 @@ module Jekyll
 
       # Render a responsive image tag that basically only renders 600px.
       # But, add a bigger size I can use for slideshows.
-      "<img src=\"#{small}\" srcset=\"#{small} 750w, #{large} 1440w\" sizes=\"600px\" />"
+      "<a href=\"#{large}\"><img src=\"#{small}\" srcset=\"#{small} 750w, #{large} 1440w\" sizes=\"600px\" /></a>"
     end
   end
 end

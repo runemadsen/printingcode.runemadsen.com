@@ -8,69 +8,58 @@ categories: printing-code
 Preparing Images For Printing At AMS
 ====================================
 
-Now that you know how to export PDF's from Processing, how do we prepare the image for print at AMS? It's a simple process, but it's important to do it right. These are the steps we need to take:
+Unfortunately, the process of converting images from SVG to TIFF takes a few more steps than it really should. However, it'll be a breeze once you've done it a few times.
 
-* Picking the paper
-* Convert to TIF file with the Adobe RGB (1998) color profile
+{% picture export_1-cadb453cd95f4c5c0abb66fd340fcc81.png %}
 
+First, install [SVG Crowbar](http://nytimes.github.io/svg-crowbar/), a Chrome bookmark that downloads an SVG from a webpage to your computer. When you've added this to your bookmarks, click the bookmark when viewing your sketch, and it'll download the SVG file to your computer.
 
-Picking the Paper
------------------
+{% picture export_2-e9e12dc457cafbe763e056efdfd2552a.png %}
 
-Before you start coding, you need to figure out what kind of paper you want to print on. Both paper types can be printed on the 4 AMS self service printers. We have 2 types of paper:
+Now open your image with Illustrator. If you do not have Illustrator installed, you can use one of ITP's computers or use a computer in the AMS studio.
 
-### Ultrasmooth Fine Art
+It's helpful to open the Illustrator *Preferences* and under *Units* set *General* to inches. This will show inches as the main measurement, which is great for print.
 
-This is the **matte** paper. The paper is a rough, non-shiny paper, and it works really well for graphic prints.
+{% picture export_3-1bf158896078ebbb77ce275816c23957.png %}
 
-This paper is 17" wide, and you basically determine the height, as it's a full roll of paper. Don't use too much though. Often you want the height to be less than 22", maybe even square.
+Now you need to resize the SVG so the dimensions match the printed paper. I'm trying to print this ugly circle, and I know that the paper is 17 inches wide. So I'm going to resize it to be 16 inches wide to allow some room around the edges.
 
-### Premium Semimatte Photo Paper
+So I first click *Document Setup*.
 
-This is the **photo** paper. The paper is not glossy, but looks more like photo paper.
+Then in the new window, I click *Edit Artboards*
 
-This paper is 16" wide. Again, you determine the height.
+{% picture export_4-c4b944e4c4f65d76f3cf16d301b2b909.png %}
 
+In the top-right corner of Illustrator, I can now set new dimensions for the artboard. First I click the small icon named *Constrain Width and Height Proportions* to now stretch the image. Then I set the width to *16 inches*.
 
-Save as TIF
------------
+{% picture export_5-22aa2b0e895f3e4913961b25920ef238.png %}
 
-Instead of saving a PNG or JPG from Processing, you will need to save it in PDF format. In order to optimize the colors for use on the AMS computer screens, we will need to convert the PDF into a TIF file with the Adobe RGB (1998) color profile. This makes sure that when you see your TIF on the screen at AMS, the colors will look the same on your print. Don't trust your laptop screen.
+You will now see that the artboard is much bigger than the content. So with the black arrow selected, highlight all content on the page, and resize the content to fit the window. Remember to hold down *Shift* to not stretch the content.
 
-Follow these instructions to prepare your file:
+During this process you can also trim away unneeded content or perform any other manipulations that you want.
 
+{% picture export_6-dada56847e02667c32b683b04b655da3.png %}
 
-TIF with Adobe RGB (1998) Color Profile
----------------------------------------
+Now click *Export*.
 
-In order to convert your file, you will need to have Photoshop on your computer.
+{% picture export_7-ef6e820c29d485a193fda55da050fb80.png %}
 
-First, open up the PDF file.
+In the new window, choose *TIFF* as the output format, and click *Use Artboards* to constrain the exported image to your resized artboard.
 
-{% picture tif0-98e59b87006d0ee80cb2b0feacd4e54a.png %}
+{% picture export_8-e7e61958b17830b5c42d9c0c6760b45d.png %}
 
-Photoshop will prompt you with a "PDF Import" dialog. Here you need to make sure that the image is in 300 pixels per inch, and that the width and height matches your print size.
+Now you need to open the exported TIFF in Photoshop to convert it to a different color profile. This is helpful to do while printing at AMS, as their screens are calibrated to their printer settings.
 
-{% picture tif1-c95020a1c163b2591b90fc2ec02879c1.png %}
+{% picture export_9-90468045d1e33c6b9ffba17abd84347f.png %}
 
-This will open up your PDF as a bitmap. Now you need to convert the color profile. You'll find that option in the "Edit" menu.
+Chose *Edit* and *Convert to Profile*.
 
-{% picture tif2-3643704167f014b6f13a0a0884a4e1f0.png %}
+{% picture export_10-d9d1a0a29b836e23a611402ff03676ab.png %}
 
-Make sure to convert into the Adobe RGB 1998 color profile. You can leave all the other settings to their defaults.
+Choose the *Adobe RGB 1998* profile and click *OK*.
 
-{% picture tif3-6508934b016259aa82c7f3db5cdd4738.png %}
+If the colors don't look perfect, you can use *Hue/Saturation* or *Curves* to tweak the colors before printing.
 
-Now you need to save the image as a TIF image. First press "Save As".
+{% picture export_11-0abe39dbb5fbbfc29427c917cca5de1c.png %}
 
-{% picture tif4-5a825d70c18be8d152f81acd61fef58c.png %}
-
-Choose to save a TIF without layers.
-
-{% picture tif5-7c4c0c4dd104aa755598608e534b5587.png %}
-
-Press ok when this dialog shows up.
-
-{% picture tif6-b7670222f8faa426a54ffd83f9b81793.png %}
-
-That's it! You now have a TIF ready for print!
+When things look good, press *Save* and follow the AMS instructions for printing from their software.

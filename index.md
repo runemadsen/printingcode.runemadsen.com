@@ -61,13 +61,13 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 * [About the class](/about-the-class)
 * Syllabus Walk-Through
 * Lecture: **[The History of Graphic Design and Computational Form](/lecture-intro)**
-* Introduction to [Rune.js](http://runemadsen.github.io/rune.js/)
+* Getting started with [Rune.js](http://runemadsen.github.io/rune.js/) and the [printing-code-projects](https://github.com/runemadsen/printing-code-projects) repo
+* [Preparing your image for print](/preparing-for-ams)
 
 ### Assignment for next week
 
-* Please join the [Printing Code Google Group](https://groups.google.com/forum/?fromgroups#!forum/printing-code)
-* Set up a Github repository where you'll post all your code. Send me an email with the link.
-* On ITP's laser printer, print a PDF file generated via a Processing sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
+* Follow [these instructions](https://github.com/runemadsen/printing-code-projects) to set up your own projects folder.
+* On ITP's laser printer, print your first generated Rune.js sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 Week 2: Form 1
@@ -82,8 +82,8 @@ This week we'll take our first step into design theory by looking at basic shape
 ### Class Overview
 
 * Homework presentations
+* Introduction to JavaScript and [Rune.js](http://runemadsen.github.io/rune.js/)
 * Lecture: **[Basic shapes and relationships](/lecture-form)**
-* [Preparing your image for AMS](/preparing-for-ams)
 
 ### Assignment for next week
 
