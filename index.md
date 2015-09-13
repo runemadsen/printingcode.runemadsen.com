@@ -66,10 +66,9 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 ### Assignment for next week
 
+* Read [Getting started with Rune.js](http://runemadsen.github.io/rune.js/)
 * Follow [these instructions](https://github.com/runemadsen/printing-code-projects) to set up your own projects folder.
 * On ITP's laser printer, print your first generated Rune.js sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
-* Read [Getting started with Rune.js](http://runemadsen.github.io/rune.js/)
-* Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 Week 2: Form 1
 --------------
@@ -89,6 +88,7 @@ This week we'll take our first step into design theory by looking at basic shape
 ### Assignment for next week
 
 * Write a Processing sketch that outputs 2 shapes on a page. The first shape should be inspired by the word "wet". The second shape should be inspired by the word "sharp".  Use only black and white. You have to use beginShape(), and all vertex points have to be created in a for loop. No manual plotting. Print on a poster at AMS and bring to class for design critique.
+* Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 
 Week 3: Form 2
