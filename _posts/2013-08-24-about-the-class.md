@@ -16,8 +16,8 @@ Don't be late
 
 In a grad school like ITP, your class time is way too valuable for us to start 15 minutes late. I'll start classes at 9:35 latest, and I expect you all to be there.
 
-Combining with thesis
----------------------
+Combining with other classes
+----------------------------
 
 History tells me that the best work in this class comes from first years, or second years who were not in their thesis semester. If you're taking this class because you have a thesis idea that is perfect as a final project, you're more than welcome to combine this class with your thesis. However, combining class projects as a last resort to spend more time on thesis is not optimal. Let's talk about it on a case-by-case basis.
 
@@ -81,9 +81,14 @@ It's easy to see that he doesn't do all of this for no reason. He sets himself a
 
 That's the way we'll explore our creativity: through tight constraints. Hopefully you'll learn that, even after this class, you need something to respond to, and constraints are often very helpful in the design process. Nothing is more scary than a blank canvas.
 
-
 Not necessarily "Generative"
 ----------------------------
+
+Rune.js
+-------
+
+AMS
+---
 
 
 
