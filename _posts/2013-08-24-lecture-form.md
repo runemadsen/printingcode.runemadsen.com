@@ -105,7 +105,7 @@ Shape
 
 When we have the format in place we can draw stuff in it. Using color differences, we can create anything from simple to very complicated shapes.
 
-You all know the simple drawing functions in Processing: rect(), ellipse() and triangle().
+You all know the simple drawing functions like `rect()`, `ellipse()` and `triangle()`.
 
 The rectangle is very solid and recognizable.
 	
@@ -133,7 +133,7 @@ A triangle is used to create a sense of sharpness for a knife product.
 
 {% picture packaging_triangle-74dba9fa97775d794daa89101c0e8e5d.jpg %}
 
-As Paul Rand said in today's text: Everything is Design!
+As Paul Rand would say: Everything is Design!
 
 Design is a journey from complexity to simplicity, and as you experienced in this week's assignment, constraining yourself to three simpe shapes can still give a million different outcomes.
 
@@ -197,18 +197,7 @@ In Processing, placing things within the given format is about knowing how to us
 Using these variables, to place something on the screen requires basic math. This is illustrated in this example:
 
 {% picture placement_calculations.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/placement_calculations)
-
-
-Scaling Variables in Processing
--------------------------------
-
-Another important thing when programming geometry is that your shapes are built from basic variables.
-
-{% picture cone-3f18fd648e148e1ec3fa62c12ef6177d.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/homework/icecreamcone)
-
-The only thing we can't do yet it calculating the proximity of an object, but we'll get to that later.
+[See example code](../examples/form/positioning.html)
 
 
 Basic Repetition
@@ -227,7 +216,7 @@ Before we look at creating polygons in a for-loop, let's just look at how to use
 And here's how to recreate it in Processing.
 
 {% picture rand_repetition1_example-e65f2c0865d6da2c8ada3d388186dac1.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/repetition_example)
+[See example code](../examples/form/spacing_even.html)
 
 The important concept to understand here is how we use incrementing loop variables (x, y) and multiply them by the distance between the shapes.
 
@@ -254,7 +243,7 @@ Randomness - or the idea of randomness - has been used way before the computer. 
 This is very easy to create in Processing. Create 30 ellipses in a loop and give them all random position.
 
 {% picture rand_random2_example-e3b6773256db50a880c75bf47ebbeacb.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/random_distribution_example)
+[See example code](../examples/form/spacing_random.html)
 
 Here it's a cover for the children's book "I know a lot of things". Notice how the rectangles are randomized, but still spaced out so they never overlap. 
 
@@ -263,7 +252,7 @@ Here it's a cover for the children's book "I know a lot of things". Notice how t
 The same technique can be used in code by tweaking the rectangle grid example. Before drawing each rectangle we rotate and change the position randomly from its spot in the grid. If we choose the parameters wisely, we'll never see overlapping squares.
 
 {% picture rand_random1_example-614acd1effaab5d1c2b616a1f24aff63.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/random_distribution_example2)
+[See example code](../examples/form/spacing_event_random.html)
 
 
 More Form Examples

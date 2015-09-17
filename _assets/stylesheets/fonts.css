@@ -1,5 +1,5 @@
 body {
-  font-family: 'Average', sans-serif;
+  font-family: 'Average', Georgia, serif;
   font-size: 100%;
 }
 
@@ -7,7 +7,7 @@ body {
 ----------------------------------------------------- */
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Fjalla One', 'Helvetica Condensed', 'Arial Condensed', Helvetica, Arial, sans-serif;
 }
 
 h1 {

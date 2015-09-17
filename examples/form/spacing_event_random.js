@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Spacing: Even"
+title: "Spacing: Even and random"
 description: "Draws evenly spaced circles on the screen."
 ---
 
@@ -18,6 +18,9 @@ for(var x = 0; x < 5; x++)
     {
       var circ = r.circle(x * 110, y * 110, 35, group)
         .stroke(false);
+
+      // move it a random amount
+      circ.move(Rune.random(-20, 20), Rune.random(-20, 20), true);
 
       if(x == 3 && y == 2)
       {

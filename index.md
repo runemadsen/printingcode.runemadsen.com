@@ -82,12 +82,13 @@ This week we'll take our first step into design theory by looking at basic shape
 ### Class Overview
 
 * Homework presentations
-* Introduction to JavaScript and [Rune.js](http://runemadsen.github.io/rune.js/)
+* Introduction to JavaScript
+* Introduction to [Rune.js](http://runemadsen.github.io/rune.js/)
 * Lecture: **[Basic shapes and relationships](/lecture-form)**
 
 ### Assignment for next week
 
-* Write a Processing sketch that outputs 2 shapes on a page. The first shape should be inspired by the word "wet". The second shape should be inspired by the word "sharp".  Use only black and white. You have to use beginShape(), and all vertex points have to be created in a for loop. No manual plotting. Print on a poster at AMS and bring to class for design critique.
+* This week, I want you to design a simple book cover for the book ???. You can only use basic shapes (rectangle, triangle, ellipse, line) and black/white. Think about how you can use [the basic relationships](lecture-form#basic-relationships) (shape, position, dimension, rotation) to illustrate the point you're trying to make. Furthermore, think about how these concepts can be put into code. Print it on ITP's laser printer, and come to class prepared to talk about the decisions you made.
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 
@@ -103,7 +104,7 @@ This week we'll look at more complex shapes, and how you can use algorithms to g
 
 ### Assignment for next week
 
-TODO
+Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objeccs to draw the two shapes. Print on ITP's laser printer.
 
 
 Week 4: Color

@@ -1,7 +1,7 @@
 ---
 layout: example
-title: "Random"
-description: "SHow how to randomly place circles on the screen."
+title: "Spacing: Random"
+description: "Shows how to randomly place circles on the screen."
 ---
 
 var r = new Rune({

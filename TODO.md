@@ -6,13 +6,6 @@ categories: printing-code
 ---
 
 
-Form
------
-
-* Explain bitmap vs. vector, and how to generate the PDF. Remove the make_bigger from pdf_export, as it's just making things more complicated.
-* Explain Photoshop canvas size, image size, etc.
-
-
 Color
 -----
 
