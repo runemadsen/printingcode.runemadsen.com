@@ -187,16 +187,17 @@ The "small" Beetle ad is a classic example of why this matters.
 The same ad really wouldn't make any sense if the designer hadn't positioned and scaled the car according to the message.
 
 
-Placement in Processing
+Placing shapes
 -----------------------
 
 Now that we know placement matters, let's look at how to do this in code. 
 
-In Processing, placing things within the given format is about knowing how to use 4 key variables: x, y, width and height.
+In Rune.js, placing things within the given format is about knowing how to use 4 key variables: x, y, width and height.
 
 Using these variables, to place something on the screen requires basic math. This is illustrated in this example:
 
 {% picture placement_calculations.jpg %}
+
 [See example code](../examples/form/positioning.html)
 
 
@@ -216,6 +217,7 @@ Before we look at creating polygons in a for-loop, let's just look at how to use
 And here's how to recreate it in Processing.
 
 {% picture rand_repetition1_example-e65f2c0865d6da2c8ada3d388186dac1.jpg %}
+
 [See example code](../examples/form/spacing_even.html)
 
 The important concept to understand here is how we use incrementing loop variables (x, y) and multiply them by the distance between the shapes.
@@ -243,6 +245,7 @@ Randomness - or the idea of randomness - has been used way before the computer. 
 This is very easy to create in Processing. Create 30 ellipses in a loop and give them all random position.
 
 {% picture rand_random2_example-e3b6773256db50a880c75bf47ebbeacb.jpg %}
+
 [See example code](../examples/form/spacing_random.html)
 
 Here it's a cover for the children's book "I know a lot of things". Notice how the rectangles are randomized, but still spaced out so they never overlap. 
@@ -252,6 +255,7 @@ Here it's a cover for the children's book "I know a lot of things". Notice how t
 The same technique can be used in code by tweaking the rectangle grid example. Before drawing each rectangle we rotate and change the position randomly from its spot in the grid. If we choose the parameters wisely, we'll never see overlapping squares.
 
 {% picture rand_random1_example-614acd1effaab5d1c2b616a1f24aff63.jpg %}
+
 [See example code](../examples/form/spacing_event_random.html)
 
 

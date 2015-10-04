@@ -1,7 +1,7 @@
 ---
 layout: example
 title: "Polygon sin and cos"
-description: "Draws a very simple polygon using sin, cos and lineTo."
+description: "Draws all basic shapes via sin and cos"
 ---
 
 var r = new Rune({

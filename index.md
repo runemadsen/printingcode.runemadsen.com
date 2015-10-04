@@ -88,7 +88,7 @@ This week we'll take our first step into design theory by looking at basic shape
 
 ### Assignment for next week
 
-* This week, I want you to design a simple book cover for the book ???. You can only use basic shapes (rectangle, triangle, ellipse, line) and black/white. Think about how you can use [the basic relationships](lecture-form#basic-relationships) (shape, position, dimension, rotation) to illustrate the point you're trying to make. Furthermore, think about how these concepts can be put into code. Print it on ITP's laser printer, and come to class prepared to talk about the decisions you made.
+* This week, I want you to design a simple book cover for the book [The Martian](https://en.wikipedia.org/wiki/The_Martian_(Weir_novel)). You can only use basic shapes (rectangle, triangle, ellipse, line) and black/white. Think about how you can use [the basic relationships](lecture-form#basic-relationships) (shape, position, dimension, rotation) to illustrate the point you're trying to make. Furthermore, think about how these concepts can be put into code. Print it on ITP's laser printer, and come to class prepared to talk about the decisions you made.
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
 
