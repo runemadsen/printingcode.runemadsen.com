@@ -10,7 +10,7 @@ module Jekyll
     end
 
     def is_image?(el)
-      el.name == "p" && el.children.size == 1 && el.children[0].name == "a" && el.children[0].children.size == 1 && el.children[0].children[0].name == "img"
+      el.name == "p" && el.search("img").size == 1
     end
 
     def is_video?(el)
@@ -18,7 +18,7 @@ module Jekyll
     end
 
     def image_to_slide(p, doc)
-      el = p.children[0].children[0]
+      el = p.search("img").first
       src = el.attribute("src").to_s
 
       # use last (biggest) srcset if available

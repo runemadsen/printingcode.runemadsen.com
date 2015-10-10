@@ -19,3 +19,5 @@ function randomColor() {
 var square1 = r.rect(0, 0, 200, r.height).fill(randomColor()).stroke(false);
 var square2 = square1.copy().move(200, 0).fill(randomColor());
 var square3 = square1.copy().move(400, 0).fill(randomColor());
+
+r.draw();

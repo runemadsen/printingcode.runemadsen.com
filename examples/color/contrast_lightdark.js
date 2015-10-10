@@ -25,12 +25,11 @@ for(var i = 0; i < 10; i++) {
 for(var i = 0; i < 10; i++) {
 
   // create the color in LAB and convert to RGB
-  var rgb = colorConvert.lab2rgb(i * 10, 0, 0);
+  var rgb = Rune.Color.Convert.lab2rgb(i * 10, 0, 0);
 
   r.rect(i * size, r.height/2, size, r.height/2)
     .fill(rgb[0], rgb[1], rgb[2])
     .stroke(false)
 }
-
 
 r.draw();

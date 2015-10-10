@@ -29,8 +29,9 @@ Color is one the hardest things to master in the graphic arts, as it's both very
 
 Here's a quick example of how dynamic behavior color combination can have. This looks like 2 grounds where the grounds exchanged in the center squares. They are - in fact - 3 colors, where the center square is a color midways in the hue spectrum between the grounds. The eye is searching for relevance.
 
-{% picture itten_exchange-54e16caa740ad97c32631a3a982f2edc.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/itten_exchange)
+![Lies color](http://assets.runemadsen.com/lies_color-656336f40b381d069597b3bb0f744b64.svg)
+
+[See example code](../examples/color/lies_color.html)
 
 We can prove this by removing the grounds:
 
@@ -40,13 +41,13 @@ The conclusion to this must be that color theory matters: Based on simple calcul
 
 The problem with combining color only by numbers is that you can start to trust the numbers instead of your eyes. Here's another example of why this is problematic. In this example the small squares looks like the exact same color, but they are not even close. Because they keep a relative distance in brightness to their respective grounds, they look the same to the eye. We will investigate this further later when talking about simultaneous contrast.
 
-{% picture itten_example2-35a7b8430713c14c21552c76b16a9925.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/itten_example2)
+![Lies contrast](http://assets.runemadsen.com/lies_contrast-aafeb06ee6b69f112abe734115cf61e3.svg)
+
+[See example code](../examples/color/lies_contrast.html)
 
 Again, let's remove the background and see.
 
 {% picture itten_example2_removed-3647f5a05e16cedd55f8eef5b89f0407.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/itten_example2)
 
 	
 What is Color?
@@ -55,13 +56,6 @@ What is Color?
 When you direct white light through a prism, you get a range of colors. White light holds all colors. When you mix all colors together, you get white. If you remove all colors, you get black.
 
 {% picture pinkfloyd-aea2c8b165d13c190b92aec21c22c615.jpg %}
-	
-You know this from Processing:
-
-<pre >
-fill(255, 255, 255); // this is white
-fill(0, 0, 0); // this is black
-</pre>
 
 This is why the sun turns red when setting. The atmosphere is a filter that removes colors.
 
@@ -105,17 +99,13 @@ Because we are working in both worlds, we are faced with a problem: we are desig
 What's wrong with RGB?
 ----------------------
 
-Most of you are probably totally comfortable using the RGB color mode in Processing. If we want do make a blue color, we do this:
+Most of you are probably totally comfortable using the RGB color mode. If we want do make a blue color, we do this:
 
-<pre >
-	fill(0, 0, 255); // this is blue
-</pre>
+<pre >.fill(0, 0, 255); // this is blue</pre>
 
 And if we want to draw a green color we do this:
 
-<pre >
-	fill(0, 255, 0); // this is green
-</pre>
+<pre >.fill(0, 255, 0); // this is green</pre>
 
 But once you start doing generative color, you realize that RGB is not a good way of working. For example, here's a color. 
 
@@ -130,76 +120,35 @@ HSB is a color model that exists as a 3D color space, where hue, saturation and 
 This makes it much easier to move around in on the color wheel, because one of those axis is hue, the actual hue of the color.
 
 	
-HSB And Colormodes in Processing
+HSV And Color modes in Rune.js
 --------------------------------
 
-By default, Processing starts in an RGB color mode, where is expects values from 0 to 255. However, by using the colorMode function, we can change that default color mode. For example, if I wanted black to be 0 and white to be 1 instead off 255, I could do this:
-
-<pre >
-	colorMode(RGB, 1, 1, 1);
-</pre>
+By default, all color functions in Rune.js use the RGB color mode, expecting values from 0 to 255. However, by passing in "hsv" as the first argument, you can change the default color mode. The following example demonstrates how to draw the same green rectangle in both RGB and HSV.
 
 Here's a example that demonstrate how to draw the color green in 3 different color modes.
 
 {% picture colormode-f7a92660599f24f8ae9e9355e18c9aa1.png %}
 [Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/colormode)
 
-You often see people use HSB color mode like this in Processing:
-
-<pre >
-	colorMode(HSB, 360, 100, 100);
-	fill(0, 100, 100); // this is red
-	fill(240, 100, 100); // this is blue
-</pre>
-
-We normally set hue as a range for 0-360, because that's the number of degrees in a full circle. This is also the default in Photoshop.
+HSV defaults to hue values that range from 0-360, because that's the number of degrees in a full circle. This is also the default in Photoshop.
 
 The first steps into working with HSB is to just draw simple colors on the screen. Here's a sketch that shows how to draw a red, green and blue square, along with some other colors.
 
-{% picture simplehsb-3ad3b063b333c261b257bb92dc801cb4.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/hsb)
+![Primary colors](http://assets.runemadsen.com/hsv_primary-4cf718847b609537bfda7e7b257f2879.svg)
+
+[See example code](../examples/color/hsv_primary.html)
 
 Now that we know how to move around the hue wheel, we can use this techniqe to draw a color circle.
 
-{% picture circle_hsb_processing-6a62b0df2335067188600ebb4b76f12c.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/hsb_color_circle)
+![HSV color circle](http://assets.runemadsen.com/hsv_circle-7b001d00e3de6e7b93660b3340e6fe4b.svg)
 
-By tweaking the saturation and brightness we can make the colors less sharp.
-
-{% picture circle_hsb_processing2-5517c32bc9fa11109cfa5acbe91c8516.jpg %}
+[See example code](../examples/color/hsv_circle.html)
 
 
-Toxiclibs TColor
---------------------------
+Rune.Color
+-----------
 
-In this class we'll be using the Toxiclibs library to manipulate color. Toxiclibs ships with an awesome set of classes that can drastically reduce the headaches of generating and manipulating colors in Processing. 
-
-Before using the ToxicLibs library in Processing, you will need to change the colormode. All color numbers in Toxiclibs operate in a scale from 0 to 1 (normalized), instead of 0-255 as you're used to. This may seem weird at first, but makes it a lot easier when doing calculations.
-
-<pre >
-	colorMode(HSB, 1, 1, 1);
-	fill(0, 1, 1); // this is red
-	fill(0.68, 1, 1); // this is blue
-</pre>
-
-**TColor** is the most important color class in the library, because it's a replacement of the native color object in Processing. It has many advantages over the normal color mode:
-
-<ul >
-	<li>Automatically converts between colormodes</li>
-	<li>Has a bunch of handy functions to change color (contrast, saturation, etc)</li>
-	<li>Implements compare methods so you can eaisly say: "Give me the darkest color" in this array</li>
-	<li>Soooooo much more</li>
-</ul>
-
-This sketch shows you how to create a new TColor object. You can do this in many ways, as shown in the code:
-
-{% picture tcolor_simple-4411db7dccf43eec4fe5045073546818.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_tcolor_simple)
-
-Here's a more complex example that shows you how to use some of the color manipulation functions, to change the color in code.
-
-{% picture tcolor-bfcb70d890ea51e45cee98d5fa832b0c.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_tcolor)
+See [Using colors](http://runemadsen.github.io/rune.js/#using-colors) in the Rune.js documentation. Also see the [color functions](../examples/color/color_functions.html) example.
 	
 
 Generating Monochromatic Color Schemes
@@ -211,17 +160,17 @@ The different ways of creating color schemes are basically just constraints to h
 
 One of the simplest possible ways of generating a color scheme is to pick a specific hue and saturation, and then choose colors that are evenly distributed on the brightness scale. This is one example of a **monochromatic color scheme**.
 
-{% picture color_scheme_brightness-268a26063476fac1e53470552cb60538.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_brightness)
+![Color Scheme Brightness](http://assets.runemadsen.com/scheme_brightness-1baeb04a6599f3ab9ae5bfffe4202a28.svg)
+
+[See example code](../examples/color/scheme_brightness.html)
 	
 This sketch has an even distribution in brightness values. You can easily imagine code that choose the values randomly.
 
 A slightly more sophisticated **monochromatic color scheme** would be to manipulate both saturation and brightness:
 
-{% picture color_scheme_saturation_brightness-4def5d3a15dac1c34888cdc02c8daa15.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_saturation_brightness)
+[Color Scheme Saturation Brightness](http://assets.runemadsen.com/scheme_saturation_brightness-1baeb04a6599f3ab9ae5bfffe4202a28.svg)
 
-This sketch randomly chose a saturation and brightness value between 0 and 100.
+[See example code](../examples/color/scheme_saturation_brightness.html)
 
 Monochromatic can be used for very simple and minimalistic graphics. Often you see it used with pure black or white to create contrast.
 
@@ -251,15 +200,9 @@ And analogous color scheme is a suit of colors that are located close to each ot
 
 We rotate 30 degrees around the color wheel because the standard color wheel has 12 colors, and 360/12 is 30. We are just finding the "next" color on the wheel.
 
-{% picture color_scheme_analogous-576412bd33c6de48a7376ab07f981280.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_analogous)
+![Color Scheme Analogous](http://assets.runemadsen.com/scheme_analogous-09358f900a818b5fc2da394f6a7f0c58.svg)
 
-Of course nothing prevents you from playing with the settings. Here's an example of the same blue base color, but with neighboring colors found by rotating 50 degrees around the color wheel, and subtracting 50 from the base saturation.
-
-The further you rotate around the wheel, the less analogous harmony you get. We can loosely say that anything below a 90 degree angle is an analogous color.
-
-{% picture color_scheme_analogous2-94511f8f078d8646744bfa2c8df6b6a8.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_analogous2)
+[See example code](../examples/color/scheme_analogous.html)
 
 {% picture analogous_trees-afb6b74a8dc302e576a0bb493b15cfd7.jpg %}
 
@@ -285,17 +228,11 @@ Some complementary colors are: Red = Cyan, Green = Magenta, Blue = Yellow.
 
 Look at a green square for a while, and then close your eyes. You will now see a cyan square. The eye tends to look for balance: tried to find colors that mix to white.
 
-It's easy to find a complementary color in Processing:
+It's easy to find a complementary color in Rune.js. Notice the sharp contrast between the two colors.
 
-{% picture color_scheme_complementary-ae473868a70ecb6fd2f360b132ac8f2f.jpg %}
+![Color Scheme Complementary](http://assets.runemadsen.com/scheme_complementary-bc8bfeb333dca403ebf4809331057da6.svg)
 
-{% picture color_scheme_complementary3-acef8761826c4fe9d1a4a75e9c4e98b9.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_complementary)
-
-Two examples of complementary color schemes. Notice the sharp contrast between the two colors.
-
-{% picture color_scheme_complementary2-be02ec94c602df4f8a19e26334defad2.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_complementary2)
+[See example code](../examples/color/scheme_complementary.html)
 
 
 Generating Triadic Color Schemes
@@ -307,22 +244,17 @@ A triadic color can be said to be the opposite of an analogous color. Where anal
 
 Here's a "pure" triadic color scheme with colors found by rotating 120 degrees on each side (internally an Equilateral triangle with 60 degree internal angles).
 
-{% picture color_scheme_triadic-06b0deb93c965cd657d77b2347597801.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_triadic)
+![Color Scheme Triadic](http://assets.runemadsen.com/scheme_triadic-b44a8cdd936e7d569cdc6fe22b8f20cb.svg)
+
+[See example code](../examples/color/scheme_triadic.html)
 
 You may notice how this is the primary colors, which makes sense given the calculation.
 
 An interesting thing is to compare a triadic color scheme in RGB with the corresponding scheme in a subtractive color mode like RYB.
 
 {% picture color_scheme_triadic_sub-d0d655b1d625d384959cc55514ffbf0f.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_triadic)
 
 You may notice how the blue/yellow has a triadic relationship in RGB, but are complementary colors in RYB.
-
-{% picture color_scheme_triadic2-f0e08c66c8650ad0214ef4c05a97c487.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_triadic2)
-
-Here's another example of a triadic color scheme with hue 90 as the base hue.
 
 
 Generating Tetradic Color Schemes
@@ -334,17 +266,17 @@ A tetradic color scheme is a set of 4 colors chosen by placing a rectangle on th
 
 This color scheme is basically the same as a double complementary color scheme. Here's an example of color chosen by rotating 90 degrees around the color wheel 3 times.
 
-{% picture color_scheme_tetrad-e987bfaeedb371cd89ea9da95b33506e.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_tetrad)
+![Color Scheme Tetradic](http://assets.runemadsen.com/scheme_tetradic-d5fbb4abb4392472c9ec8a75227d528d.svg)
+
+[See example code](../examples/color/scheme_tetradic.html)
 
 Notice the cold/warm contrast in this color scheme. 
 
-However, the rectangle does not need to be equal-sided. Here's an example of a color scheme with the same base complementary pair, but with a smaller rectangle width used to pick the other complementary pair.
+However, the rectangle does not need to be equal-sided. You could use the same base complementary pair, but with a smaller rectangle width used to pick the other complementary pair.
 
 This increases the cold/warm contrast.
 
 {% picture color_scheme_tetrad2-ffc0fffa4ed649e5c924602f6e1f5495.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/color_scheme_tetrad2)
 
 Those are the basic color scheme variations you can play with. This brings us to Itten's color contrasts.
 
@@ -371,21 +303,15 @@ The HSB color mode makes it very obvious what kind of brightness we are working 
 
 However computational light/dark scales are not linear. One might think that you can make a scale of equally contrasted rectangles by moving from brightness 10 to brightness 90 in steps of 10.
 
-{% picture contrast_lightdark_wrong-4cc40a9971add616ffe55b855e832437.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_lightdark_wrong)
-
-You might notice how there's a sharp contrast between first dark rectangles, but almost no contrast between any rectangle with 60 or more in brightness.
-
-First discovered in the so-called Weber-Fechner Law, a linear increase in brightness will distribute the contrast visually exponentially from white to black. An exponential increase in brightness will distribute the contrast linearly across all segments.
+However, as first discovered in the so-called Weber-Fechner Law, a linear increase in brightness will distribute the contrast visually exponentially from white to black. An exponential increase in brightness will distribute the contrast linearly across all segments.
 
 {% picture albers_brightness-19d82b2addbb1b8013a4af0b3545f6bc.jpg %}
 
-We can of course grow our brightness exponentially in the code instead:
+The following example shows both a linear increase and an exponential increase in contrast. Notice how the latter is much more even. Unfortunately this formula won't work in low- or high-brightness colors, but it's a good general rule.
 
-{% picture contrast_lightdark_right-5f50cf2334653914bd5af006da8fe307.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_lightdark_right)
+![Contrast light dark](http://assets.runemadsen.com/contrast_lightdark-4841cb3b8fdc5cc5dfdcaf9923564dc2.svg)
 
-Here's an example of using an exponential increment in brightness. Notice how the contrast is much more even. Unfortunately this formula won't work in low- or high-brightness colors, but it's a good general rule.
+[See example code](../examples/color/contrast_lightdark.html)
 
 {% picture dada-676926d7c279917e63b8f985417280a3.jpg %}
 
@@ -400,8 +326,9 @@ Contrast of Saturation
 
 The contrast of saturation describes the contrast that a brilliant color has towards a dull color of the same hue.
 
-{% picture contrast_saturation-77f2bcd07077e00a3f543e5692b3ffbe.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_saturation)
+![Contrast saturation](http://assets.runemadsen.com/contrast_saturation-92f50ce31c69482d6a2e817701a1e4d8.svg)
+
+[See example code](../examples/color/contrast_saturation.html)
 
 This is an example of 2 colors with contrast in saturation.
 
@@ -446,8 +373,9 @@ Cold / Warm Contrast
 
 It's important to realize the dynamic nature of the cold/warm contrast. People tend to think that "red" is warm and "blue" is cold. As proved by Albers, here's an example of how extremely fragile that balance is.
 
-{% picture albers_example-7eb5047cfa567a37e3c9271183cd2fd8.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/albers_example)
+![Contrast cold warm](http://assets.runemadsen.com/contrast_hotcold-12a3d316ab1885fce7e8ac8ccbfce0a6.svg)
+
+[See example code](../examples/color/contrast_hotcold.html)
 
 
 Contrast of Extension
@@ -458,12 +386,12 @@ Contrast of Extension
 Itten's contrast of extension relates to the fact that different colors do not have the same perceived volume. If a yellow rectangle and a purple rectangle are set side by side, the yellow rectangle appears much bigger.
 
 {% picture contrast_extension_white-1268901a682272d70804fcd71faaa176.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_extension_white)
 
 This "contrast of extension" varies depending on the background color, neighbor colors, and arrangement.
 
-{% picture contrast_extension_black-48a62741b5b70af271e7579850a8af88.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_extension_black)
+![Contrast extension](http://assets.runemadsen.com/contrast_extension-e4e05b32f24932616781c31cf31a1b03.svg)
+
+[See example code](../examples/color/contrast_extension.html)
 
 Goethe and later Itten proposed the following extension values for colors:
 
@@ -478,46 +406,25 @@ Here's those numbers visualized. Notice how balanced this color wheel is compare
 
 {% picture contrast_extension_itten-42278a09111b3845328516942c462f22.jpg %}
 
-And a simple processing sketch that calculates ratio between 2 color pairs using those extension values.
-
 {% picture contrast_extension_ratios-9e45a07d967df139181537d227c088de.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/contrast_extension_ratios)
 
 Of course this is a very basic treatment on the fact that colors have different volumes. It could be nice to have a constant to apply in code, but it varies greatly with the background and matching colors. In the end it's a test for your visual perception.
 
 
-Toxiclibs Advanced
+Generating colors
 -------------------
 
-**ColorList** is another great class. It's basically an array that can hold multiple *TColor* objects, and perform operations on them.
+Here are two examples on how to generate random colors. First, here's a sketch with a `randomColor` function that generates a random color within certain HSV values.
 
-{% picture colorlist-51dbe11a5fa320c4495221b69df1d860.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_colorlist)
+![Random color](http://assets.runemadsen.com/random_colors-c42fe6cdc6336e1ddbd784fa1d03b345.svg)
 
-**ColorRange** is a class you can use to make random colors, from a subset of the color wheel. You pick the general bounds, and whenever you call getColor() on the object, it will give you back a random color without those bounds. Here's a sketch that shows you how to use it.
+[See example code](../examples/color/random_colors.html)
 
-{% picture colorrange-6b1cda61036b4d547631415e8cd97039.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_colorrange)
+If you don't want to generate completely random colors, you can put a number of colors in a JavaScript array, and generate a random number to select one of the colors in the array.
 
-Besides those basic classes, there's a number of more advances classes you can use. **ColorTheme** is one of them. A ColorTheme is basically an array of _ColorRange_ objects, that when you run the _getColors()_ function on it, will run through all the _ColorRange_ objects, get a random color, and return an array of random TColors. It's a great way of creating a custom color theme from a bunch of color ranges.
+![Random array](http://assets.runemadsen.com/random_array-8e804c2f5493499b20038903cc357ed7.svg)
 
-{% picture colortheme-e5913a7bc09ba687ed22f27bdffe59bf.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_colortheme)
-
-Probably the most sophisticated of the color classes is the **ColorTheory** class. Remember all those different color theories we went through in the beginning of the class? The _ColorTheory_ class allows you to create them easily in code. Here's a simple example that demonstrates how to create a bunch of colors from a _ColorTheory_.
-
-{% picture colortheory_simple-d6a7682e5430f8480277d3a13da44435.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_colortheory_simple)
-
-Here's a more advanced example showing all of the color theories in action.
-
-{% picture colorthemes-0975ecaaf7db82ad764cb2ca5d484c4d.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_colortheory)
-
-Toxiclibs also has a class for generating gradients.
-
-{% picture gradient-93429ba447d0e55f2e0948870cc4e9b4.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/toxiclibs_gradient)
+[See example code](../examples/color/random_array.html)
 
 
 How to Find Opposite Brightness
@@ -525,9 +432,8 @@ How to Find Opposite Brightness
 
 For generative drawings we often want to [calculate the perceived brightness](http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx) of a color to be able to choose a font or shape color to draw on top of it. This is especially useful when working with random colors.
 
-We do this by using a weighted formula that calculates the perceived brightness of a color. We use that brightness approximation to choose the brightness of the overlay color.
+This is really easy to do in Rune.js, as you can just use the `light()` function to determine whether you should put black or white text on top of a specific color.
 
-{% picture brightness_perceived-890cd4e3657d36e0328d5cae97df81b4.jpg %}
+![Color luminosity](http://assets.runemadsen.com/color_luminosity-39e8c9cec0f2b37e8a53c0c5558f082a.svg)
 
-{% picture brightness_perceived2-4f06f1827f983f94b1af8a6050d07f78.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/color/opposite_brightness)
+[See example code](../examples/color/color_luminosity.html)

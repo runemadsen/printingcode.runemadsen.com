@@ -101,10 +101,11 @@ This week we'll look at more complex shapes, and how you can use algorithms to g
 
 * Homework presentations
 * Lecture: **[Complex shapes](/lecture-form-2)**
+* Trip to AMS
 
 ### Assignment for next week
 
-Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objeccs to draw the two shapes. Print on ITP's laser printer.
+Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objects to draw the two shapes, and please try to do a design that is better done in code than in hand. Print at AMS.
 
 
 Week 4: Color

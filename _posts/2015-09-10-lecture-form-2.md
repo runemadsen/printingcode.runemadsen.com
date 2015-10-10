@@ -10,11 +10,49 @@ Complex shapes
 
 Now that we know about basic shapes, we'll look at generating some more complex shapes in code.
 
-### Polygons
+## Polygons
 
 Polygons are shapes that consist of only straight lines. Please see the `Rune.js` Getting Started document on how to use polygons with `lineTo`. Also check out [a very simple polygon example(../examples/form/polygon_simple.html).
 
-### Paths
+### Sin and Cos
+
+The easiest way to do a generative shape with repetition is to loop many times and randomly place vector points in a polygon. This will look something like this:
+
+{% picture beginshape_loop-04f7d1e7ac7c2caa8924605c7a0118df.jpg %}
+
+[See example code](../examples/form/polygon_random.html)
+
+However, that's not super useful. Instead, we can use the `Math.sin()` and `Math.cos()` functions to create basic and more sophisticated shapes around a center point. They can also help us solve a simple question like this:
+
+<blockquote >
+How do I find the x and y of a point that is 300 pixels and 33 degrees away from this point?
+</blockquote>
+
+The same question is illustrated here.
+
+{% picture sincos-002cd808f42d8a677e1bac0d8b8687b4.jpg %}
+
+To do this we use the `Math.sin()` and `Math.cos()` functions. If you pass in a rotation and multiply it with your radius, they will return the x (cos) and y (sin) for the point we're trying to find.
+
+{% picture sincos_example-3bd403077a69dd18fab7ff8ef93aafb7.jpg %}
+
+[See example code](../examples/form/sincos.html)
+
+It's interesting how all the basic shapes (triangle, rectangle, hexagon, circle) can be created with `cos()` and `sin()`, just by changing the number of times the for loop runs.
+
+{% picture sincos_allshapes-1f06ca963b569ed464d2ad0a2ca35ad6.png %}
+
+[See example code](../examples/form/polygon_sincos.html)
+
+This can be used to put something on the perimeter of a circle. Now we can go back and try to do that in our placement example:
+
+Here's another sketch that rotates boxes around our center, all oriented towards the center.
+
+{% picture sincos_text-26dd2f1bb8d222aca36ea963ec1bf99e.jpg %}
+
+[See example code](../examples/form/sincos_rotation.html)
+
+## Paths
 
 Paths are shapes that consist of both straight and curved lines. Please see the `Rune.js` Getting Started document on how to use paths. Also check these simple examples of using [quad bezier curves](../examples/form/path_curve_quad.html) and [cubic bezier curves](../examples/form/path_curve_cubic.html)
 
@@ -27,7 +65,6 @@ A cubic bezier curve is a formula that describes how to draw a line from one poi
 It can be hard to understand how these two control points tell the line to curve like that. This animation shows how the curve of the line is calculated by doing simple vector math on the anchor points and control points.
 
 <img src="http://assets.runemadsen.com/bezier_movement.gif"  />
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/bezier_vertex_movement)
 
 Here are some examples with use of more complex forms.
 
@@ -44,44 +81,7 @@ Another movie poster by Saul Bass, using the same simple formula.
 The red shape is a very simple collection of polygon, but it still holds tremendous value in its meaning. 
 
 
-Sin and Cos
------------
-
-The easiest way to do a generative shape with repetition is to loop many times and randomly place vector points in a polygon. This will look something like this:
-
-{% picture beginshape_loop-04f7d1e7ac7c2caa8924605c7a0118df.jpg %}
-[See example code](../examples/form/polygon_random.html)
-
-However, that's not super useful. Instead, we can use the `Math.sin()` and `Math.cos()` functions to create basic and more sophisticated shapes around a center point. They can also help us solve a simple question like this:
-
-<blockquote >
-How do I find the x and y of a point that is 300 pixels and 33 degrees away from this point?
-</blockquote>
-
-The same question is illustrated here.
-
-{% picture sincos-002cd808f42d8a677e1bac0d8b8687b4.jpg %}
-
-To do this we use the `Math.sin()` and `Math.cos()` functions. If you pass in a rotation and multiply it with your radius, they will return the x (cos) and y (sin) for the point we're trying to find.
-
-{% picture sincos_example-3bd403077a69dd18fab7ff8ef93aafb7.jpg %}
-[See example code](../examples/form/sincos.html)
-
-It's interesting how all the basic shapes (triangle, rectangle, hexagon, circle) can be created with `cos()` and `sin()`, just by changing the number of times the for loop runs.
-
-{% picture sincos_allshapes-1f06ca963b569ed464d2ad0a2ca35ad6.png %}
-[See example code](../examples/form/polygon_sincos.html)
-
-This can be used to put something on the perimeter of a circle. Now we can go back and try to do that in our placement example:
-
-Here's another sketch that rotates boxes around our center, all oriented towards the center.
-
-{% picture sincos_text-26dd2f1bb8d222aca36ea963ec1bf99e.jpg %}
-[See example code](../examples/form/sincos_rotation.html)
-
-
-Computational vs. Organic Form
-------------------------------
+## Computational vs. Organic Form
 
 When you start to look at these different shapes, you realize that some of them have inherent algorithmic characteristics. Even Michelangelo will be loose if competing with a computer in drawing a perfect circle. Changing the size of a circle in code is many times faster than doing it by hand. 
 
@@ -93,9 +93,7 @@ Other shapes have inherent organic qualities, and are harder to replicate on a c
 
 This poses a series of questions: When working with computational form, should we prefer some shapes to other? How far should we go to simulate organic, human techniques in the digital world? Is this an argument for a new aesthetic?
 
-
-Project Examples and Code
--------------------------
+## Project Examples and Code
 
 Using these newly learned techniques we can look at a few advanced projects and try to re-create them in Processing.
 
@@ -104,7 +102,6 @@ Using these newly learned techniques we can look at a few advanced projects and 
 Eno Henze is a programming artist from Germany. Here he uses random radius and stroke alpha to create a series of graphic prints.
 
 {% picture eno_sonnen_example-7b2593051cf4959f5e2bdd11c298610e.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/henze_sonnen_example)
 
 The same visual can be created with Processing using the simple drawing functions, randomization and for loops.
     
@@ -113,6 +110,7 @@ The same visual can be created with Processing using the simple drawing function
 Another piece by Eno Henze where he uses simple repetition and random form. This is a great example of the power of using random positioning with vertex points within beginShape().
 
 {% picture henze_ambushes_example-ea4c945dc51a54991442dc5e109a37ac.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/form/henze_ambushes_example)
+
+[See example code](../examples/form/polygon_vectors.html)
 
 The same visual can be created with Processing and beginShape().
