@@ -119,7 +119,11 @@ In this class we'll dive into color theory and look at color handling in Process
 
 ### Assignment for next week
 
-* TODO
+This week you'll make a design for the word **tense**. Building on the form classes, you can use both basic and complex shapes to illustrate the concept, but this week we'll focus on color. Come to class with two identical prints, with the only difference being the color choices. First choose a color scheme that you think is bad for your specific design. Based on those findings, choose another color scheme that you think is a good fit. Print both designs and come to class prepared to explain your decisions.
+
+Bonus info: you are not allowed to hardcode the color values. The two sketches have to look different every time they run. This will hopefully teach you to think in systems of color instead of just color.
+
+If you're stuck, [here](https://c4.staticflickr.com/4/3232/2818300933_f549dbcb92_z.jpg) [are](http://books.bibliopolis.com/books/images/clients/walkaboutbooks/13374.jpg) [some](http://i.ebayimg.com/images/i/311087838188-0-1/s-l1000.jpg) [random](http://40.media.tumblr.com/tumblr_lry3pv7uX41qagc5do1_1280.jpg) [designs](https://peeped.files.wordpress.com/2011/05/ucla75.jpg) [for](http://i.stack.imgur.com/FABzK.jpg) [inspiration](http://payload.cargocollective.com/1/4/145416/1990407/randideas.gif).
 
 
 Week 5: Typography
