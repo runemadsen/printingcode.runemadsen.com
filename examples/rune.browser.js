@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Rune = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
   A javascript Bezier curve library by Pomax.
 
@@ -7388,7 +7388,6 @@ exports['default'] = Render;
 module.exports = exports['default'];
 
 },{"./shapes/circle":53,"./shapes/line":55,"./shapes/rectangle":58,"underscore":8,"virtual-dom/create-element":9,"virtual-dom/diff":10,"virtual-dom/h":11,"virtual-dom/patch":19,"virtual-dom/virtual-hyperscript/svg":32}],52:[function(require,module,exports){
-(function (global){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7676,13 +7675,8 @@ Rune.Styleable = _mixins.Styleable;
 Rune.Sizeable = _mixins.Sizeable;
 Rune.Groupable = _mixins.Groupable;
 
-// define window.Rune for browserify
-global.Rune = Rune;
-
 exports["default"] = Rune;
 module.exports = exports["default"];
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
 },{"./anchor":45,"./color":46,"./events":47,"./grid":48,"./group":49,"./mixins":50,"./render":51,"./shapes/circle":53,"./shapes/ellipse":54,"./shapes/line":55,"./shapes/path":56,"./shapes/polygon":57,"./shapes/rectangle":58,"./shapes/text":59,"./shapes/triangle":60,"./utils":61,"./vector":62,"underscore":8}],53:[function(require,module,exports){
 "use strict";
@@ -8704,7 +8698,8 @@ var Vector = (function () {
 exports["default"] = Vector;
 module.exports = exports["default"];
 
-},{"./utils":61,"underscore":8}]},{},[52])
+},{"./utils":61,"underscore":8}]},{},[52])(52)
+});
 
 
 //# sourceMappingURL=rune.browser.js.map
