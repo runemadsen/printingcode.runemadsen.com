@@ -6085,7 +6085,7 @@ var Anchor = (function () {
 exports["default"] = Anchor;
 module.exports = exports["default"];
 
-},{"./vector":61,"bezier-js":2,"underscore":8}],46:[function(require,module,exports){
+},{"./vector":62,"bezier-js":2,"underscore":8}],46:[function(require,module,exports){
 // This code was adapted from the brillinat color-js by harthur
 // See more here: https://github.com/harthur/color
 'use strict';
@@ -6155,6 +6155,8 @@ var Color = (function () {
               if (d) this.setValues('alpha', d);
             }
   }
+
+  // Modules should be accessible through Color
 
   _createClass(Color, [{
     key: 'rgb',
@@ -6611,6 +6613,8 @@ var Color = (function () {
   return Color;
 })();
 
+Color.Convert = _colorConvert2['default'];
+
 exports['default'] = Color;
 module.exports = exports['default'];
 
@@ -6836,7 +6840,7 @@ _underscore2["default"].extend(Group.prototype, _mixins.Moveable, _mixins.Groupa
 exports["default"] = Group;
 module.exports = exports["default"];
 
-},{"./mixins":50,"./utils":60,"underscore":8}],50:[function(require,module,exports){
+},{"./mixins":50,"./utils":61,"underscore":8}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -6961,7 +6965,7 @@ exports.Sizeable = Sizeable;
 exports.Styleable = Styleable;
 exports.Groupable = Groupable;
 
-},{"./color":46,"./utils":60}],51:[function(require,module,exports){
+},{"./color":46,"./utils":61}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -7016,8 +7020,8 @@ var Render = (function () {
 
     this.params = params;
     this.tree = (0, _virtualDomVirtualHyperscriptSvg2['default'])('svg', {
-      width: params.width,
-      height: params.height
+      width: this.s(params.width),
+      height: this.s(params.height)
     });
     this.el = (0, _virtualDomCreateElement2['default'])(this.tree);
   }
@@ -7027,8 +7031,8 @@ var Render = (function () {
     value: function render(stage, opts) {
 
       var newTree = (0, _virtualDomVirtualHyperscriptSvg2['default'])('svg', {
-        width: this.params.width,
-        height: this.params.height
+        width: this.s(this.params.width),
+        height: this.s(this.params.height)
       }, [this.objectsToSVG(stage.children, opts)]);
 
       var diffTree = (0, _virtualDomDiff2['default'])(this.tree, newTree);
@@ -7056,10 +7060,10 @@ var Render = (function () {
     key: 'rectangleToSVG',
     value: function rectangleToSVG(rect) {
       var attr = {
-        x: rect.vars.x,
-        y: rect.vars.y,
-        width: rect.vars.width,
-        height: rect.vars.height
+        x: this.s(rect.vars.x),
+        y: this.s(rect.vars.y),
+        width: this.s(rect.vars.width),
+        height: this.s(rect.vars.height)
       };
       this.transformAttribute(attr, rect);
       this.styleableAttributes(rect, attr);
@@ -7069,10 +7073,10 @@ var Render = (function () {
     key: 'ellipseToSVG',
     value: function ellipseToSVG(ellipse) {
       var attr = {
-        cx: ellipse.vars.x,
-        cy: ellipse.vars.y,
-        rx: ellipse.vars.width / 2,
-        ry: ellipse.vars.height / 2
+        cx: this.s(ellipse.vars.x),
+        cy: this.s(ellipse.vars.y),
+        rx: this.s(ellipse.vars.width / 2),
+        ry: this.s(ellipse.vars.height / 2)
       };
       this.transformAttribute(attr, ellipse);
       this.styleableAttributes(ellipse, attr);
@@ -7082,9 +7086,9 @@ var Render = (function () {
     key: 'circleToSVG',
     value: function circleToSVG(circle) {
       var attr = {
-        cx: circle.vars.x,
-        cy: circle.vars.y,
-        r: circle.vars.radius
+        cx: this.s(circle.vars.x),
+        cy: this.s(circle.vars.y),
+        r: this.s(circle.vars.radius)
       };
       this.transformAttribute(attr, circle);
       this.styleableAttributes(circle, attr);
@@ -7094,14 +7098,24 @@ var Render = (function () {
     key: 'lineToSVG',
     value: function lineToSVG(line) {
       var attr = {
-        x1: line.vars.x,
-        y1: line.vars.y,
-        x2: line.vars.x2,
-        y2: line.vars.y2
+        x1: this.s(line.vars.x),
+        y1: this.s(line.vars.y),
+        x2: this.s(line.vars.x2),
+        y2: this.s(line.vars.y2)
       };
       this.transformAttribute(attr, line);
       this.styleableAttributes(line, attr);
       return (0, _virtualDomVirtualHyperscriptSvg2['default'])('line', attr);
+    }
+  }, {
+    key: 'triangleToSVG',
+    value: function triangleToSVG(tri) {
+      var attr = {
+        points: tri.vars.x + ' ' + tri.vars.y + ' ' + tri.vars.x2 + ' ' + tri.vars.y2 + ' ' + tri.vars.x3 + ' ' + tri.vars.y3
+      };
+      this.transformAttribute(attr, tri);
+      this.styleableAttributes(tri, attr);
+      return (0, _virtualDomVirtualHyperscriptSvg2['default'])('polygon', attr);
     }
   }, {
     key: 'polygonToSVG',
@@ -7135,8 +7149,8 @@ var Render = (function () {
     key: 'textToSVG',
     value: function textToSVG(text, opts) {
       var attr = {
-        x: text.vars.x,
-        y: text.vars.y
+        x: this.s(text.vars.x),
+        y: this.s(text.vars.y)
       };
       this.transformAttribute(attr, text);
       this.styleableAttributes(text, attr);
@@ -7272,31 +7286,43 @@ var Render = (function () {
     value: function optionalAttributes(object, attr, keys) {
       _underscore2['default'].each(keys, function (attribute, variable) {
         if (object.vars[variable]) {
-          attr[attribute] = object.vars[variable];
+          attr[attribute] = this.s(object.vars[variable]);
         }
       }, this);
     }
   }, {
     key: 'sizeableAttributes',
     value: function sizeableAttributes(object, attr) {
-      attr.width = object.vars.width;
-      attr.height = object.vars.height;
+      attr.width = this.s(object.vars.width);
+      attr.height = this.s(object.vars.height);
     }
   }, {
     key: 'styleableAttributes',
     value: function styleableAttributes(object, attr) {
 
-      if (object.vars.fill === false) attr.fill = "none";else if (object.vars.fill) attr.fill = object.vars.fill.rgbString();
+      function rgbString(col) {
+        var obj = col.rgb();
+        return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")";
+      }
 
-      if (object.vars.stroke === false) attr.stroke = "none";else if (object.vars.stroke) attr.stroke = object.vars.stroke.rgbString();
+      if (object.vars.fill === false) attr.fill = "none";else if (object.vars.fill) {
+        attr.fill = rgbString(object.vars.fill);
+        var alpha = object.vars.fill.alpha();
+        if (alpha < 1) attr["fill-opacity"] = this.s(alpha);
+      }
 
-      if (object.vars.fill) attr.fill = object.vars.fill.rgbString();
-      if (object.vars.strokeWidth) attr["stroke-width"] = object.vars.strokeWidth;
+      if (object.vars.stroke === false) attr.stroke = "none";else if (object.vars.stroke) {
+        attr.stroke = rgbString(object.vars.stroke);
+        var alpha = object.vars.stroke.alpha();
+        if (alpha < 1) attr["stroke-opacity"] = this.s(alpha);
+      }
+
+      if (object.vars.strokeWidth) attr["stroke-width"] = this.s(object.vars.strokeWidth);
       if (object.vars.strokeCap) attr["stroke-linecap"] = object.vars.strokeCap;
       if (object.vars.strokeJoin) attr["stroke-linejoin"] = object.vars.strokeJoin;
-      if (object.vars.strokeMiterlimit) attr["stroke-miterlimit"] = object.vars.strokeMiterlimit;
+      if (object.vars.strokeMiterlimit) attr["stroke-miterlimit"] = this.s(object.vars.strokeMiterlimit);
       if (object.vars.strokeDash) attr["stroke-dasharray"] = object.vars.strokeDash;
-      if (object.vars.strokeDashOffset) attr["stroke-dashoffset"] = object.vars.strokeDashOffset;
+      if (object.vars.strokeDashOffset) attr["stroke-dashoffset"] = this.s(object.vars.strokeDashOffset);
     }
 
     // Single attributes
@@ -7340,6 +7366,18 @@ var Render = (function () {
           return "Z";
         }
       }).join(" ").trim();
+    }
+
+    // Helpers
+    // --------------------------------------------------
+
+    // function to turn any non-string into a string. We need
+    // this when running server-side node.
+  }, {
+    key: 's',
+    value: function s(val) {
+      if (!_underscore2['default'].isString(val) && !_underscore2['default'].isUndefined(val.toString)) return val.toString();
+      return val;
     }
   }]);
 
@@ -7411,6 +7449,10 @@ var _shapesLine = require("./shapes/line");
 
 var _shapesLine2 = _interopRequireDefault(_shapesLine);
 
+var _shapesTriangle = require("./shapes/triangle");
+
+var _shapesTriangle2 = _interopRequireDefault(_shapesTriangle);
+
 var _shapesPath = require("./shapes/path");
 
 var _shapesPath2 = _interopRequireDefault(_shapesPath);
@@ -7428,10 +7470,6 @@ var _shapesText = require("./shapes/text");
 var _shapesText2 = _interopRequireDefault(_shapesText);
 
 var _mixins = require("./mixins");
-
-// Exports modules for easy access when using module?
-//export { default as anchor } from "./anchor";
-// ... for all of them
 
 var Rune = (function () {
   function Rune(options) {
@@ -7452,7 +7490,7 @@ var Rune = (function () {
     this.frameCount = 1;
     this.frameRate = params.frameRate;
 
-    if (params.container) {
+    if (params.container && !_underscore2["default"].isUndefined(window)) {
 
       if (_underscore2["default"].isString(params.container)) {
         params.container = document.querySelector(params.container);
@@ -7468,16 +7506,17 @@ var Rune = (function () {
     this.initEvents();
   }
 
-  // Utility functions exist on both the class and
-  // the instance just to give users a shortcut.
-
   // Events
   // --------------------------------------------------
 
   _createClass(Rune, [{
     key: "initEvents",
     value: function initEvents() {
-      this.initMouseMove();
+
+      // Specific browser events
+      if (typeof window !== 'undefined') {
+        this.initMouseMove();
+      }
     }
   }, {
     key: "initMouseMove",
@@ -7501,6 +7540,13 @@ var Rune = (function () {
       var group = new _group2["default"](x, y);
       _utils2["default"].groupLogic(group, this.stage, parent);
       return group;
+    }
+  }, {
+    key: "triangle",
+    value: function triangle(x, y, x2, y2, x3, y3, parent) {
+      var tri = new _shapesTriangle2["default"](x, y, x2, y2, x3, y3);
+      _utils2["default"].groupLogic(tri, this.stage, parent);
+      return tri;
     }
   }, {
     key: "rect",
@@ -7606,7 +7652,6 @@ var Rune = (function () {
 })();
 
 _underscore2["default"].extend(Rune, _utils2["default"]);
-_underscore2["default"].extend(Rune.prototype, _utils2["default"]);
 _underscore2["default"].extend(Rune.prototype, _events2["default"]);
 
 // Modules should be accessible through Rune
@@ -7618,6 +7663,7 @@ Rune.Grid = _grid2["default"];
 Rune.Circle = _shapesCircle2["default"];
 Rune.Ellipse = _shapesEllipse2["default"];
 Rune.Line = _shapesLine2["default"];
+Rune.Triangle = _shapesTriangle2["default"];
 Rune.Path = _shapesPath2["default"];
 Rune.Polygon = _shapesPolygon2["default"];
 Rune.Rectangle = _shapesRectangle2["default"];
@@ -7638,7 +7684,7 @@ module.exports = exports["default"];
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./anchor":45,"./color":46,"./events":47,"./grid":48,"./group":49,"./mixins":50,"./render":51,"./shapes/circle":53,"./shapes/ellipse":54,"./shapes/line":55,"./shapes/path":56,"./shapes/polygon":57,"./shapes/rectangle":58,"./shapes/text":59,"./utils":60,"./vector":61,"underscore":8}],53:[function(require,module,exports){
+},{"./anchor":45,"./color":46,"./events":47,"./grid":48,"./group":49,"./mixins":50,"./render":51,"./shapes/circle":53,"./shapes/ellipse":54,"./shapes/line":55,"./shapes/path":56,"./shapes/polygon":57,"./shapes/rectangle":58,"./shapes/text":59,"./shapes/triangle":60,"./utils":61,"./vector":62,"underscore":8}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7707,7 +7753,7 @@ _underscore2["default"].extend(Circle.prototype, _mixins.Moveable, _mixins.Style
 exports["default"] = Circle;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"./ellipse":54,"underscore":8}],54:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./ellipse":54,"underscore":8}],54:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7794,7 +7840,7 @@ _underscore2["default"].extend(Ellipse.prototype, _mixins.Moveable, _mixins.Size
 exports["default"] = Ellipse;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"./polygon":57,"underscore":8}],55:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],55:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7849,7 +7895,7 @@ _underscore2["default"].extend(Line.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Line;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"underscore":8}],56:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"underscore":8}],56:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7897,22 +7943,22 @@ var Path = (function () {
 
   _createClass(Path, [{
     key: "moveTo",
-    value: function moveTo(x, y, relative) {
-      this.vars.anchors.push(new _anchor2["default"]().setMove(x, y, relative));
+    value: function moveTo(x, y) {
+      this.vars.anchors.push(new _anchor2["default"]().setMove(x, y));
       return this;
     }
   }, {
     key: "lineTo",
-    value: function lineTo(x, y, relative) {
+    value: function lineTo(x, y) {
       this.checkStartMove();
-      this.vars.anchors.push(new _anchor2["default"]().setLine(x, y, relative));
+      this.vars.anchors.push(new _anchor2["default"]().setLine(x, y));
       return this;
     }
   }, {
     key: "curveTo",
-    value: function curveTo(a, b, c, d, e, f, g) {
+    value: function curveTo(a, b, c, d, e, f) {
       this.checkStartMove();
-      this.vars.anchors.push(new _anchor2["default"]().setCurve(a, b, c, d, e, f, g));
+      this.vars.anchors.push(new _anchor2["default"]().setCurve(a, b, c, d, e, f));
       return this;
     }
   }, {
@@ -8087,7 +8133,7 @@ _underscore2["default"].extend(Path.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Path;
 module.exports = exports["default"];
 
-},{"../anchor":45,"../mixins":50,"../utils":60,"../vector":61,"./polygon":57,"underscore":8}],57:[function(require,module,exports){
+},{"../anchor":45,"../mixins":50,"../utils":61,"../vector":62,"./polygon":57,"underscore":8}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8132,15 +8178,6 @@ var Polygon = (function () {
       return this;
     }
   }, {
-    key: "loopVectors",
-    value: function loopVectors(iterator) {
-      for (var i = 0; i < this.vars.vectors.length; i++) {
-        var start = this.vars.vectors[i];
-        var stop = this.vars.vectors[(i + 1) % this.vars.vectors.length];
-        iterator(start, stop);
-      }
-    }
-  }, {
     key: "length",
     value: function length() {
       var len = 0;
@@ -8181,21 +8218,21 @@ var Polygon = (function () {
   }, {
     key: "bounds",
     value: function bounds() {
-      var xmax = 0;
-      var ymax = 0;
-      var xmin = 0;
-      var ymin = 0;
+      var xmax = undefined;
+      var ymax = undefined;
+      var xmin = undefined;
+      var ymin = undefined;
 
       _underscore2["default"].each(this.vars.vectors, function (vec) {
-        if (vec.x < xmin) xmin = vec.x;
-        if (vec.x > xmax) xmax = vec.x;
-        if (vec.y < ymin) ymin = vec.y;
-        if (vec.y > ymax) ymax = vec.y;
+        if (_underscore2["default"].isUndefined(xmin) || vec.x < xmin) xmin = vec.x;
+        if (_underscore2["default"].isUndefined(xmax) || vec.x > xmax) xmax = vec.x;
+        if (_underscore2["default"].isUndefined(ymin) || vec.y < ymin) ymin = vec.y;
+        if (_underscore2["default"].isUndefined(ymax) || vec.y > ymax) ymax = vec.y;
       });
 
       return {
-        x: this.vars.x + xmin,
-        y: this.vars.y + ymin,
+        x: xmin,
+        y: ymin,
         width: xmax - xmin,
         height: ymax - ymin
       };
@@ -8215,8 +8252,8 @@ var Polygon = (function () {
       }
 
       areaAcc /= 2.0;
-      var x = this.vars.x + xAcc / (6.0 * areaAcc);
-      var y = this.vars.y + yAcc / (6.0 * areaAcc);
+      var x = xAcc / (6.0 * areaAcc);
+      var y = yAcc / (6.0 * areaAcc);
 
       return new _vector2["default"](x, y);
     }
@@ -8263,7 +8300,7 @@ _underscore2["default"].extend(Polygon.prototype, _mixins.Moveable, _mixins.Styl
 exports["default"] = Polygon;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"../vector":61,"underscore":8}],58:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"../vector":62,"underscore":8}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8333,7 +8370,7 @@ _underscore2["default"].extend(Rectangle.prototype, _mixins.Moveable, _mixins.Si
 exports["default"] = Rectangle;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"./polygon":57,"underscore":8}],59:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],59:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8426,7 +8463,66 @@ _underscore2["default"].extend(Text.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Text;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":60,"underscore":8}],60:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"underscore":8}],60:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _underscore = require("underscore");
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+var _mixins = require("../mixins");
+
+var _utils = require('../utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
+var Triangle = (function () {
+  function Triangle(x, y, x2, y2, x3, y3) {
+    _classCallCheck(this, Triangle);
+
+    this.moveable();
+    this.styleable();
+    this.vars.x = x;
+    this.vars.y = y;
+    this.vars.x2 = x2;
+    this.vars.y2 = y2;
+    this.vars.x3 = x3;
+    this.vars.y3 = y3;
+  }
+
+  _createClass(Triangle, [{
+    key: "copy",
+    value: function copy(parent) {
+      var copy = new Triangle();
+      copy.vars.x2 = this.vars.x2;
+      copy.vars.y2 = this.vars.y2;
+      copy.vars.x3 = this.vars.x3;
+      copy.vars.y3 = this.vars.y3;
+      _utils2["default"].copyMixinVars(this, copy);
+      _utils2["default"].groupLogic(copy, this.parent, parent);
+      return copy;
+    }
+  }]);
+
+  return Triangle;
+})();
+
+_underscore2["default"].extend(Triangle.prototype, _mixins.Moveable, _mixins.Styleable, _mixins.Groupable, { type: "triangle" });
+
+exports["default"] = Triangle;
+module.exports = exports["default"];
+
+},{"../mixins":50,"../utils":61,"underscore":8}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8477,7 +8573,7 @@ var Utils = {
 exports["default"] = Utils;
 module.exports = exports["default"];
 
-},{"underscore":8}],61:[function(require,module,exports){
+},{"underscore":8}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8608,7 +8704,7 @@ var Vector = (function () {
 exports["default"] = Vector;
 module.exports = exports["default"];
 
-},{"./utils":60,"underscore":8}]},{},[52])
+},{"./utils":61,"underscore":8}]},{},[52])
 
 
 //# sourceMappingURL=rune.browser.js.map
