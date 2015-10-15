@@ -7489,7 +7489,7 @@ var Rune = (function () {
     this.frameCount = 1;
     this.frameRate = params.frameRate;
 
-    if (params.container && !_underscore2["default"].isUndefined(window)) {
+    if (params.container && typeof window !== 'undefined') {
 
       if (_underscore2["default"].isString(params.container)) {
         params.container = document.querySelector(params.container);
