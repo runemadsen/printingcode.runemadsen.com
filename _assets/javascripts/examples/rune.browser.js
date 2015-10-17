@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Rune = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Rune = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 /**
   A javascript Bezier curve library by Pomax.
 
@@ -1155,11 +1155,11 @@
 
 }());
 
-},{}],2:[function(require,module,exports){
-module.exports = require("./bezier");
-},{"./bezier":1}],3:[function(require,module,exports){
+},{}],2:[function(_dereq_,module,exports){
+module.exports = _dereq_("./bezier");
+},{"./bezier":1}],3:[function(_dereq_,module,exports){
 
-},{}],4:[function(require,module,exports){
+},{}],4:[function(_dereq_,module,exports){
 /* MIT license */
 
 module.exports = {
@@ -1859,8 +1859,8 @@ for (var key in cssKeywords) {
   reverseKeywords[JSON.stringify(cssKeywords[key])] = key;
 }
 
-},{}],5:[function(require,module,exports){
-var conversions = require("./conversions");
+},{}],5:[function(_dereq_,module,exports){
+var conversions = _dereq_("./conversions");
 
 var convert = function() {
    return new Converter();
@@ -1952,9 +1952,9 @@ Converter.prototype.getValues = function(space) {
 });
 
 module.exports = convert;
-},{"./conversions":4}],6:[function(require,module,exports){
+},{"./conversions":4}],6:[function(_dereq_,module,exports){
 /* MIT license */
-var colorNames = require('color-name');
+var colorNames = _dereq_('color-name');
 
 module.exports = {
    getRgba: getRgba,
@@ -2175,7 +2175,7 @@ for (var name in colorNames) {
    reverseNames[colorNames[name]] = name;
 }
 
-},{"color-name":7}],7:[function(require,module,exports){
+},{"color-name":7}],7:[function(_dereq_,module,exports){
 module.exports={
 	"aliceblue": [240, 248, 255],
 	"antiquewhite": [250, 235, 215],
@@ -2326,7 +2326,7 @@ module.exports={
 	"yellow": [255, 255, 0],
 	"yellowgreen": [154, 205, 50]
 }
-},{}],8:[function(require,module,exports){
+},{}],8:[function(_dereq_,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3876,22 +3876,22 @@ module.exports={
   }
 }.call(this));
 
-},{}],9:[function(require,module,exports){
-var createElement = require("./vdom/create-element.js")
+},{}],9:[function(_dereq_,module,exports){
+var createElement = _dereq_("./vdom/create-element.js")
 
 module.exports = createElement
 
-},{"./vdom/create-element.js":21}],10:[function(require,module,exports){
-var diff = require("./vtree/diff.js")
+},{"./vdom/create-element.js":21}],10:[function(_dereq_,module,exports){
+var diff = _dereq_("./vtree/diff.js")
 
 module.exports = diff
 
-},{"./vtree/diff.js":44}],11:[function(require,module,exports){
-var h = require("./virtual-hyperscript/index.js")
+},{"./vtree/diff.js":44}],11:[function(_dereq_,module,exports){
+var h = _dereq_("./virtual-hyperscript/index.js")
 
 module.exports = h
 
-},{"./virtual-hyperscript/index.js":29}],12:[function(require,module,exports){
+},{"./virtual-hyperscript/index.js":29}],12:[function(_dereq_,module,exports){
 /*!
  * Cross-Browser Split 1.1.1
  * Copyright 2007-2012 Steven Levithan <stevenlevithan.com>
@@ -3999,10 +3999,10 @@ module.exports = (function split(undef) {
   return self;
 })();
 
-},{}],13:[function(require,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 'use strict';
 
-var OneVersionConstraint = require('individual/one-version');
+var OneVersionConstraint = _dereq_('individual/one-version');
 
 var MY_VERSION = '7';
 OneVersionConstraint('ev-store', MY_VERSION);
@@ -4021,7 +4021,7 @@ function EvStore(elem) {
     return hash;
 }
 
-},{"individual/one-version":15}],14:[function(require,module,exports){
+},{"individual/one-version":15}],14:[function(_dereq_,module,exports){
 (function (global){
 'use strict';
 
@@ -4045,10 +4045,10 @@ function Individual(key, value) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],15:[function(require,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 'use strict';
 
-var Individual = require('./index.js');
+var Individual = _dereq_('./index.js');
 
 module.exports = OneVersion;
 
@@ -4069,11 +4069,11 @@ function OneVersion(moduleName, version, defaultValue) {
     return Individual(key, defaultValue);
 }
 
-},{"./index.js":14}],16:[function(require,module,exports){
+},{"./index.js":14}],16:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
-var minDoc = require('min-document');
+var minDoc = _dereq_('min-document');
 
 if (typeof document !== 'undefined') {
     module.exports = document;
@@ -4089,14 +4089,14 @@ if (typeof document !== 'undefined') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"min-document":3}],17:[function(require,module,exports){
+},{"min-document":3}],17:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = function isObject(x) {
 	return typeof x === "object" && x !== null;
 };
 
-},{}],18:[function(require,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 var nativeIsArray = Array.isArray
 var toString = Object.prototype.toString
 
@@ -4106,14 +4106,14 @@ function isArray(obj) {
     return toString.call(obj) === "[object Array]"
 }
 
-},{}],19:[function(require,module,exports){
-var patch = require("./vdom/patch.js")
+},{}],19:[function(_dereq_,module,exports){
+var patch = _dereq_("./vdom/patch.js")
 
 module.exports = patch
 
-},{"./vdom/patch.js":24}],20:[function(require,module,exports){
-var isObject = require("is-object")
-var isHook = require("../vnode/is-vhook.js")
+},{"./vdom/patch.js":24}],20:[function(_dereq_,module,exports){
+var isObject = _dereq_("is-object")
+var isHook = _dereq_("../vnode/is-vhook.js")
 
 module.exports = applyProperties
 
@@ -4210,15 +4210,15 @@ function getPrototype(value) {
     }
 }
 
-},{"../vnode/is-vhook.js":35,"is-object":17}],21:[function(require,module,exports){
-var document = require("global/document")
+},{"../vnode/is-vhook.js":35,"is-object":17}],21:[function(_dereq_,module,exports){
+var document = _dereq_("global/document")
 
-var applyProperties = require("./apply-properties")
+var applyProperties = _dereq_("./apply-properties")
 
-var isVNode = require("../vnode/is-vnode.js")
-var isVText = require("../vnode/is-vtext.js")
-var isWidget = require("../vnode/is-widget.js")
-var handleThunk = require("../vnode/handle-thunk.js")
+var isVNode = _dereq_("../vnode/is-vnode.js")
+var isVText = _dereq_("../vnode/is-vtext.js")
+var isWidget = _dereq_("../vnode/is-widget.js")
+var handleThunk = _dereq_("../vnode/handle-thunk.js")
 
 module.exports = createElement
 
@@ -4258,7 +4258,7 @@ function createElement(vnode, opts) {
     return node
 }
 
-},{"../vnode/handle-thunk.js":33,"../vnode/is-vnode.js":36,"../vnode/is-vtext.js":37,"../vnode/is-widget.js":38,"./apply-properties":20,"global/document":16}],22:[function(require,module,exports){
+},{"../vnode/handle-thunk.js":33,"../vnode/is-vnode.js":36,"../vnode/is-vtext.js":37,"../vnode/is-widget.js":38,"./apply-properties":20,"global/document":16}],22:[function(_dereq_,module,exports){
 // Maps a virtual DOM tree onto a real DOM tree in an efficient manner.
 // We don't want to read all of the DOM nodes in the tree so we use
 // the in-order tree indexing to eliminate recursion down certain branches.
@@ -4345,13 +4345,13 @@ function ascending(a, b) {
     return a > b ? 1 : -1
 }
 
-},{}],23:[function(require,module,exports){
-var applyProperties = require("./apply-properties")
+},{}],23:[function(_dereq_,module,exports){
+var applyProperties = _dereq_("./apply-properties")
 
-var isWidget = require("../vnode/is-widget.js")
-var VPatch = require("../vnode/vpatch.js")
+var isWidget = _dereq_("../vnode/is-widget.js")
+var VPatch = _dereq_("../vnode/vpatch.js")
 
-var updateWidget = require("./update-widget")
+var updateWidget = _dereq_("./update-widget")
 
 module.exports = applyPatch
 
@@ -4498,13 +4498,13 @@ function replaceRoot(oldRoot, newRoot) {
     return newRoot;
 }
 
-},{"../vnode/is-widget.js":38,"../vnode/vpatch.js":41,"./apply-properties":20,"./update-widget":25}],24:[function(require,module,exports){
-var document = require("global/document")
-var isArray = require("x-is-array")
+},{"../vnode/is-widget.js":38,"../vnode/vpatch.js":41,"./apply-properties":20,"./update-widget":25}],24:[function(_dereq_,module,exports){
+var document = _dereq_("global/document")
+var isArray = _dereq_("x-is-array")
 
-var render = require("./create-element")
-var domIndex = require("./dom-index")
-var patchOp = require("./patch-op")
+var render = _dereq_("./create-element")
+var domIndex = _dereq_("./dom-index")
+var patchOp = _dereq_("./patch-op")
 module.exports = patch
 
 function patch(rootNode, patches, renderOptions) {
@@ -4580,8 +4580,8 @@ function patchIndices(patches) {
     return indices
 }
 
-},{"./create-element":21,"./dom-index":22,"./patch-op":23,"global/document":16,"x-is-array":18}],25:[function(require,module,exports){
-var isWidget = require("../vnode/is-widget.js")
+},{"./create-element":21,"./dom-index":22,"./patch-op":23,"global/document":16,"x-is-array":18}],25:[function(_dereq_,module,exports){
+var isWidget = _dereq_("../vnode/is-widget.js")
 
 module.exports = updateWidget
 
@@ -4597,7 +4597,7 @@ function updateWidget(a, b) {
     return false
 }
 
-},{"../vnode/is-widget.js":38}],26:[function(require,module,exports){
+},{"../vnode/is-widget.js":38}],26:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = AttributeHook;
@@ -4634,10 +4634,10 @@ AttributeHook.prototype.unhook = function (node, prop, next) {
 
 AttributeHook.prototype.type = 'AttributeHook';
 
-},{}],27:[function(require,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 'use strict';
 
-var EvStore = require('ev-store');
+var EvStore = _dereq_('ev-store');
 
 module.exports = EvHook;
 
@@ -4663,7 +4663,7 @@ EvHook.prototype.unhook = function(node, propertyName) {
     es[propName] = undefined;
 };
 
-},{"ev-store":13}],28:[function(require,module,exports){
+},{"ev-store":13}],28:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = SoftSetHook;
@@ -4682,22 +4682,22 @@ SoftSetHook.prototype.hook = function (node, propertyName) {
     }
 };
 
-},{}],29:[function(require,module,exports){
+},{}],29:[function(_dereq_,module,exports){
 'use strict';
 
-var isArray = require('x-is-array');
+var isArray = _dereq_('x-is-array');
 
-var VNode = require('../vnode/vnode.js');
-var VText = require('../vnode/vtext.js');
-var isVNode = require('../vnode/is-vnode');
-var isVText = require('../vnode/is-vtext');
-var isWidget = require('../vnode/is-widget');
-var isHook = require('../vnode/is-vhook');
-var isVThunk = require('../vnode/is-thunk');
+var VNode = _dereq_('../vnode/vnode.js');
+var VText = _dereq_('../vnode/vtext.js');
+var isVNode = _dereq_('../vnode/is-vnode');
+var isVText = _dereq_('../vnode/is-vtext');
+var isWidget = _dereq_('../vnode/is-widget');
+var isHook = _dereq_('../vnode/is-vhook');
+var isVThunk = _dereq_('../vnode/is-thunk');
 
-var parseTag = require('./parse-tag.js');
-var softSetHook = require('./hooks/soft-set-hook.js');
-var evHook = require('./hooks/ev-hook.js');
+var parseTag = _dereq_('./parse-tag.js');
+var softSetHook = _dereq_('./hooks/soft-set-hook.js');
+var evHook = _dereq_('./hooks/ev-hook.js');
 
 module.exports = h;
 
@@ -4821,10 +4821,10 @@ function errorString(obj) {
     }
 }
 
-},{"../vnode/is-thunk":34,"../vnode/is-vhook":35,"../vnode/is-vnode":36,"../vnode/is-vtext":37,"../vnode/is-widget":38,"../vnode/vnode.js":40,"../vnode/vtext.js":42,"./hooks/ev-hook.js":27,"./hooks/soft-set-hook.js":28,"./parse-tag.js":30,"x-is-array":18}],30:[function(require,module,exports){
+},{"../vnode/is-thunk":34,"../vnode/is-vhook":35,"../vnode/is-vnode":36,"../vnode/is-vtext":37,"../vnode/is-widget":38,"../vnode/vnode.js":40,"../vnode/vtext.js":42,"./hooks/ev-hook.js":27,"./hooks/soft-set-hook.js":28,"./parse-tag.js":30,"x-is-array":18}],30:[function(_dereq_,module,exports){
 'use strict';
 
-var split = require('browser-split');
+var split = _dereq_('browser-split');
 
 var classIdSplit = /([\.#]?[a-zA-Z0-9\u007F-\uFFFF_:-]+)/;
 var notClassId = /^\.|#/;
@@ -4877,7 +4877,7 @@ function parseTag(tag, props) {
     return props.namespace ? tagName : tagName.toUpperCase();
 }
 
-},{"browser-split":12}],31:[function(require,module,exports){
+},{"browser-split":12}],31:[function(_dereq_,module,exports){
 'use strict';
 
 var DEFAULT_NAMESPACE = null;
@@ -5192,16 +5192,16 @@ function SVGAttributeNamespace(value) {
   }
 }
 
-},{}],32:[function(require,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 'use strict';
 
-var isArray = require('x-is-array');
+var isArray = _dereq_('x-is-array');
 
-var h = require('./index.js');
+var h = _dereq_('./index.js');
 
 
-var SVGAttributeNamespace = require('./svg-attribute-namespace');
-var attributeHook = require('./hooks/attribute-hook');
+var SVGAttributeNamespace = _dereq_('./svg-attribute-namespace');
+var attributeHook = _dereq_('./hooks/attribute-hook');
 
 var SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
@@ -5256,11 +5256,11 @@ function isChildren(x) {
     return typeof x === 'string' || isArray(x);
 }
 
-},{"./hooks/attribute-hook":26,"./index.js":29,"./svg-attribute-namespace":31,"x-is-array":18}],33:[function(require,module,exports){
-var isVNode = require("./is-vnode")
-var isVText = require("./is-vtext")
-var isWidget = require("./is-widget")
-var isThunk = require("./is-thunk")
+},{"./hooks/attribute-hook":26,"./index.js":29,"./svg-attribute-namespace":31,"x-is-array":18}],33:[function(_dereq_,module,exports){
+var isVNode = _dereq_("./is-vnode")
+var isVText = _dereq_("./is-vtext")
+var isWidget = _dereq_("./is-widget")
+var isThunk = _dereq_("./is-thunk")
 
 module.exports = handleThunk
 
@@ -5298,14 +5298,14 @@ function renderThunk(thunk, previous) {
     return renderedThunk
 }
 
-},{"./is-thunk":34,"./is-vnode":36,"./is-vtext":37,"./is-widget":38}],34:[function(require,module,exports){
+},{"./is-thunk":34,"./is-vnode":36,"./is-vtext":37,"./is-widget":38}],34:[function(_dereq_,module,exports){
 module.exports = isThunk
 
 function isThunk(t) {
     return t && t.type === "Thunk"
 }
 
-},{}],35:[function(require,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 module.exports = isHook
 
 function isHook(hook) {
@@ -5314,8 +5314,8 @@ function isHook(hook) {
        typeof hook.unhook === "function" && !hook.hasOwnProperty("unhook"))
 }
 
-},{}],36:[function(require,module,exports){
-var version = require("./version")
+},{}],36:[function(_dereq_,module,exports){
+var version = _dereq_("./version")
 
 module.exports = isVirtualNode
 
@@ -5323,8 +5323,8 @@ function isVirtualNode(x) {
     return x && x.type === "VirtualNode" && x.version === version
 }
 
-},{"./version":39}],37:[function(require,module,exports){
-var version = require("./version")
+},{"./version":39}],37:[function(_dereq_,module,exports){
+var version = _dereq_("./version")
 
 module.exports = isVirtualText
 
@@ -5332,22 +5332,22 @@ function isVirtualText(x) {
     return x && x.type === "VirtualText" && x.version === version
 }
 
-},{"./version":39}],38:[function(require,module,exports){
+},{"./version":39}],38:[function(_dereq_,module,exports){
 module.exports = isWidget
 
 function isWidget(w) {
     return w && w.type === "Widget"
 }
 
-},{}],39:[function(require,module,exports){
+},{}],39:[function(_dereq_,module,exports){
 module.exports = "2"
 
-},{}],40:[function(require,module,exports){
-var version = require("./version")
-var isVNode = require("./is-vnode")
-var isWidget = require("./is-widget")
-var isThunk = require("./is-thunk")
-var isVHook = require("./is-vhook")
+},{}],40:[function(_dereq_,module,exports){
+var version = _dereq_("./version")
+var isVNode = _dereq_("./is-vnode")
+var isWidget = _dereq_("./is-widget")
+var isThunk = _dereq_("./is-thunk")
+var isVHook = _dereq_("./is-vhook")
 
 module.exports = VirtualNode
 
@@ -5416,8 +5416,8 @@ function VirtualNode(tagName, properties, children, key, namespace) {
 VirtualNode.prototype.version = version
 VirtualNode.prototype.type = "VirtualNode"
 
-},{"./is-thunk":34,"./is-vhook":35,"./is-vnode":36,"./is-widget":38,"./version":39}],41:[function(require,module,exports){
-var version = require("./version")
+},{"./is-thunk":34,"./is-vhook":35,"./is-vnode":36,"./is-widget":38,"./version":39}],41:[function(_dereq_,module,exports){
+var version = _dereq_("./version")
 
 VirtualPatch.NONE = 0
 VirtualPatch.VTEXT = 1
@@ -5440,8 +5440,8 @@ function VirtualPatch(type, vNode, patch) {
 VirtualPatch.prototype.version = version
 VirtualPatch.prototype.type = "VirtualPatch"
 
-},{"./version":39}],42:[function(require,module,exports){
-var version = require("./version")
+},{"./version":39}],42:[function(_dereq_,module,exports){
+var version = _dereq_("./version")
 
 module.exports = VirtualText
 
@@ -5452,9 +5452,9 @@ function VirtualText(text) {
 VirtualText.prototype.version = version
 VirtualText.prototype.type = "VirtualText"
 
-},{"./version":39}],43:[function(require,module,exports){
-var isObject = require("is-object")
-var isHook = require("../vnode/is-vhook")
+},{"./version":39}],43:[function(_dereq_,module,exports){
+var isObject = _dereq_("is-object")
+var isHook = _dereq_("../vnode/is-vhook")
 
 module.exports = diffProps
 
@@ -5512,17 +5512,17 @@ function getPrototype(value) {
   }
 }
 
-},{"../vnode/is-vhook":35,"is-object":17}],44:[function(require,module,exports){
-var isArray = require("x-is-array")
+},{"../vnode/is-vhook":35,"is-object":17}],44:[function(_dereq_,module,exports){
+var isArray = _dereq_("x-is-array")
 
-var VPatch = require("../vnode/vpatch")
-var isVNode = require("../vnode/is-vnode")
-var isVText = require("../vnode/is-vtext")
-var isWidget = require("../vnode/is-widget")
-var isThunk = require("../vnode/is-thunk")
-var handleThunk = require("../vnode/handle-thunk")
+var VPatch = _dereq_("../vnode/vpatch")
+var isVNode = _dereq_("../vnode/is-vnode")
+var isVText = _dereq_("../vnode/is-vtext")
+var isWidget = _dereq_("../vnode/is-widget")
+var isThunk = _dereq_("../vnode/is-thunk")
+var handleThunk = _dereq_("../vnode/handle-thunk")
 
-var diffProps = require("./diff-props")
+var diffProps = _dereq_("./diff-props")
 
 module.exports = diff
 
@@ -5941,7 +5941,7 @@ function appendPatch(apply, patch) {
     }
 }
 
-},{"../vnode/handle-thunk":33,"../vnode/is-thunk":34,"../vnode/is-vnode":36,"../vnode/is-vtext":37,"../vnode/is-widget":38,"../vnode/vpatch":41,"./diff-props":43,"x-is-array":18}],45:[function(require,module,exports){
+},{"../vnode/handle-thunk":33,"../vnode/is-thunk":34,"../vnode/is-vnode":36,"../vnode/is-vtext":37,"../vnode/is-widget":38,"../vnode/vpatch":41,"./diff-props":43,"x-is-array":18}],45:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5954,15 +5954,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _bezierJs = require("bezier-js");
+var _bezierJs = _dereq_("bezier-js");
 
 var _bezierJs2 = _interopRequireDefault(_bezierJs);
 
-var _vector = require("./vector");
+var _vector = _dereq_("./vector");
 
 var _vector2 = _interopRequireDefault(_vector);
 
@@ -6085,7 +6085,7 @@ var Anchor = (function () {
 exports["default"] = Anchor;
 module.exports = exports["default"];
 
-},{"./vector":62,"bezier-js":2,"underscore":8}],46:[function(require,module,exports){
+},{"./vector":62,"bezier-js":2,"underscore":8}],46:[function(_dereq_,module,exports){
 // This code was adapted from the brillinat color-js by harthur
 // See more here: https://github.com/harthur/color
 'use strict';
@@ -6100,15 +6100,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _colorConvert = require('color-convert');
+var _colorConvert = _dereq_('color-convert');
 
 var _colorConvert2 = _interopRequireDefault(_colorConvert);
 
-var _colorString = require('color-string');
+var _colorString = _dereq_('color-string');
 
 var _colorString2 = _interopRequireDefault(_colorString);
 
@@ -6618,7 +6618,7 @@ Color.Convert = _colorConvert2['default'];
 exports['default'] = Color;
 module.exports = exports['default'];
 
-},{"color-convert":5,"color-string":6,"underscore":8}],47:[function(require,module,exports){
+},{"color-convert":5,"color-string":6,"underscore":8}],47:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6663,7 +6663,7 @@ var Events = {
 exports["default"] = Events;
 module.exports = exports["default"];
 
-},{}],48:[function(require,module,exports){
+},{}],48:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6676,13 +6676,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("./mixins");
+var _mixins = _dereq_("./mixins");
 
-var _group = require('./group');
+var _group = _dereq_('./group');
 
 var _group2 = _interopRequireDefault(_group);
 
@@ -6770,7 +6770,7 @@ _underscore2["default"].extend(Grid.prototype, _mixins.Shapeable, _mixins.Moveab
 exports["default"] = Grid;
 module.exports = exports["default"];
 
-},{"./group":49,"./mixins":50,"underscore":8}],49:[function(require,module,exports){
+},{"./group":49,"./mixins":50,"underscore":8}],49:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6783,13 +6783,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("./mixins");
+var _mixins = _dereq_("./mixins");
 
-var _utils = require('./utils');
+var _utils = _dereq_('./utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -6840,7 +6840,7 @@ _underscore2["default"].extend(Group.prototype, _mixins.Moveable, _mixins.Groupa
 exports["default"] = Group;
 module.exports = exports["default"];
 
-},{"./mixins":50,"./utils":61,"underscore":8}],50:[function(require,module,exports){
+},{"./mixins":50,"./utils":61,"underscore":8}],50:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -6849,11 +6849,11 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _utils = require('./utils');
+var _utils = _dereq_('./utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _color = require('./color');
+var _color = _dereq_('./color');
 
 var _color2 = _interopRequireDefault(_color);
 
@@ -6965,7 +6965,7 @@ exports.Sizeable = Sizeable;
 exports.Styleable = Styleable;
 exports.Groupable = Groupable;
 
-},{"./color":46,"./utils":61}],51:[function(require,module,exports){
+},{"./color":46,"./utils":61}],51:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -6978,39 +6978,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _shapesCircle = require('./shapes/circle');
+var _shapesCircle = _dereq_('./shapes/circle');
 
 var _shapesCircle2 = _interopRequireDefault(_shapesCircle);
 
-var _shapesRectangle = require('./shapes/rectangle');
+var _shapesRectangle = _dereq_('./shapes/rectangle');
 
 var _shapesRectangle2 = _interopRequireDefault(_shapesRectangle);
 
-var _shapesLine = require('./shapes/line');
+var _shapesLine = _dereq_('./shapes/line');
 
 var _shapesLine2 = _interopRequireDefault(_shapesLine);
 
-var _virtualDomH = require('virtual-dom/h');
+var _virtualDomH = _dereq_('virtual-dom/h');
 
 var _virtualDomH2 = _interopRequireDefault(_virtualDomH);
 
-var _virtualDomDiff = require('virtual-dom/diff');
+var _virtualDomDiff = _dereq_('virtual-dom/diff');
 
 var _virtualDomDiff2 = _interopRequireDefault(_virtualDomDiff);
 
-var _virtualDomPatch = require('virtual-dom/patch');
+var _virtualDomPatch = _dereq_('virtual-dom/patch');
 
 var _virtualDomPatch2 = _interopRequireDefault(_virtualDomPatch);
 
-var _virtualDomCreateElement = require('virtual-dom/create-element');
+var _virtualDomCreateElement = _dereq_('virtual-dom/create-element');
 
 var _virtualDomCreateElement2 = _interopRequireDefault(_virtualDomCreateElement);
 
-var _virtualDomVirtualHyperscriptSvg = require('virtual-dom/virtual-hyperscript/svg');
+var _virtualDomVirtualHyperscriptSvg = _dereq_('virtual-dom/virtual-hyperscript/svg');
 
 var _virtualDomVirtualHyperscriptSvg2 = _interopRequireDefault(_virtualDomVirtualHyperscriptSvg);
 
@@ -7387,7 +7387,7 @@ var Render = (function () {
 exports['default'] = Render;
 module.exports = exports['default'];
 
-},{"./shapes/circle":53,"./shapes/line":55,"./shapes/rectangle":58,"underscore":8,"virtual-dom/create-element":9,"virtual-dom/diff":10,"virtual-dom/h":11,"virtual-dom/patch":19,"virtual-dom/virtual-hyperscript/svg":32}],52:[function(require,module,exports){
+},{"./shapes/circle":53,"./shapes/line":55,"./shapes/rectangle":58,"underscore":8,"virtual-dom/create-element":9,"virtual-dom/diff":10,"virtual-dom/h":11,"virtual-dom/patch":19,"virtual-dom/virtual-hyperscript/svg":32}],52:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7400,75 +7400,75 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _vector = require("./vector");
+var _vector = _dereq_("./vector");
 
 var _vector2 = _interopRequireDefault(_vector);
 
-var _anchor = require("./anchor");
+var _anchor = _dereq_("./anchor");
 
 var _anchor2 = _interopRequireDefault(_anchor);
 
-var _color = require("./color");
+var _color = _dereq_("./color");
 
 var _color2 = _interopRequireDefault(_color);
 
-var _group = require("./group");
+var _group = _dereq_("./group");
 
 var _group2 = _interopRequireDefault(_group);
 
-var _grid = require("./grid");
+var _grid = _dereq_("./grid");
 
 var _grid2 = _interopRequireDefault(_grid);
 
-var _utils = require("./utils");
+var _utils = _dereq_("./utils");
 
 var _utils2 = _interopRequireDefault(_utils);
 
-var _events = require("./events");
+var _events = _dereq_("./events");
 
 var _events2 = _interopRequireDefault(_events);
 
-var _render = require("./render");
+var _render = _dereq_("./render");
 
 var _render2 = _interopRequireDefault(_render);
 
-var _shapesCircle = require("./shapes/circle");
+var _shapesCircle = _dereq_("./shapes/circle");
 
 var _shapesCircle2 = _interopRequireDefault(_shapesCircle);
 
-var _shapesEllipse = require("./shapes/ellipse");
+var _shapesEllipse = _dereq_("./shapes/ellipse");
 
 var _shapesEllipse2 = _interopRequireDefault(_shapesEllipse);
 
-var _shapesLine = require("./shapes/line");
+var _shapesLine = _dereq_("./shapes/line");
 
 var _shapesLine2 = _interopRequireDefault(_shapesLine);
 
-var _shapesTriangle = require("./shapes/triangle");
+var _shapesTriangle = _dereq_("./shapes/triangle");
 
 var _shapesTriangle2 = _interopRequireDefault(_shapesTriangle);
 
-var _shapesPath = require("./shapes/path");
+var _shapesPath = _dereq_("./shapes/path");
 
 var _shapesPath2 = _interopRequireDefault(_shapesPath);
 
-var _shapesPolygon = require("./shapes/polygon");
+var _shapesPolygon = _dereq_("./shapes/polygon");
 
 var _shapesPolygon2 = _interopRequireDefault(_shapesPolygon);
 
-var _shapesRectangle = require("./shapes/rectangle");
+var _shapesRectangle = _dereq_("./shapes/rectangle");
 
 var _shapesRectangle2 = _interopRequireDefault(_shapesRectangle);
 
-var _shapesText = require("./shapes/text");
+var _shapesText = _dereq_("./shapes/text");
 
 var _shapesText2 = _interopRequireDefault(_shapesText);
 
-var _mixins = require("./mixins");
+var _mixins = _dereq_("./mixins");
 
 var Rune = (function () {
   function Rune(options) {
@@ -7536,80 +7536,88 @@ var Rune = (function () {
   }, {
     key: "group",
     value: function group(x, y, parent) {
-      var group = new _group2["default"](x, y);
-      _utils2["default"].groupLogic(group, this.stage, parent);
-      return group;
+      var g = new _group2["default"](x, y);
+      _utils2["default"].groupLogic(g, this.stage, parent);
+      return g;
     }
   }, {
     key: "triangle",
     value: function triangle(x, y, x2, y2, x3, y3, parent) {
-      var tri = new _shapesTriangle2["default"](x, y, x2, y2, x3, y3);
-      _utils2["default"].groupLogic(tri, this.stage, parent);
-      return tri;
+      var t = new _shapesTriangle2["default"](x, y, x2, y2, x3, y3);
+      _utils2["default"].groupLogic(t, this.stage, parent);
+      return t;
     }
   }, {
     key: "rect",
     value: function rect(x, y, width, height, parent) {
-      var rect = new _shapesRectangle2["default"](x, y, width, height);
-      _utils2["default"].groupLogic(rect, this.stage, parent);
-      return rect;
+      var r = new _shapesRectangle2["default"](x, y, width, height);
+      _utils2["default"].groupLogic(r, this.stage, parent);
+      return r;
     }
   }, {
     key: "ellipse",
     value: function ellipse(x, y, width, height, parent) {
-      var ell = new _shapesEllipse2["default"](x, y, width, height);
-      _utils2["default"].groupLogic(ell, this.stage, parent);
-      return ell;
+      var e = new _shapesEllipse2["default"](x, y, width, height);
+      _utils2["default"].groupLogic(e, this.stage, parent);
+      return e;
     }
   }, {
     key: "circle",
     value: function circle(x, y, radius, parent) {
-      var circ = new _shapesCircle2["default"](x, y, radius);
-      _utils2["default"].groupLogic(circ, this.stage, parent);
-      return circ;
+      var c = new _shapesCircle2["default"](x, y, radius);
+      _utils2["default"].groupLogic(c, this.stage, parent);
+      return c;
     }
   }, {
     key: "line",
     value: function line(x1, y1, x2, y2, parent) {
-      var line = new _shapesLine2["default"](x1, y1, x2, y2);
-      _utils2["default"].groupLogic(line, this.stage, parent);
-      return line;
+      var l = new _shapesLine2["default"](x1, y1, x2, y2);
+      _utils2["default"].groupLogic(l, this.stage, parent);
+      return l;
     }
   }, {
     key: "polygon",
     value: function polygon(x, y, parent) {
-      var poly = new _shapesPolygon2["default"](x, y);
-      _utils2["default"].groupLogic(poly, this.stage, parent);
-      return poly;
+      var p = new _shapesPolygon2["default"](x, y);
+      _utils2["default"].groupLogic(p, this.stage, parent);
+      return p;
     }
   }, {
     key: "path",
     value: function path(x, y, parent) {
-      var path = new _shapesPath2["default"](x, y);
-      _utils2["default"].groupLogic(path, this.stage, parent);
-      return path;
+      var p = new _shapesPath2["default"](x, y);
+      _utils2["default"].groupLogic(p, this.stage, parent);
+      return p;
     }
   }, {
     key: "text",
-    value: function text(text, x, y, parent) {
-      var text = new _shapesText2["default"](text, x, y);
-      _utils2["default"].groupLogic(text, this.stage, parent);
-      return text;
+    value: function text(textString, x, y, parent) {
+      var t = new _shapesText2["default"](textString, x, y);
+      _utils2["default"].groupLogic(t, this.stage, parent);
+      return t;
     }
   }, {
     key: "grid",
     value: function grid(options, parent) {
-      var grid = new _grid2["default"](options);
-      _utils2["default"].groupLogic(grid, this.stage, parent);
-      return grid;
+      var g = new _grid2["default"](options);
+      _utils2["default"].groupLogic(g, this.stage, parent);
+      return g;
     }
 
     // Playhead
     // --------------------------------------------------
 
+    // This function is a proxy function that is run on every frame
+    // It has a check that delays the frame with a setTimeout if
+    // the framerate is lower than 60 fps.
   }, {
     key: "play",
     value: function play() {
+      if (this.pauseNext) {
+        this.pauseNext = false;
+        return;
+      }
+
       if (this.frameRate >= 60) this.playNow();else setTimeout(_underscore2["default"].bind(this.playNow, this), 1000 / this.frameRate);
     }
   }, {
@@ -7622,7 +7630,7 @@ var Rune = (function () {
   }, {
     key: "pause",
     value: function pause() {
-      cancelAnimationFrame(this.animationFrame);
+      this.pauseNext = true;
     }
 
     // Render functions
@@ -7678,7 +7686,7 @@ Rune.Groupable = _mixins.Groupable;
 exports["default"] = Rune;
 module.exports = exports["default"];
 
-},{"./anchor":45,"./color":46,"./events":47,"./grid":48,"./group":49,"./mixins":50,"./render":51,"./shapes/circle":53,"./shapes/ellipse":54,"./shapes/line":55,"./shapes/path":56,"./shapes/polygon":57,"./shapes/rectangle":58,"./shapes/text":59,"./shapes/triangle":60,"./utils":61,"./vector":62,"underscore":8}],53:[function(require,module,exports){
+},{"./anchor":45,"./color":46,"./events":47,"./grid":48,"./group":49,"./mixins":50,"./render":51,"./shapes/circle":53,"./shapes/ellipse":54,"./shapes/line":55,"./shapes/path":56,"./shapes/polygon":57,"./shapes/rectangle":58,"./shapes/text":59,"./shapes/triangle":60,"./utils":61,"./vector":62,"underscore":8}],53:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7691,17 +7699,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _ellipse = require("./ellipse");
+var _ellipse = _dereq_("./ellipse");
 
 var _ellipse2 = _interopRequireDefault(_ellipse);
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7747,7 +7755,7 @@ _underscore2["default"].extend(Circle.prototype, _mixins.Moveable, _mixins.Style
 exports["default"] = Circle;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"./ellipse":54,"underscore":8}],54:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./ellipse":54,"underscore":8}],54:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7760,17 +7768,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _polygon = require('./polygon');
+var _polygon = _dereq_('./polygon');
 
 var _polygon2 = _interopRequireDefault(_polygon);
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7834,7 +7842,7 @@ _underscore2["default"].extend(Ellipse.prototype, _mixins.Moveable, _mixins.Size
 exports["default"] = Ellipse;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],55:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],55:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7847,13 +7855,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -7889,7 +7897,7 @@ _underscore2["default"].extend(Line.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Line;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"underscore":8}],56:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"underscore":8}],56:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7902,25 +7910,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _anchor = require('../anchor');
+var _anchor = _dereq_('../anchor');
 
 var _anchor2 = _interopRequireDefault(_anchor);
 
-var _vector = require('../vector');
+var _vector = _dereq_('../vector');
 
 var _vector2 = _interopRequireDefault(_vector);
 
-var _polygon = require('./polygon');
+var _polygon = _dereq_('./polygon');
 
 var _polygon2 = _interopRequireDefault(_polygon);
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8127,7 +8135,7 @@ _underscore2["default"].extend(Path.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Path;
 module.exports = exports["default"];
 
-},{"../anchor":45,"../mixins":50,"../utils":61,"../vector":62,"./polygon":57,"underscore":8}],57:[function(require,module,exports){
+},{"../anchor":45,"../mixins":50,"../utils":61,"../vector":62,"./polygon":57,"underscore":8}],57:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8140,17 +8148,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _vector = require('../vector');
+var _vector = _dereq_('../vector');
 
 var _vector2 = _interopRequireDefault(_vector);
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8294,7 +8302,7 @@ _underscore2["default"].extend(Polygon.prototype, _mixins.Moveable, _mixins.Styl
 exports["default"] = Polygon;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"../vector":62,"underscore":8}],58:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"../vector":62,"underscore":8}],58:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8307,17 +8315,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _polygon = require('./polygon');
+var _polygon = _dereq_('./polygon');
 
 var _polygon2 = _interopRequireDefault(_polygon);
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8364,7 +8372,7 @@ _underscore2["default"].extend(Rectangle.prototype, _mixins.Moveable, _mixins.Si
 exports["default"] = Rectangle;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],59:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"./polygon":57,"underscore":8}],59:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8377,13 +8385,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8457,7 +8465,7 @@ _underscore2["default"].extend(Text.prototype, _mixins.Moveable, _mixins.Styleab
 exports["default"] = Text;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"underscore":8}],60:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"underscore":8}],60:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8470,13 +8478,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _mixins = require("../mixins");
+var _mixins = _dereq_("../mixins");
 
-var _utils = require('../utils');
+var _utils = _dereq_('../utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -8516,7 +8524,7 @@ _underscore2["default"].extend(Triangle.prototype, _mixins.Moveable, _mixins.Sty
 exports["default"] = Triangle;
 module.exports = exports["default"];
 
-},{"../mixins":50,"../utils":61,"underscore":8}],61:[function(require,module,exports){
+},{"../mixins":50,"../utils":61,"underscore":8}],61:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8525,7 +8533,7 @@ Object.defineProperty(exports, "__esModule", {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
@@ -8567,7 +8575,7 @@ var Utils = {
 exports["default"] = Utils;
 module.exports = exports["default"];
 
-},{"underscore":8}],62:[function(require,module,exports){
+},{"underscore":8}],62:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8580,11 +8588,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _underscore = require("underscore");
+var _underscore = _dereq_("underscore");
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _utils = require('./utils');
+var _utils = _dereq_('./utils');
 
 var _utils2 = _interopRequireDefault(_utils);
 

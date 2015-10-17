@@ -14,7 +14,6 @@ Color
 Typography
 ----------
 
-* Rewrite "Custom rules-based fonts" using PShape
 * Add much more about Metafont. Use the metafont book for examples, quotes, etc.
 * Use "Type as a toy" and "photography and typography" chapters from "Art of Graphic Design". ESPECIALLY "THE ALPHABET AS VISUAL ART" CHAPTER ALSO!!
 * prototypo

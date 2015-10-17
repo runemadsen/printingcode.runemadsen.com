@@ -1,5 +1,5 @@
-//= require jquery
-//= require underscore
-//= require backbone
-//= require picturefill
-//= require printingcode
+//= require application/jquery
+//= require application/underscore
+//= require application/backbone
+//= require application/picturefill
+//= require application/printingcode

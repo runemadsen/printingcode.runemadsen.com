@@ -231,6 +231,8 @@ A whole different aspect of font design is 3-dimensional typography. Most of the
 
 [ECAL published a book about scripted typography](http://www.jrp-ringier.com/pages/index.php?id_r=4&id_t=&id_p=7&id_b=1604), however it's out of print and impossible to get a hold of.
 
+{% picture piefont-7ddab1ca0046c48f8a7dab4355ce566f.jpg %}
+
 
 Code and Typefaces
 ------------------
@@ -240,103 +242,26 @@ I often divide generative typography projects into two distinct categories: **Ru
 I'm going to explore both of these types of typefaces in the following, although I prefer **rule-based** typefaces.
 
 
-Fonts in Processing
+Fonts in Rune.js
 -------------------
 
-Processing ships with built-in font handling. To manipulate text, we need to know how to get the basic measurements of the things we draw. Here's an example of how to find the edges of a word you're drawing on the screen.
+For basic text rendering, Rune.js uses the built-in font rendering in browsers. The one important thing is that text is drawn from the baseline and up, so the y position will actually dictate where the text bottom starts.
 
-One thing to note is that the red circle is at location 0,0. Processing text draw upwards on the y axis. This is called the baseline, and is often used as the basis of a grid system (which we'll look at next week).
+You can manipulate text like you manipulate any other shape objects.
 
-{% picture measurements-2c62567e44dc475a937d31bb092dab38.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/font_measurements)
+![Example text](http://assets.runemadsen.com/text-9d172fde80d71651c55000949d58da86.svg)
 
-
-Rule-based fonts in Processing
-------------------------------
-
-When working in code, we do not want to plot all outline point manually. It's much slower than doing it in Illustrator, and it's not what code is good for. On the other hand, code is great for dynamic, rule-based drawing. Here's a few examples of how to create simple letters from simple rules.
-
-**Normalization**
-
-Let's say that you want to create a custom uppercase "H" with vertex points. You could just draw the character by plotting the points on the screen:
-
-{% picture font_beginshape-5b42bf54883db4514f46c08282725d56.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/font_beginshape)
-
-However, this is not scalable. What if you want to draw "H" several places in different sizes? Then it's easier to normalize the numbers and scale them up when drawing.
-
-{% picture font_beginshape_normalized-e0f85671315e5e1eddf5e983c8233786.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/font_beginshape_normalized)
-
-However, most of the really interesting computational typography leverages simple rules to compute the letters, instead of relying on the plotting of outline points.
-
-Here's the simplest possible font, made up by a 4x6 matrix:
-
-{% picture pixel_font-c520c5c993abd747931f3aa866b6fbe0.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/pixel_font)
-
-That seems a little silly. Here's a better, but still simple example of the word "meme", that is also scalable.
-
-{% picture meme-3603ad790601944ae21f695035c641f3.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/meme)
-
-However, making a rule-based font is much of the same process. Let's look at Peter Cho's pie font example again.
-
-{% picture creativecodes86-d5a308655457209c325f6de9200cbaeb.jpg %}
-
-Here's a Processing sketch implementing the same rules. It really doesn't take much work.
-
-{% picture piefont-7ddab1ca0046c48f8a7dab4355ce566f.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/pie_segments_example)
+[See example code](../examples/typography/text.html)
 
 
-Outline Manipulations in Processing
------------------------------------
+Manipulating existing fonts
+----------------------------
 
-The implementation of fonts in Processing leaves much to be desired. When you go to "Create Font" in Processing, a bitmap image of that font is created (.vlw file). Whenever you need to draw a font on the screen, Processing will look up that bitmap image, grab the characters from it, and draw them on the screen. This has a few disadvantages:
+You can use the `Rune.Font` plugin to load existing fonts. Here's a simple sketch to show that.
 
-1. Fonts are normally defined by Vector points, but Processing handles them as bitmaps. The bigger the font, the bigger the file size of that bitmap file is. For print designers this is not good, as we're often working with files with really high resolutions, and your program will get really slow when drawing giant text.
+![Rune.Font example](http://assets.runemadsen.com/font-d3a136bce2398dffc2854c13d94ad9fd.svg)
 
-2. Fonts will not work in the rendered PDF if the print computer does not have it installed.
-
-To solve these problems we will need to use the external library [Geomerative](http://www.ricardmarxer.com/geomerative/) library for Processing 2.0. The library itself can do a ton of things related to computational geometry. Today we'll look at some of the classes that relate to the use of fonts. You can search through the rest of the classes in [the online documentation](http://www.ricardmarxer.com/geomerative/documentation/index.html).
-
-**RFont** is the main class that you can use for displaying text on the screen. It will read a .ttf font file and draw it on the screen in vectors. This means that when you save your PDF, the font will also be scalable.
-
-Here's a sketch that shows you the basics of drawing a font on the screen.
-
-{% picture geomerative_font-ef3d66447f865fac3fdafac36bc76b54.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/geomerative_font)
-
-But the RFont class can do much more than that. It's especially good for getting the outline of a font and playing around with it.
-
-There are several ways you can access the outline of a font. The first one is by letting Geomerative generative a static number of x,y values around the outline. The second way is by actually accessing the vertices (beziers, etc) directly.
-
-**Static Outlines**
-
-Here's a sketch that shows you how to do the first: Getting a reduced, static number of points from a font. The first sketch here shows you how to do it with a single letter. Notice how many loops we need, as a single RPolygon will always have an array of RContours that themselves have an array of RPoints.
-
-{% picture rfont_reduced-e37689375a3c9a96e1ab4873c65dac66.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/rfont_reduced)
-
-If you want to do this with more than one character, you will need an extra loop, as each polygon comes in an array of the RGroup.
-
-{% picture rfont_reduced_word-6c034eea12a79d612ba98a8d8ee0bb10.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/rfont_reduced_word)
-
-Now that we can access the reduced points of the outline, let's play around with them!
-  
-{% picture font_to_points_dots-0e0e03039c4fad5362a4c58f02c7efb8.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/font_to_points_dots)
-  
-Here's that same code, but using beginShape to play around with the contours.
-
-{% picture font_to_points_generative-4fcbbeb35087508a10735f441c365df1.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/typography/font_to_points_generative)
-
-**Non-Reduced Outlines**
-
-If you want to access the actual vertices of the shapes, you should look into the RShape and RCommand classes. 
+[See example code](../examples/typography/font.html)
 
 
 Project Examples
