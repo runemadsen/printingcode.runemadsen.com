@@ -158,12 +158,15 @@ In this class we'll look at grid systems and how to use them as guiding constrai
 ### Class Overview
 
 * Homework design critique
+* Groups, shapes, and rotation in Rune.js
 * Lecture: **[Computational Grid Systems](/lecture-grid)**
-* Design exercise: [Sigur Ros Grid System](https://github.com/runemadsen/printing-code/blob/master/exercises/sigur_ros/sigur_ros.pde)
 
 ### Assignment for next week
 
-* For next week you'll design a cover for a book of your choice. Find the existing cover designs, think about what works and what doesn't, and create your own design based on this analysis. You can use form, color and typography, but not images. The main constraint is that you need to use a grid system to place elements on the page. This is an exercise in creating your own grid system, and simple tweaking of my example variables won't be enough. Try to investigate what happens when you randomize the grid? What happens when you rotate it? What happens when you overlay multiple grids? What happens if you build a grid system with triangles instead of rectangles? The most important thing is to come up with an idea first, and then implement it step by step. Think about all the things we've learned and bring to class a simple poster with a print of your book cover. You may scale up the cover for print if needed, to make it poster size.
+For next week you'll design a cover for a book of your choice. You can use form, color and typography, but not images. The main constraint is that you need to use a grid system to place elements on the page. 
+
+The most important thing is that you think in systems. What happens if you randomize the grid? What happens when you rotate it? What happens when you overlay multiple grids? Come up with an idea first, and then implement it step by step. Think about all the things we've learned and bring to class a simple poster with a print of your book cover. You may scale up the cover for print if needed, to make it poster size.
+
 
 Week 7: Logo
 ------------
