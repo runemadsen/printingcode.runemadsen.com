@@ -18,13 +18,6 @@ Today we'll go through the different types of grid systems, look at interesting 
 
 A grid system is any kind of basic constraint you can put on the canvas.
 
-Measurements, Measurements
---------------------------
-
-{% picture apple-2a13adfe5c9cd668597f83a33fa75f77.jpg %}
-
-{% picture mondrianrules-9284081b353c936c9726ae307a6167c8.jpg %}
-
 
 History of Grid Systems
 -----------------------
@@ -110,73 +103,27 @@ Even a simple grid gives you a lot of variety in placing your content. You use t
 {% picture grid_modular_filled3-afa545ef29c935df230aabed22abb7bc.jpg %}
 
 
-Int vs. Float
--------------
-
-Before we start diving into code examples, we need to clarify a simple thing about calculations in Processing. When we work with division of larger numbers into smaller numbers, it's important always to use floats instead of ints. Variables like `width` and `height` must also be cast into floats (by putting (float) in front of it). Why? This code example shows you why.
-
-{% picture wrong_calculations-0b59a3dfc1854463c80a2317151a0f1b.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/wrong_calculations)
-
-
 Coding a Manuscript Grid
 ------------------------
 
-{% picture grid_manuscript-45c31f28f4d06d2f50f868f513e1de7f.jpg %}
+![Manuscript grid](http://assets.runemadsen.com/grid_manuscript-66ba3e407bb6e64ecadb75feba6c7826.svg)
 
-The simplest possible grid to make is a manuscript grid that only requires 4 variables: x,y,width,height to define the rectangle in which we place content.
-
-{% picture grid_manuscript_example-e44f5636e9d73d84deceb1af9f0c0bd8.jpg %}
-[Not Using Classes - Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/manuscript_grid_no_class)  
-[Using Classes - Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/manuscript_grid_class)
-
-Here's another example, where I'm placing circles inside the grid using the manuscript column.
-
-{% picture manuscript_grid_circles-0f23af06eb641a5a20a0f1dd319e8675.png %}
-[Not Using Classes - Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/manuscript_grid_circles) 
-
-A nice way of encapsulating these 4 variables is by creating a class that can keep track of them and hide them from the main file. He I've created a _Column_ class to hold the column values. Nothing else changed. By extracting the grid code into a class we can add convenient helper methods to that class without cluttering out main source file.
-
-Very simple Processing Code
+[See example code](../examples/grid/grid_manuscript.html)
 
 
 Coding a Column Grid
 --------------------
 
-{% picture grid_column-54d048acbae34b7df6e97fe75db6ec33.jpg %}
+![Column grid](http://assets.runemadsen.com/grid_column-042e9d5360a89854882771ddee96598f.svg)
 
-{% picture grid_column_example-f57a616efdd1869d955b4dbadc12ece5.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/column_grid)
-
-{% picture grid_column_random_example-0d5fbb2fe555f91fe0042477687f86c6.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/column_grid_random_placement)
-
-Here's the same circle example, just using the column grid code.
-
-{% picture column_grid_circles-110257317884311a46692d2bfc112d67.png %}
-[Not Using Classes - Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/column_grid_circles) 
+[See example code](../examples/grid/grid_column.html) 
 
 Coding a Modular Grid
 ---------------------
 
-{% picture grid_modular-44b06b7affb762ec6787a46e0f2ed52e.jpg %}
+![Modular grid](http://assets.runemadsen.com/grid_modular-6ed764743f80198f45a92f2b74f11ba2.svg)
 
-{% picture grid_modular_example-95297f9c4a22aeb3e066c547b45af312.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/modular_grid_simple)
-
-Here's the same circle example, just using the modular grid.
-
-{% picture modular_grid_circles-e562cc8a424fb9d736492e49e9ee8fb6.png %}
-[Not Using Classes - Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/modular_grid_circles) 
-
-
-What is Used? What is Not?
---------------------------
-
-The big problem is that we do not know what is used and what is not. If we randomly select a modules, we'll end up selecting the same module over and over. This can be solved by adding a "used" boolean to the module class and only selecting modules that are not used.
-
-{% picture grid_no_overlap-fc0d2ec69a2f8d3214b59870bda83b9e.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/modular_grid_no_overlap)
+[See example code](../examples/grid/grid_modular.html) 
 
 
 Karl Gerstner's Flexible Grid
@@ -235,53 +182,19 @@ Gerstner for Capital. Needed a flexible grid that provided flexibility across al
 
 {% picture gerstner_capital9-f597f79f7b6f26d1d021cd21d5dc491b.jpg %}
 
-In code, it's amazingly easy to make something with multiple grids. Here's an example with the column grid and modular grid code combined into the smae processing sketch.
+In code, it's amazingly easy to make something with multiple grids. Here's an example with the column grid and modular grid code combined into the same sketch.
 
-{% picture grid_multiple-8dbea3a68f21c3e2b34b6814e90543a5.jpg %}
+![Multiple grids](http://assets.runemadsen.com/grid_multiple-cc2e823ea42e519c605bead258f018ea.svg)
 
-{% picture grid_multiple2-24f75c133cce0f76d8c8f4d06ba8d316.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/grid_multiple)
-
-Here's a pretty ugly example illustrating multiple grids:
-
-{% picture grid_multiple_bruce-fabf5694633422eb2dcb42a480cb813d.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/grid_multiple_bruce)
+[See example code](../examples/grid/grid_multiple.html)
 
 
-Random Grids
-------------
+Grid transformation
+-------------------
 
-Until now we have only used randomness to place objects within a static grid. But what if we want to randomly create the grid ever time the program runs? This is of course very simple, as we just replace the static numbers in the constructor with random numbers. Here it's our modular grid example with random numbers.
+Grids can rotate and move like every other shape object.
 
-{% picture grid_modular_random-f7cb96c790ec75945afba10be132b356.jpg %}
+![Rotate grid](http://assets.runemadsen.com/grid_rotate-0f6df96470a46ddb370ff940164c2083.svg)
 
-{% picture grid_modular_random2-a174fa9e47c71998da4468737a5cf547.jpg %}
+[See example code](../examples/grid/grid_rotation.html)
 
-{% picture grid_modular_random3-291bbbfd861286313e15b119dba2d283.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/modular_grid_random)
-
-
-We can also play around with the column grid so each column has a random width. This makes for some interesting outputs. The only slightly difficult think is calculating the normalized values of the columns.
-
-{% picture random_columns-ae78ea05ff9ccedb9a656f7dfc79a13d.jpg %}
-	
-{% picture random_columns2-f19daab6670f027501db4d428a4cf023.jpg %}
-	
-{% picture random_columns3-d9f549695da10ca7fba321abe68cb611.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/column_grid_random_columns)
-
-
-We have already looked at how we can choose random placements in a modular grid without ever picking the same module. But what if we want to have larger random areas that span across multiple modules? 
-
-{% picture random_grid5-409f028888202606203ee90fb982ba02.jpg %}
-
-{% picture random_grid6-c537ce284a2e47fa66efc2805de70e7e.jpg %}
-
-{% picture random_grid4-b77967a85881a506f0b64439a5aeb36a.jpg %}
-
-{% picture random_grid-531604918281dd1843bc567a2db63a48.jpg %}
-
-{% picture random_grid2-9c45b52e0441c5a25fca4f4875913116.jpg %}
-
-{% picture random_grid3-855a9b76e09607edc944b0fc305ba45a.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/grid/modular_grid_no_overlap_random_size)
