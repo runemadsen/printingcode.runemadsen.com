@@ -159,6 +159,7 @@ In this class we'll look at grid systems and how to use them as guiding constrai
 
 * Homework design critique
 * Groups, shapes, and rotation in Rune.js
+* Javascript objects
 * Lecture: **[Computational Grid Systems](/lecture-grid)**
 
 ### Assignment for next week
