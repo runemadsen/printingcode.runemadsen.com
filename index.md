@@ -176,8 +176,10 @@ To make a well-designed logo requires skills in form, color, type and grid. We'l
 
 ### Class Overview
 
-* Homework design critique: Neighbour explains
+* Homework design critique
+* Code and logic example: Not using the same grid module twice
 * Lecture: **[Dynamic Logos](/lecture-logo)**
+* Introduction to underscore.js
 
 ### Assignment for next week
 

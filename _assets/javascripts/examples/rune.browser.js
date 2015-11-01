@@ -6736,11 +6736,19 @@ var Grid = (function () {
       if (!column) column = 1;
       if (!row) row = 1;
 
-      if (this.modules[column - 1] && this.modules[column - 1][row - 1]) {
-        this.modules[column - 1][row - 1].add(child);
-      } else {
-        throw new Error("Column or row does not exist");
-      }
+      // index is x + (y * width)
+      var index = column - 1 + (row - 1) * this.vars.columns;
+
+      if (this.modules[index]) this.modules[index].add(child);else throw new Error("Column or row does not exist");
+    }
+  }, {
+    key: "getModule",
+    value: function getModule(column, row) {
+
+      // index is x + (y * width)
+      var index = column - 1 + (row - 1) * this.vars.columns;
+
+      if (this.modules[index]) return this.modules[index];else return undefined;
     }
   }, {
     key: "computeGrid",
@@ -6748,15 +6756,13 @@ var Grid = (function () {
 
       this.modules = [];
 
-      for (var x = 0; x < this.vars.columns; x++) {
-
-        this.modules.push([]);
-
-        for (var y = 0; y < this.vars.rows; y++) {
+      for (var y = 0; y < this.vars.rows; y++) {
+        for (var x = 0; x < this.vars.columns; x++) {
 
           var groupX = x * this.vars.moduleWidth + x * this.vars.gutterWidth;
           var groupY = y * this.vars.moduleHeight + y * this.vars.gutterHeight;
-          this.modules[x].push(new _group2["default"](groupX, groupY));
+
+          this.modules.push(new _group2["default"](groupX, groupY));
         }
       }
     }
@@ -7111,7 +7117,7 @@ var Render = (function () {
     key: 'triangleToSVG',
     value: function triangleToSVG(tri) {
       var attr = {
-        points: tri.vars.x + ' ' + tri.vars.y + ' ' + tri.vars.x2 + ' ' + tri.vars.y2 + ' ' + tri.vars.x3 + ' ' + tri.vars.y3
+        points: '0 0 ' + tri.vars.x2 + ' ' + tri.vars.y2 + ' ' + tri.vars.x3 + ' ' + tri.vars.y3
       };
       this.transformAttribute(attr, tri);
       this.styleableAttributes(tri, attr);
@@ -7191,15 +7197,100 @@ var Render = (function () {
     value: function gridToSVG(grid, opts) {
       var attr = {};
       this.transformAttribute(attr, grid);
-
-      var groups = [];
-      _underscore2['default'].each(grid.modules, _underscore2['default'].bind(function (column) {
-        groups.push(this.objectsToSVG(column));
-      }, this));
-
+      var groups = this.objectsToSVG(grid.modules);
       if (opts && opts.debug) groups = groups.concat(this.debugGridToSVG(grid));
 
       return (0, _virtualDomVirtualHyperscriptSvg2['default'])('g', attr, _underscore2['default'].flatten(groups, true));
+    }
+
+    // Multiple attributes
+    // --------------------------------------------------
+
+  }, {
+    key: 'optionalAttributes',
+    value: function optionalAttributes(object, attr, keys) {
+      _underscore2['default'].each(keys, function (attribute, variable) {
+        if (object.vars[variable]) {
+          attr[attribute] = this.s(object.vars[variable]);
+        }
+      }, this);
+    }
+  }, {
+    key: 'sizeableAttributes',
+    value: function sizeableAttributes(object, attr) {
+      attr.width = this.s(object.vars.width);
+      attr.height = this.s(object.vars.height);
+    }
+  }, {
+    key: 'styleableAttributes',
+    value: function styleableAttributes(object, attr) {
+
+      function rgbString(col) {
+        var obj = col.rgb();
+        return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")";
+      }
+
+      if (object.vars.fill === false) attr.fill = "none";else if (object.vars.fill) {
+        attr.fill = rgbString(object.vars.fill);
+        var alpha = object.vars.fill.alpha();
+        if (alpha < 1) attr["fill-opacity"] = this.s(alpha);
+      }
+
+      if (object.vars.stroke === false) attr.stroke = "none";else if (object.vars.stroke) {
+        attr.stroke = rgbString(object.vars.stroke);
+        var alpha = object.vars.stroke.alpha();
+        if (alpha < 1) attr["stroke-opacity"] = this.s(alpha);
+      }
+
+      if (object.vars.strokeWidth) attr["stroke-width"] = this.s(object.vars.strokeWidth);
+      if (object.vars.strokeCap) attr["stroke-linecap"] = object.vars.strokeCap;
+      if (object.vars.strokeJoin) attr["stroke-linejoin"] = object.vars.strokeJoin;
+      if (object.vars.strokeMiterlimit) attr["stroke-miterlimit"] = this.s(object.vars.strokeMiterlimit);
+      if (object.vars.strokeDash) attr["stroke-dasharray"] = object.vars.strokeDash;
+      if (object.vars.strokeDashOffset) attr["stroke-dashoffset"] = this.s(object.vars.strokeDashOffset);
+    }
+
+    // Single attributes
+    // --------------------------------------------------
+
+  }, {
+    key: 'transformAttribute',
+    value: function transformAttribute(attr, shape) {
+
+      var vars = shape.vars;
+      var strings = [];
+
+      if (vars.rotation) {
+        var rot = "rotate(" + vars.rotation;
+        if (vars.rotationX || vars.rotationY) rot += " " + vars.rotationX + " " + vars.rotationY;
+        strings.push(rot + ")");
+      }
+
+      if ((shape.type == "group" || shape.type == "path" || shape.type == "polygon" || shape.type == "grid" || shape.type == "triangle") && (vars.x || vars.y)) {
+        strings.push("translate(" + vars.x + " " + vars.y + ")");
+      }
+
+      if (strings.length > 0) attr.transform = strings.join(" ").trim();
+    }
+  }, {
+    key: 'dAttribute',
+    value: function dAttribute(object, attr) {
+      attr.d = _underscore2['default'].map(object.vars.anchors, function (a) {
+
+        if (a.command == 'move') {
+          return (a.relative ? "m" : "M") + " " + [a.vec1.x, a.vec1.y].join(' ');
+        } else if (a.command == 'line') {
+          return (a.relative ? "l" : "L") + " " + [a.vec1.x, a.vec1.y].join(' ');
+        } else if (a.command == 'cubic') {
+          return (a.relative ? "c" : "C") + " " + [a.vec1.x, a.vec1.y, a.vec2.x, a.vec2.y, a.vec3.x, a.vec3.y].join(' ');
+        } else if (a.command == 'quad' && !_underscore2['default'].isUndefined(a.vec2)) {
+          return (a.relative ? "q" : "Q") + " " + [a.vec1.x, a.vec1.y, a.vec2.x, a.vec2.y].join(' ');
+        } else if (a.command == 'quad') {
+          return (a.relative ? "t" : "T") + " " + [a.vec1.x, a.vec1.y].join(' ');
+        } else if (a.command == 'close') {
+          return "Z";
+        }
+      }).join(" ").trim();
     }
 
     // Debug
@@ -7276,96 +7367,6 @@ var Render = (function () {
     value: function debugLine(x1, y1, x2, y2) {
       var l = new _shapesLine2['default'](x1, y1, x2, y2).stroke(212, 18, 229);
       return this.lineToSVG(l);
-    }
-
-    // Multiple attributes
-    // --------------------------------------------------
-
-  }, {
-    key: 'optionalAttributes',
-    value: function optionalAttributes(object, attr, keys) {
-      _underscore2['default'].each(keys, function (attribute, variable) {
-        if (object.vars[variable]) {
-          attr[attribute] = this.s(object.vars[variable]);
-        }
-      }, this);
-    }
-  }, {
-    key: 'sizeableAttributes',
-    value: function sizeableAttributes(object, attr) {
-      attr.width = this.s(object.vars.width);
-      attr.height = this.s(object.vars.height);
-    }
-  }, {
-    key: 'styleableAttributes',
-    value: function styleableAttributes(object, attr) {
-
-      function rgbString(col) {
-        var obj = col.rgb();
-        return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")";
-      }
-
-      if (object.vars.fill === false) attr.fill = "none";else if (object.vars.fill) {
-        attr.fill = rgbString(object.vars.fill);
-        var alpha = object.vars.fill.alpha();
-        if (alpha < 1) attr["fill-opacity"] = this.s(alpha);
-      }
-
-      if (object.vars.stroke === false) attr.stroke = "none";else if (object.vars.stroke) {
-        attr.stroke = rgbString(object.vars.stroke);
-        var alpha = object.vars.stroke.alpha();
-        if (alpha < 1) attr["stroke-opacity"] = this.s(alpha);
-      }
-
-      if (object.vars.strokeWidth) attr["stroke-width"] = this.s(object.vars.strokeWidth);
-      if (object.vars.strokeCap) attr["stroke-linecap"] = object.vars.strokeCap;
-      if (object.vars.strokeJoin) attr["stroke-linejoin"] = object.vars.strokeJoin;
-      if (object.vars.strokeMiterlimit) attr["stroke-miterlimit"] = this.s(object.vars.strokeMiterlimit);
-      if (object.vars.strokeDash) attr["stroke-dasharray"] = object.vars.strokeDash;
-      if (object.vars.strokeDashOffset) attr["stroke-dashoffset"] = this.s(object.vars.strokeDashOffset);
-    }
-
-    // Single attributes
-    // --------------------------------------------------
-
-  }, {
-    key: 'transformAttribute',
-    value: function transformAttribute(attr, shape) {
-
-      var vars = shape.vars;
-      var strings = [];
-
-      if (vars.rotation) {
-        var rot = "rotate(" + vars.rotation;
-        if (vars.rotationX || vars.rotationY) rot += " " + vars.rotationX + " " + vars.rotationY;
-        strings.push(rot + ")");
-      }
-
-      if ((shape.type == "group" || shape.type == "path" || shape.type == "polygon" || shape.type == "grid") && (vars.x || vars.y)) {
-        strings.push("translate(" + vars.x + " " + vars.y + ")");
-      }
-
-      if (strings.length > 0) attr.transform = strings.join(" ").trim();
-    }
-  }, {
-    key: 'dAttribute',
-    value: function dAttribute(object, attr) {
-      attr.d = _underscore2['default'].map(object.vars.anchors, function (a) {
-
-        if (a.command == 'move') {
-          return (a.relative ? "m" : "M") + " " + [a.vec1.x, a.vec1.y].join(' ');
-        } else if (a.command == 'line') {
-          return (a.relative ? "l" : "L") + " " + [a.vec1.x, a.vec1.y].join(' ');
-        } else if (a.command == 'cubic') {
-          return (a.relative ? "c" : "C") + " " + [a.vec1.x, a.vec1.y, a.vec2.x, a.vec2.y, a.vec3.x, a.vec3.y].join(' ');
-        } else if (a.command == 'quad' && !_underscore2['default'].isUndefined(a.vec2)) {
-          return (a.relative ? "q" : "Q") + " " + [a.vec1.x, a.vec1.y, a.vec2.x, a.vec2.y].join(' ');
-        } else if (a.command == 'quad') {
-          return (a.relative ? "t" : "T") + " " + [a.vec1.x, a.vec1.y].join(' ');
-        } else if (a.command == 'close') {
-          return "Z";
-        }
-      }).join(" ").trim();
     }
 
     // Helpers
@@ -8494,12 +8495,16 @@ var Triangle = (function () {
 
     this.moveable();
     this.styleable();
+
     this.vars.x = x;
     this.vars.y = y;
-    this.vars.x2 = x2;
-    this.vars.y2 = y2;
-    this.vars.x3 = x3;
-    this.vars.y3 = y3;
+
+    // Make variables relative to 0,0 as
+    // x,y will be used in transform
+    this.vars.x2 = x2 - x;
+    this.vars.y2 = y2 - y;
+    this.vars.x3 = x3 - x;
+    this.vars.y3 = y3 - y;
   }
 
   _createClass(Triangle, [{
