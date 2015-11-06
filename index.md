@@ -183,14 +183,21 @@ To make a well-designed logo requires skills in form, color, type and grid. We'l
 
 ### Assignment for next week
 
-* For next week write a Processing sketch that outputs a logo for a specific entity, that being a person, group, company, etc. If in doubt, design a logo for ITP. The logo needs to be organic, which means that it has some sort of dynamic expressions. This doesn't mean that it needs to be completely random every time you run the sketch, but it needs to be able to have a range of expressions that can easily be tweaked by changing the variables in the sketch. Bring to class a poster with the same logo printed 3 times in different expressions. For example, if you're designing a logo for ITP, you could have a variation for ITP, one for the ITP Show, and one for ITP Camp. These would look slightly different, but be the output of the same code. Think about form, color, typography and grids before you start coding, and make a strategy. Think. Again, keep it simple. You only have one week. This is a great time to find something in the real world that needs a redesign (your friends' band, a festival, [Arlington Pedriatic Center](http://lh6.ggpht.com/_hVfE2qcyzXU/TMrsVCMfiWI/AAAAAAAAA4Q/o-4G45KsrZo/s800/logo-design-fail-arlington.jpg)... you name it).
-* Read [Hackers and Painters](http://www.paulgraham.com/hp.html) by Paul Graham and [Design and the Play Instinct](http://www.reocities.com/paciunia/paulrandsbook.pdf) by Paul Rand.
+For next week write a sketch that outputs a logo for a specific entity, that being a person, group, company, etc. If in doubt, design a logo for ITP. The logo needs to be a dynamic design system. This doesn't mean that it needs to be completely random every time you run the sketch, but it needs to be able to have a range of expressions that can easily be tweaked by changing the variables in the sketch.
+
+Bring to class a poster with the same logo printed 3 times in different variations. For example, if you're designing a logo for ITP, you could have a variation for ITP, one for the ITP Show, and one for ITP Camp. Or you could a different logo for 3 different ITP show years. These would all look different, but be the output of the same code. Think about form, color, typography and grids before you start coding, and make a strategy. Think. Keep it simple. You only have one week. This is a great time to find something in the real world that needs a redesign (your friends' band, a festival, [Arlington Pedriatic Center](http://lh6.ggpht.com/_hVfE2qcyzXU/TMrsVCMfiWI/AAAAAAAAA4Q/o-4G45KsrZo/s800/logo-design-fail-arlington.jpg)... you name it).
+
 
 
 Week 8: _Midterm Presentations_
 --------------------------------
 
 This week will be midterm presentations.
+
+### Assignment for next week
+
+* Read [Hackers and Painters](http://www.paulgraham.com/hp.html) by Paul Graham
+* Read [Design and the Play Instinct](http://www.reocities.com/paciunia/paulrandsbook.pdf) by Paul Rand.
 
 
 Week 9: Randomization

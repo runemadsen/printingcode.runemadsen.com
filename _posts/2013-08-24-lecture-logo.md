@@ -36,7 +36,6 @@ A symbol that says everything about an entity in the simplest possible way.
 Dynamic Logo Examples
 ---------------------
 
-
 ### Karl Gerstner
 
 {% picture designing_programmes-b1986c73a63e5e01c8a61b9c997bedd9.jpg %}
@@ -103,12 +102,7 @@ Identity for the city of Melbourne. All variations are built around the points o
 
 {% picture function7-6c07f0b9dd15dc7ad2ef510fe054f795.jpg %}
 
-
 Here's [even](http://superserious.net/work18.html), [more](http://www.underconsideration.com/brandnew/archives/monospace_theatre.php) projects.
-
-
-Dynamic Logo Examples with Source Code
---------------------------------------
 
 
 ### Security Forum
@@ -122,14 +116,6 @@ Dynamic Logo Examples with Source Code
 {% picture security4-d6e1b55a259a2118359d062451347569.jpg %}
 
 This logo is extremely easy to recreate with sin() and cos().
-
-{% picture security_example-9d274d86a86133d07b9dc8842a8066a0.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/security)
-
-However, this code has a few problems. The biggest one is that the same dot can be picked over and over. We need to implement constraints to make the generative output a little cleaner:
-
-{% picture security_example_advanced-0cf8fa2ecd574bb5d8b79a183201cb12.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/security_advanced)
 
 
 ### The MIT Logo
@@ -154,10 +140,7 @@ Each person at MIT can get his own logo. 40,000 permutations.
 
 {% picture mit7-836f4e341915000b3019a57569a37dd6.jpg %}
 
-Here's a Processing sketch that recreates the basic output of the MIT logo. A lot of the fine-tuning is left out, but it should give you an idea.
-
-{% picture mit_example-a9f247b1f9485d4fcc0f59321bab8365.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/mit)
+{% vimeo 109891648 %}
 
 
 ### Casa de Musica
@@ -186,12 +169,10 @@ Based on the building.
 
 {% picture musica10-937d092476808925c24d99dc75bb8aa7.jpg %}
 
-Here's an example of how to approach this kind of logo in Processing:
 
-{% picture musica_example-b4d0e60882eed14d110123c88a741226.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/musica)
+### EDP logo
 
-What you'll see is that whenever you code something generative, the designer in you has to establish some kind of constraints in the code. Here the colors cannot be too similar to the background, nor should they be too similar inside the logo. Working in HSB would make it possible for you to handle the brightness if too big, small, etc.
+{% vimeo 26276388 %}
 
 
 ### Seed Media Group
@@ -207,17 +188,3 @@ Here's a dynamic identity Stefan Sagmeister made for the Seed Media Group, based
 {% picture seed4-27016ec069480fa09bb1e577e3c30d29.jpg %}
 
 {% picture seed5-dc6798f52348ba70a665e724d53237c6.jpg %}
-
-Here is the form recreated in Processing.
-
-{% picture seed_example-c9f966a67f7e4a876f6d2706e3d20e87.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/seed)
-	
-However, to grab the pixels from an image we need to know the bounds of the shape, and we can do this by creating a holder class and counting the size. We then normalize the positions and choose pixel colors from our sample image:
-
-{% picture seed_example2-d2a2ca574ca0802f1805d547bb0f174e.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/logo/seed_class)
-
-If you add a little randomness, we now have a dynamic logo.
-
-{% picture seed_examples-ceef7cd8c79247263a8f65dad98832af.jpg %}
