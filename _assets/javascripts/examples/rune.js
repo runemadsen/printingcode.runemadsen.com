@@ -794,380 +794,6 @@ Converter.prototype.getValues = function(space) {
 
 module.exports = convert;
 },{"./conversions":2}],4:[function(_dereq_,module,exports){
-/* MIT license */
-var colorNames = _dereq_('color-name');
-
-module.exports = {
-   getRgba: getRgba,
-   getHsla: getHsla,
-   getRgb: getRgb,
-   getHsl: getHsl,
-   getHwb: getHwb,
-   getAlpha: getAlpha,
-
-   hexString: hexString,
-   rgbString: rgbString,
-   rgbaString: rgbaString,
-   percentString: percentString,
-   percentaString: percentaString,
-   hslString: hslString,
-   hslaString: hslaString,
-   hwbString: hwbString,
-   keyword: keyword
-}
-
-function getRgba(string) {
-   if (!string) {
-      return;
-   }
-   var abbr =  /^#([a-fA-F0-9]{3})$/,
-       hex =  /^#([a-fA-F0-9]{6})$/,
-       rgba = /^rgba?\(\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*,\s*([+-]?\d+)\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/,
-       per = /^rgba?\(\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*,\s*([+-]?[\d\.]+)\%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)$/,
-       keyword = /(\D+)/;
-
-   var rgb = [0, 0, 0],
-       a = 1,
-       match = string.match(abbr);
-   if (match) {
-      match = match[1];
-      for (var i = 0; i < rgb.length; i++) {
-         rgb[i] = parseInt(match[i] + match[i], 16);
-      }
-   }
-   else if (match = string.match(hex)) {
-      match = match[1];
-      for (var i = 0; i < rgb.length; i++) {
-         rgb[i] = parseInt(match.slice(i * 2, i * 2 + 2), 16);
-      }
-   }
-   else if (match = string.match(rgba)) {
-      for (var i = 0; i < rgb.length; i++) {
-         rgb[i] = parseInt(match[i + 1]);
-      }
-      a = parseFloat(match[4]);
-   }
-   else if (match = string.match(per)) {
-      for (var i = 0; i < rgb.length; i++) {
-         rgb[i] = Math.round(parseFloat(match[i + 1]) * 2.55);
-      }
-      a = parseFloat(match[4]);
-   }
-   else if (match = string.match(keyword)) {
-      if (match[1] == "transparent") {
-         return [0, 0, 0, 0];
-      }
-      rgb = colorNames[match[1]];
-      if (!rgb) {
-         return;
-      }
-   }
-
-   for (var i = 0; i < rgb.length; i++) {
-      rgb[i] = scale(rgb[i], 0, 255);
-   }
-   if (!a && a != 0) {
-      a = 1;
-   }
-   else {
-      a = scale(a, 0, 1);
-   }
-   rgb[3] = a;
-   return rgb;
-}
-
-function getHsla(string) {
-   if (!string) {
-      return;
-   }
-   var hsl = /^hsla?\(\s*([+-]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
-   var match = string.match(hsl);
-   if (match) {
-      var alpha = parseFloat(match[4]);
-      var h = scale(parseInt(match[1]), 0, 360),
-          s = scale(parseFloat(match[2]), 0, 100),
-          l = scale(parseFloat(match[3]), 0, 100),
-          a = scale(isNaN(alpha) ? 1 : alpha, 0, 1);
-      return [h, s, l, a];
-   }
-}
-
-function getHwb(string) {
-   if (!string) {
-      return;
-   }
-   var hwb = /^hwb\(\s*([+-]?\d+)(?:deg)?\s*,\s*([+-]?[\d\.]+)%\s*,\s*([+-]?[\d\.]+)%\s*(?:,\s*([+-]?[\d\.]+)\s*)?\)/;
-   var match = string.match(hwb);
-   if (match) {
-    var alpha = parseFloat(match[4]);
-      var h = scale(parseInt(match[1]), 0, 360),
-          w = scale(parseFloat(match[2]), 0, 100),
-          b = scale(parseFloat(match[3]), 0, 100),
-          a = scale(isNaN(alpha) ? 1 : alpha, 0, 1);
-      return [h, w, b, a];
-   }
-}
-
-function getRgb(string) {
-   var rgba = getRgba(string);
-   return rgba && rgba.slice(0, 3);
-}
-
-function getHsl(string) {
-  var hsla = getHsla(string);
-  return hsla && hsla.slice(0, 3);
-}
-
-function getAlpha(string) {
-   var vals = getRgba(string);
-   if (vals) {
-      return vals[3];
-   }
-   else if (vals = getHsla(string)) {
-      return vals[3];
-   }
-   else if (vals = getHwb(string)) {
-      return vals[3];
-   }
-}
-
-// generators
-function hexString(rgb) {
-   return "#" + hexDouble(rgb[0]) + hexDouble(rgb[1])
-              + hexDouble(rgb[2]);
-}
-
-function rgbString(rgba, alpha) {
-   if (alpha < 1 || (rgba[3] && rgba[3] < 1)) {
-      return rgbaString(rgba, alpha);
-   }
-   return "rgb(" + rgba[0] + ", " + rgba[1] + ", " + rgba[2] + ")";
-}
-
-function rgbaString(rgba, alpha) {
-   if (alpha === undefined) {
-      alpha = (rgba[3] !== undefined ? rgba[3] : 1);
-   }
-   return "rgba(" + rgba[0] + ", " + rgba[1] + ", " + rgba[2]
-           + ", " + alpha + ")";
-}
-
-function percentString(rgba, alpha) {
-   if (alpha < 1 || (rgba[3] && rgba[3] < 1)) {
-      return percentaString(rgba, alpha);
-   }
-   var r = Math.round(rgba[0]/255 * 100),
-       g = Math.round(rgba[1]/255 * 100),
-       b = Math.round(rgba[2]/255 * 100);
-
-   return "rgb(" + r + "%, " + g + "%, " + b + "%)";
-}
-
-function percentaString(rgba, alpha) {
-   var r = Math.round(rgba[0]/255 * 100),
-       g = Math.round(rgba[1]/255 * 100),
-       b = Math.round(rgba[2]/255 * 100);
-   return "rgba(" + r + "%, " + g + "%, " + b + "%, " + (alpha || rgba[3] || 1) + ")";
-}
-
-function hslString(hsla, alpha) {
-   if (alpha < 1 || (hsla[3] && hsla[3] < 1)) {
-      return hslaString(hsla, alpha);
-   }
-   return "hsl(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%)";
-}
-
-function hslaString(hsla, alpha) {
-   if (alpha === undefined) {
-      alpha = (hsla[3] !== undefined ? hsla[3] : 1);
-   }
-   return "hsla(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%, "
-           + alpha + ")";
-}
-
-// hwb is a bit different than rgb(a) & hsl(a) since there is no alpha specific syntax
-// (hwb have alpha optional & 1 is default value)
-function hwbString(hwb, alpha) {
-   if (alpha === undefined) {
-      alpha = (hwb[3] !== undefined ? hwb[3] : 1);
-   }
-   return "hwb(" + hwb[0] + ", " + hwb[1] + "%, " + hwb[2] + "%"
-           + (alpha !== undefined && alpha !== 1 ? ", " + alpha : "") + ")";
-}
-
-function keyword(rgb) {
-  return reverseNames[rgb.slice(0, 3)];
-}
-
-// helpers
-function scale(num, min, max) {
-   return Math.min(Math.max(min, num), max);
-}
-
-function hexDouble(num) {
-  var str = num.toString(16).toUpperCase();
-  return (str.length < 2) ? "0" + str : str;
-}
-
-
-//create a list of reverse color names
-var reverseNames = {};
-for (var name in colorNames) {
-   reverseNames[colorNames[name]] = name;
-}
-
-},{"color-name":5}],5:[function(_dereq_,module,exports){
-module.exports={
-	"aliceblue": [240, 248, 255],
-	"antiquewhite": [250, 235, 215],
-	"aqua": [0, 255, 255],
-	"aquamarine": [127, 255, 212],
-	"azure": [240, 255, 255],
-	"beige": [245, 245, 220],
-	"bisque": [255, 228, 196],
-	"black": [0, 0, 0],
-	"blanchedalmond": [255, 235, 205],
-	"blue": [0, 0, 255],
-	"blueviolet": [138, 43, 226],
-	"brown": [165, 42, 42],
-	"burlywood": [222, 184, 135],
-	"cadetblue": [95, 158, 160],
-	"chartreuse": [127, 255, 0],
-	"chocolate": [210, 105, 30],
-	"coral": [255, 127, 80],
-	"cornflowerblue": [100, 149, 237],
-	"cornsilk": [255, 248, 220],
-	"crimson": [220, 20, 60],
-	"cyan": [0, 255, 255],
-	"darkblue": [0, 0, 139],
-	"darkcyan": [0, 139, 139],
-	"darkgoldenrod": [184, 134, 11],
-	"darkgray": [169, 169, 169],
-	"darkgreen": [0, 100, 0],
-	"darkgrey": [169, 169, 169],
-	"darkkhaki": [189, 183, 107],
-	"darkmagenta": [139, 0, 139],
-	"darkolivegreen": [85, 107, 47],
-	"darkorange": [255, 140, 0],
-	"darkorchid": [153, 50, 204],
-	"darkred": [139, 0, 0],
-	"darksalmon": [233, 150, 122],
-	"darkseagreen": [143, 188, 143],
-	"darkslateblue": [72, 61, 139],
-	"darkslategray": [47, 79, 79],
-	"darkslategrey": [47, 79, 79],
-	"darkturquoise": [0, 206, 209],
-	"darkviolet": [148, 0, 211],
-	"deeppink": [255, 20, 147],
-	"deepskyblue": [0, 191, 255],
-	"dimgray": [105, 105, 105],
-	"dimgrey": [105, 105, 105],
-	"dodgerblue": [30, 144, 255],
-	"firebrick": [178, 34, 34],
-	"floralwhite": [255, 250, 240],
-	"forestgreen": [34, 139, 34],
-	"fuchsia": [255, 0, 255],
-	"gainsboro": [220, 220, 220],
-	"ghostwhite": [248, 248, 255],
-	"gold": [255, 215, 0],
-	"goldenrod": [218, 165, 32],
-	"gray": [128, 128, 128],
-	"green": [0, 128, 0],
-	"greenyellow": [173, 255, 47],
-	"grey": [128, 128, 128],
-	"honeydew": [240, 255, 240],
-	"hotpink": [255, 105, 180],
-	"indianred": [205, 92, 92],
-	"indigo": [75, 0, 130],
-	"ivory": [255, 255, 240],
-	"khaki": [240, 230, 140],
-	"lavender": [230, 230, 250],
-	"lavenderblush": [255, 240, 245],
-	"lawngreen": [124, 252, 0],
-	"lemonchiffon": [255, 250, 205],
-	"lightblue": [173, 216, 230],
-	"lightcoral": [240, 128, 128],
-	"lightcyan": [224, 255, 255],
-	"lightgoldenrodyellow": [250, 250, 210],
-	"lightgray": [211, 211, 211],
-	"lightgreen": [144, 238, 144],
-	"lightgrey": [211, 211, 211],
-	"lightpink": [255, 182, 193],
-	"lightsalmon": [255, 160, 122],
-	"lightseagreen": [32, 178, 170],
-	"lightskyblue": [135, 206, 250],
-	"lightslategray": [119, 136, 153],
-	"lightslategrey": [119, 136, 153],
-	"lightsteelblue": [176, 196, 222],
-	"lightyellow": [255, 255, 224],
-	"lime": [0, 255, 0],
-	"limegreen": [50, 205, 50],
-	"linen": [250, 240, 230],
-	"magenta": [255, 0, 255],
-	"maroon": [128, 0, 0],
-	"mediumaquamarine": [102, 205, 170],
-	"mediumblue": [0, 0, 205],
-	"mediumorchid": [186, 85, 211],
-	"mediumpurple": [147, 112, 219],
-	"mediumseagreen": [60, 179, 113],
-	"mediumslateblue": [123, 104, 238],
-	"mediumspringgreen": [0, 250, 154],
-	"mediumturquoise": [72, 209, 204],
-	"mediumvioletred": [199, 21, 133],
-	"midnightblue": [25, 25, 112],
-	"mintcream": [245, 255, 250],
-	"mistyrose": [255, 228, 225],
-	"moccasin": [255, 228, 181],
-	"navajowhite": [255, 222, 173],
-	"navy": [0, 0, 128],
-	"oldlace": [253, 245, 230],
-	"olive": [128, 128, 0],
-	"olivedrab": [107, 142, 35],
-	"orange": [255, 165, 0],
-	"orangered": [255, 69, 0],
-	"orchid": [218, 112, 214],
-	"palegoldenrod": [238, 232, 170],
-	"palegreen": [152, 251, 152],
-	"paleturquoise": [175, 238, 238],
-	"palevioletred": [219, 112, 147],
-	"papayawhip": [255, 239, 213],
-	"peachpuff": [255, 218, 185],
-	"peru": [205, 133, 63],
-	"pink": [255, 192, 203],
-	"plum": [221, 160, 221],
-	"powderblue": [176, 224, 230],
-	"purple": [128, 0, 128],
-	"rebeccapurple": [102, 51, 153],
-	"red": [255, 0, 0],
-	"rosybrown": [188, 143, 143],
-	"royalblue": [65, 105, 225],
-	"saddlebrown": [139, 69, 19],
-	"salmon": [250, 128, 114],
-	"sandybrown": [244, 164, 96],
-	"seagreen": [46, 139, 87],
-	"seashell": [255, 245, 238],
-	"sienna": [160, 82, 45],
-	"silver": [192, 192, 192],
-	"skyblue": [135, 206, 235],
-	"slateblue": [106, 90, 205],
-	"slategray": [112, 128, 144],
-	"slategrey": [112, 128, 144],
-	"snow": [255, 250, 250],
-	"springgreen": [0, 255, 127],
-	"steelblue": [70, 130, 180],
-	"tan": [210, 180, 140],
-	"teal": [0, 128, 128],
-	"thistle": [216, 191, 216],
-	"tomato": [255, 99, 71],
-	"turquoise": [64, 224, 208],
-	"violet": [238, 130, 238],
-	"wheat": [245, 222, 179],
-	"white": [255, 255, 255],
-	"whitesmoke": [245, 245, 245],
-	"yellow": [255, 255, 0],
-	"yellowgreen": [154, 205, 50]
-}
-},{}],6:[function(_dereq_,module,exports){
 var baseFlatten = _dereq_('../internal/baseFlatten'),
     isIterateeCall = _dereq_('../internal/isIterateeCall');
 
@@ -1201,7 +827,7 @@ function flatten(array, isDeep, guard) {
 
 module.exports = flatten;
 
-},{"../internal/baseFlatten":25,"../internal/isIterateeCall":58}],7:[function(_dereq_,module,exports){
+},{"../internal/baseFlatten":23,"../internal/isIterateeCall":56}],5:[function(_dereq_,module,exports){
 /**
  * Gets the last element of `array`.
  *
@@ -1222,7 +848,7 @@ function last(array) {
 
 module.exports = last;
 
-},{}],8:[function(_dereq_,module,exports){
+},{}],6:[function(_dereq_,module,exports){
 var baseDifference = _dereq_('../internal/baseDifference'),
     isArrayLike = _dereq_('../internal/isArrayLike'),
     restParam = _dereq_('../function/restParam');
@@ -1251,10 +877,10 @@ var without = restParam(function(array, values) {
 
 module.exports = without;
 
-},{"../function/restParam":12,"../internal/baseDifference":23,"../internal/isArrayLike":56}],9:[function(_dereq_,module,exports){
+},{"../function/restParam":10,"../internal/baseDifference":21,"../internal/isArrayLike":54}],7:[function(_dereq_,module,exports){
 module.exports = _dereq_('./forEach');
 
-},{"./forEach":10}],10:[function(_dereq_,module,exports){
+},{"./forEach":8}],8:[function(_dereq_,module,exports){
 var arrayEach = _dereq_('../internal/arrayEach'),
     baseEach = _dereq_('../internal/baseEach'),
     createForEach = _dereq_('../internal/createForEach');
@@ -1293,7 +919,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"../internal/arrayEach":14,"../internal/baseEach":24,"../internal/createForEach":48}],11:[function(_dereq_,module,exports){
+},{"../internal/arrayEach":12,"../internal/baseEach":22,"../internal/createForEach":46}],9:[function(_dereq_,module,exports){
 var arrayMap = _dereq_('../internal/arrayMap'),
     baseCallback = _dereq_('../internal/baseCallback'),
     baseMap = _dereq_('../internal/baseMap'),
@@ -1363,7 +989,7 @@ function map(collection, iteratee, thisArg) {
 
 module.exports = map;
 
-},{"../internal/arrayMap":15,"../internal/baseCallback":21,"../internal/baseMap":33,"../lang/isArray":67}],12:[function(_dereq_,module,exports){
+},{"../internal/arrayMap":13,"../internal/baseCallback":19,"../internal/baseMap":31,"../lang/isArray":65}],10:[function(_dereq_,module,exports){
 /** Used as the `TypeError` message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
@@ -1423,7 +1049,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],13:[function(_dereq_,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 (function (global){
 var cachePush = _dereq_('./cachePush'),
     getNative = _dereq_('./getNative');
@@ -1457,7 +1083,7 @@ module.exports = SetCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./cachePush":42,"./getNative":54}],14:[function(_dereq_,module,exports){
+},{"./cachePush":40,"./getNative":52}],12:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for callback
  * shorthands and `this` binding.
@@ -1481,7 +1107,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.map` for arrays without support for callback
  * shorthands and `this` binding.
@@ -1504,7 +1130,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],16:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 /**
  * Appends the elements of `values` to `array`.
  *
@@ -1526,7 +1152,7 @@ function arrayPush(array, values) {
 
 module.exports = arrayPush;
 
-},{}],17:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 /**
  * A specialized version of `_.some` for arrays without support for callback
  * shorthands and `this` binding.
@@ -1551,7 +1177,7 @@ function arraySome(array, predicate) {
 
 module.exports = arraySome;
 
-},{}],18:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 /**
  * Used by `_.defaults` to customize its `_.assign` use.
  *
@@ -1566,7 +1192,7 @@ function assignDefaults(objectValue, sourceValue) {
 
 module.exports = assignDefaults;
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 var keys = _dereq_('../object/keys');
 
 /**
@@ -1600,7 +1226,7 @@ function assignWith(object, source, customizer) {
 
 module.exports = assignWith;
 
-},{"../object/keys":74}],20:[function(_dereq_,module,exports){
+},{"../object/keys":72}],18:[function(_dereq_,module,exports){
 var baseCopy = _dereq_('./baseCopy'),
     keys = _dereq_('../object/keys');
 
@@ -1621,7 +1247,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"../object/keys":74,"./baseCopy":22}],21:[function(_dereq_,module,exports){
+},{"../object/keys":72,"./baseCopy":20}],19:[function(_dereq_,module,exports){
 var baseMatches = _dereq_('./baseMatches'),
     baseMatchesProperty = _dereq_('./baseMatchesProperty'),
     bindCallback = _dereq_('./bindCallback'),
@@ -1658,7 +1284,7 @@ function baseCallback(func, thisArg, argCount) {
 
 module.exports = baseCallback;
 
-},{"../utility/identity":77,"../utility/property":78,"./baseMatches":34,"./baseMatchesProperty":35,"./bindCallback":40}],22:[function(_dereq_,module,exports){
+},{"../utility/identity":75,"../utility/property":76,"./baseMatches":32,"./baseMatchesProperty":33,"./bindCallback":38}],20:[function(_dereq_,module,exports){
 /**
  * Copies properties of `source` to `object`.
  *
@@ -1683,7 +1309,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 var baseIndexOf = _dereq_('./baseIndexOf'),
     cacheIndexOf = _dereq_('./cacheIndexOf'),
     createCache = _dereq_('./createCache');
@@ -1740,7 +1366,7 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"./baseIndexOf":29,"./cacheIndexOf":41,"./createCache":46}],24:[function(_dereq_,module,exports){
+},{"./baseIndexOf":27,"./cacheIndexOf":39,"./createCache":44}],22:[function(_dereq_,module,exports){
 var baseForOwn = _dereq_('./baseForOwn'),
     createBaseEach = _dereq_('./createBaseEach');
 
@@ -1757,7 +1383,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./baseForOwn":27,"./createBaseEach":44}],25:[function(_dereq_,module,exports){
+},{"./baseForOwn":25,"./createBaseEach":42}],23:[function(_dereq_,module,exports){
 var arrayPush = _dereq_('./arrayPush'),
     isArguments = _dereq_('../lang/isArguments'),
     isArray = _dereq_('../lang/isArray'),
@@ -1800,7 +1426,7 @@ function baseFlatten(array, isDeep, isStrict, result) {
 
 module.exports = baseFlatten;
 
-},{"../lang/isArguments":66,"../lang/isArray":67,"./arrayPush":16,"./isArrayLike":56,"./isObjectLike":61}],26:[function(_dereq_,module,exports){
+},{"../lang/isArguments":64,"../lang/isArray":65,"./arrayPush":14,"./isArrayLike":54,"./isObjectLike":59}],24:[function(_dereq_,module,exports){
 var createBaseFor = _dereq_('./createBaseFor');
 
 /**
@@ -1819,7 +1445,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./createBaseFor":45}],27:[function(_dereq_,module,exports){
+},{"./createBaseFor":43}],25:[function(_dereq_,module,exports){
 var baseFor = _dereq_('./baseFor'),
     keys = _dereq_('../object/keys');
 
@@ -1838,7 +1464,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":74,"./baseFor":26}],28:[function(_dereq_,module,exports){
+},{"../object/keys":72,"./baseFor":24}],26:[function(_dereq_,module,exports){
 var toObject = _dereq_('./toObject');
 
 /**
@@ -1869,7 +1495,7 @@ function baseGet(object, path, pathKey) {
 
 module.exports = baseGet;
 
-},{"./toObject":64}],29:[function(_dereq_,module,exports){
+},{"./toObject":62}],27:[function(_dereq_,module,exports){
 var indexOfNaN = _dereq_('./indexOfNaN');
 
 /**
@@ -1898,7 +1524,7 @@ function baseIndexOf(array, value, fromIndex) {
 
 module.exports = baseIndexOf;
 
-},{"./indexOfNaN":55}],30:[function(_dereq_,module,exports){
+},{"./indexOfNaN":53}],28:[function(_dereq_,module,exports){
 var baseIsEqualDeep = _dereq_('./baseIsEqualDeep'),
     isObject = _dereq_('../lang/isObject'),
     isObjectLike = _dereq_('./isObjectLike');
@@ -1928,7 +1554,7 @@ function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"../lang/isObject":70,"./baseIsEqualDeep":31,"./isObjectLike":61}],31:[function(_dereq_,module,exports){
+},{"../lang/isObject":68,"./baseIsEqualDeep":29,"./isObjectLike":59}],29:[function(_dereq_,module,exports){
 var equalArrays = _dereq_('./equalArrays'),
     equalByTag = _dereq_('./equalByTag'),
     equalObjects = _dereq_('./equalObjects'),
@@ -2032,7 +1658,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":67,"../lang/isTypedArray":71,"./equalArrays":49,"./equalByTag":50,"./equalObjects":51}],32:[function(_dereq_,module,exports){
+},{"../lang/isArray":65,"../lang/isTypedArray":69,"./equalArrays":47,"./equalByTag":48,"./equalObjects":49}],30:[function(_dereq_,module,exports){
 var baseIsEqual = _dereq_('./baseIsEqual'),
     toObject = _dereq_('./toObject');
 
@@ -2086,7 +1712,7 @@ function baseIsMatch(object, matchData, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./baseIsEqual":30,"./toObject":64}],33:[function(_dereq_,module,exports){
+},{"./baseIsEqual":28,"./toObject":62}],31:[function(_dereq_,module,exports){
 var baseEach = _dereq_('./baseEach'),
     isArrayLike = _dereq_('./isArrayLike');
 
@@ -2111,7 +1737,7 @@ function baseMap(collection, iteratee) {
 
 module.exports = baseMap;
 
-},{"./baseEach":24,"./isArrayLike":56}],34:[function(_dereq_,module,exports){
+},{"./baseEach":22,"./isArrayLike":54}],32:[function(_dereq_,module,exports){
 var baseIsMatch = _dereq_('./baseIsMatch'),
     getMatchData = _dereq_('./getMatchData'),
     toObject = _dereq_('./toObject');
@@ -2143,7 +1769,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"./baseIsMatch":32,"./getMatchData":53,"./toObject":64}],35:[function(_dereq_,module,exports){
+},{"./baseIsMatch":30,"./getMatchData":51,"./toObject":62}],33:[function(_dereq_,module,exports){
 var baseGet = _dereq_('./baseGet'),
     baseIsEqual = _dereq_('./baseIsEqual'),
     baseSlice = _dereq_('./baseSlice'),
@@ -2190,7 +1816,7 @@ function baseMatchesProperty(path, srcValue) {
 
 module.exports = baseMatchesProperty;
 
-},{"../array/last":7,"../lang/isArray":67,"./baseGet":28,"./baseIsEqual":30,"./baseSlice":38,"./isKey":59,"./isStrictComparable":62,"./toObject":64,"./toPath":65}],36:[function(_dereq_,module,exports){
+},{"../array/last":5,"../lang/isArray":65,"./baseGet":26,"./baseIsEqual":28,"./baseSlice":36,"./isKey":57,"./isStrictComparable":60,"./toObject":62,"./toPath":63}],34:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.property` without support for deep paths.
  *
@@ -2206,7 +1832,7 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],37:[function(_dereq_,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 var baseGet = _dereq_('./baseGet'),
     toPath = _dereq_('./toPath');
 
@@ -2227,7 +1853,7 @@ function basePropertyDeep(path) {
 
 module.exports = basePropertyDeep;
 
-},{"./baseGet":28,"./toPath":65}],38:[function(_dereq_,module,exports){
+},{"./baseGet":26,"./toPath":63}],36:[function(_dereq_,module,exports){
 /**
  * The base implementation of `_.slice` without an iteratee call guard.
  *
@@ -2261,7 +1887,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],39:[function(_dereq_,module,exports){
+},{}],37:[function(_dereq_,module,exports){
 /**
  * Converts `value` to a string if it's not one. An empty string is returned
  * for `null` or `undefined` values.
@@ -2276,7 +1902,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],40:[function(_dereq_,module,exports){
+},{}],38:[function(_dereq_,module,exports){
 var identity = _dereq_('../utility/identity');
 
 /**
@@ -2317,7 +1943,7 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":77}],41:[function(_dereq_,module,exports){
+},{"../utility/identity":75}],39:[function(_dereq_,module,exports){
 var isObject = _dereq_('../lang/isObject');
 
 /**
@@ -2338,7 +1964,7 @@ function cacheIndexOf(cache, value) {
 
 module.exports = cacheIndexOf;
 
-},{"../lang/isObject":70}],42:[function(_dereq_,module,exports){
+},{"../lang/isObject":68}],40:[function(_dereq_,module,exports){
 var isObject = _dereq_('../lang/isObject');
 
 /**
@@ -2360,7 +1986,7 @@ function cachePush(value) {
 
 module.exports = cachePush;
 
-},{"../lang/isObject":70}],43:[function(_dereq_,module,exports){
+},{"../lang/isObject":68}],41:[function(_dereq_,module,exports){
 var bindCallback = _dereq_('./bindCallback'),
     isIterateeCall = _dereq_('./isIterateeCall'),
     restParam = _dereq_('../function/restParam');
@@ -2403,7 +2029,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"../function/restParam":12,"./bindCallback":40,"./isIterateeCall":58}],44:[function(_dereq_,module,exports){
+},{"../function/restParam":10,"./bindCallback":38,"./isIterateeCall":56}],42:[function(_dereq_,module,exports){
 var getLength = _dereq_('./getLength'),
     isLength = _dereq_('./isLength'),
     toObject = _dereq_('./toObject');
@@ -2436,7 +2062,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./getLength":52,"./isLength":60,"./toObject":64}],45:[function(_dereq_,module,exports){
+},{"./getLength":50,"./isLength":58,"./toObject":62}],43:[function(_dereq_,module,exports){
 var toObject = _dereq_('./toObject');
 
 /**
@@ -2465,7 +2091,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{"./toObject":64}],46:[function(_dereq_,module,exports){
+},{"./toObject":62}],44:[function(_dereq_,module,exports){
 (function (global){
 var SetCache = _dereq_('./SetCache'),
     getNative = _dereq_('./getNative');
@@ -2491,7 +2117,7 @@ module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./SetCache":13,"./getNative":54}],47:[function(_dereq_,module,exports){
+},{"./SetCache":11,"./getNative":52}],45:[function(_dereq_,module,exports){
 var restParam = _dereq_('../function/restParam');
 
 /**
@@ -2515,7 +2141,7 @@ function createDefaults(assigner, customizer) {
 
 module.exports = createDefaults;
 
-},{"../function/restParam":12}],48:[function(_dereq_,module,exports){
+},{"../function/restParam":10}],46:[function(_dereq_,module,exports){
 var bindCallback = _dereq_('./bindCallback'),
     isArray = _dereq_('../lang/isArray');
 
@@ -2537,7 +2163,7 @@ function createForEach(arrayFunc, eachFunc) {
 
 module.exports = createForEach;
 
-},{"../lang/isArray":67,"./bindCallback":40}],49:[function(_dereq_,module,exports){
+},{"../lang/isArray":65,"./bindCallback":38}],47:[function(_dereq_,module,exports){
 var arraySome = _dereq_('./arraySome');
 
 /**
@@ -2590,7 +2216,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
 
 module.exports = equalArrays;
 
-},{"./arraySome":17}],50:[function(_dereq_,module,exports){
+},{"./arraySome":15}],48:[function(_dereq_,module,exports){
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -2640,7 +2266,7 @@ function equalByTag(object, other, tag) {
 
 module.exports = equalByTag;
 
-},{}],51:[function(_dereq_,module,exports){
+},{}],49:[function(_dereq_,module,exports){
 var keys = _dereq_('../object/keys');
 
 /** Used for native method references. */
@@ -2709,7 +2335,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":74}],52:[function(_dereq_,module,exports){
+},{"../object/keys":72}],50:[function(_dereq_,module,exports){
 var baseProperty = _dereq_('./baseProperty');
 
 /**
@@ -2726,7 +2352,7 @@ var getLength = baseProperty('length');
 
 module.exports = getLength;
 
-},{"./baseProperty":36}],53:[function(_dereq_,module,exports){
+},{"./baseProperty":34}],51:[function(_dereq_,module,exports){
 var isStrictComparable = _dereq_('./isStrictComparable'),
     pairs = _dereq_('../object/pairs');
 
@@ -2749,7 +2375,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"../object/pairs":76,"./isStrictComparable":62}],54:[function(_dereq_,module,exports){
+},{"../object/pairs":74,"./isStrictComparable":60}],52:[function(_dereq_,module,exports){
 var isNative = _dereq_('../lang/isNative');
 
 /**
@@ -2767,7 +2393,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"../lang/isNative":69}],55:[function(_dereq_,module,exports){
+},{"../lang/isNative":67}],53:[function(_dereq_,module,exports){
 /**
  * Gets the index at which the first occurrence of `NaN` is found in `array`.
  *
@@ -2792,7 +2418,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = indexOfNaN;
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],54:[function(_dereq_,module,exports){
 var getLength = _dereq_('./getLength'),
     isLength = _dereq_('./isLength');
 
@@ -2809,7 +2435,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./getLength":52,"./isLength":60}],57:[function(_dereq_,module,exports){
+},{"./getLength":50,"./isLength":58}],55:[function(_dereq_,module,exports){
 /** Used to detect unsigned integer values. */
 var reIsUint = /^\d+$/;
 
@@ -2835,7 +2461,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],58:[function(_dereq_,module,exports){
+},{}],56:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('./isArrayLike'),
     isIndex = _dereq_('./isIndex'),
     isObject = _dereq_('../lang/isObject');
@@ -2865,7 +2491,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":70,"./isArrayLike":56,"./isIndex":57}],59:[function(_dereq_,module,exports){
+},{"../lang/isObject":68,"./isArrayLike":54,"./isIndex":55}],57:[function(_dereq_,module,exports){
 var isArray = _dereq_('../lang/isArray'),
     toObject = _dereq_('./toObject');
 
@@ -2895,7 +2521,7 @@ function isKey(value, object) {
 
 module.exports = isKey;
 
-},{"../lang/isArray":67,"./toObject":64}],60:[function(_dereq_,module,exports){
+},{"../lang/isArray":65,"./toObject":62}],58:[function(_dereq_,module,exports){
 /**
  * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
  * of an array-like value.
@@ -2917,7 +2543,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],61:[function(_dereq_,module,exports){
+},{}],59:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is object-like.
  *
@@ -2931,7 +2557,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],62:[function(_dereq_,module,exports){
+},{}],60:[function(_dereq_,module,exports){
 var isObject = _dereq_('../lang/isObject');
 
 /**
@@ -2948,7 +2574,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":70}],63:[function(_dereq_,module,exports){
+},{"../lang/isObject":68}],61:[function(_dereq_,module,exports){
 var isArguments = _dereq_('../lang/isArguments'),
     isArray = _dereq_('../lang/isArray'),
     isIndex = _dereq_('./isIndex'),
@@ -2991,7 +2617,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":66,"../lang/isArray":67,"../object/keysIn":75,"./isIndex":57,"./isLength":60}],64:[function(_dereq_,module,exports){
+},{"../lang/isArguments":64,"../lang/isArray":65,"../object/keysIn":73,"./isIndex":55,"./isLength":58}],62:[function(_dereq_,module,exports){
 var isObject = _dereq_('../lang/isObject');
 
 /**
@@ -3007,7 +2633,7 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":70}],65:[function(_dereq_,module,exports){
+},{"../lang/isObject":68}],63:[function(_dereq_,module,exports){
 var baseToString = _dereq_('./baseToString'),
     isArray = _dereq_('../lang/isArray');
 
@@ -3037,7 +2663,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"../lang/isArray":67,"./baseToString":39}],66:[function(_dereq_,module,exports){
+},{"../lang/isArray":65,"./baseToString":37}],64:[function(_dereq_,module,exports){
 var isArrayLike = _dereq_('../internal/isArrayLike'),
     isObjectLike = _dereq_('../internal/isObjectLike');
 
@@ -3073,7 +2699,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{"../internal/isArrayLike":56,"../internal/isObjectLike":61}],67:[function(_dereq_,module,exports){
+},{"../internal/isArrayLike":54,"../internal/isObjectLike":59}],65:[function(_dereq_,module,exports){
 var getNative = _dereq_('../internal/getNative'),
     isLength = _dereq_('../internal/isLength'),
     isObjectLike = _dereq_('../internal/isObjectLike');
@@ -3115,7 +2741,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internal/getNative":54,"../internal/isLength":60,"../internal/isObjectLike":61}],68:[function(_dereq_,module,exports){
+},{"../internal/getNative":52,"../internal/isLength":58,"../internal/isObjectLike":59}],66:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject');
 
 /** `Object#toString` result references. */
@@ -3155,7 +2781,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./isObject":70}],69:[function(_dereq_,module,exports){
+},{"./isObject":68}],67:[function(_dereq_,module,exports){
 var isFunction = _dereq_('./isFunction'),
     isObjectLike = _dereq_('../internal/isObjectLike');
 
@@ -3205,7 +2831,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":61,"./isFunction":68}],70:[function(_dereq_,module,exports){
+},{"../internal/isObjectLike":59,"./isFunction":66}],68:[function(_dereq_,module,exports){
 /**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -3235,7 +2861,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],71:[function(_dereq_,module,exports){
+},{}],69:[function(_dereq_,module,exports){
 var isLength = _dereq_('../internal/isLength'),
     isObjectLike = _dereq_('../internal/isObjectLike');
 
@@ -3311,7 +2937,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":60,"../internal/isObjectLike":61}],72:[function(_dereq_,module,exports){
+},{"../internal/isLength":58,"../internal/isObjectLike":59}],70:[function(_dereq_,module,exports){
 var assignWith = _dereq_('../internal/assignWith'),
     baseAssign = _dereq_('../internal/baseAssign'),
     createAssigner = _dereq_('../internal/createAssigner');
@@ -3356,7 +2982,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"../internal/assignWith":19,"../internal/baseAssign":20,"../internal/createAssigner":43}],73:[function(_dereq_,module,exports){
+},{"../internal/assignWith":17,"../internal/baseAssign":18,"../internal/createAssigner":41}],71:[function(_dereq_,module,exports){
 var assign = _dereq_('./assign'),
     assignDefaults = _dereq_('../internal/assignDefaults'),
     createDefaults = _dereq_('../internal/createDefaults');
@@ -3383,7 +3009,7 @@ var defaults = createDefaults(assign, assignDefaults);
 
 module.exports = defaults;
 
-},{"../internal/assignDefaults":18,"../internal/createDefaults":47,"./assign":72}],74:[function(_dereq_,module,exports){
+},{"../internal/assignDefaults":16,"../internal/createDefaults":45,"./assign":70}],72:[function(_dereq_,module,exports){
 var getNative = _dereq_('../internal/getNative'),
     isArrayLike = _dereq_('../internal/isArrayLike'),
     isObject = _dereq_('../lang/isObject'),
@@ -3430,7 +3056,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/getNative":54,"../internal/isArrayLike":56,"../internal/shimKeys":63,"../lang/isObject":70}],75:[function(_dereq_,module,exports){
+},{"../internal/getNative":52,"../internal/isArrayLike":54,"../internal/shimKeys":61,"../lang/isObject":68}],73:[function(_dereq_,module,exports){
 var isArguments = _dereq_('../lang/isArguments'),
     isArray = _dereq_('../lang/isArray'),
     isIndex = _dereq_('../internal/isIndex'),
@@ -3496,7 +3122,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":57,"../internal/isLength":60,"../lang/isArguments":66,"../lang/isArray":67,"../lang/isObject":70}],76:[function(_dereq_,module,exports){
+},{"../internal/isIndex":55,"../internal/isLength":58,"../lang/isArguments":64,"../lang/isArray":65,"../lang/isObject":68}],74:[function(_dereq_,module,exports){
 var keys = _dereq_('./keys'),
     toObject = _dereq_('../internal/toObject');
 
@@ -3531,7 +3157,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"../internal/toObject":64,"./keys":74}],77:[function(_dereq_,module,exports){
+},{"../internal/toObject":62,"./keys":72}],75:[function(_dereq_,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -3553,7 +3179,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],78:[function(_dereq_,module,exports){
+},{}],76:[function(_dereq_,module,exports){
 var baseProperty = _dereq_('../internal/baseProperty'),
     basePropertyDeep = _dereq_('../internal/basePropertyDeep'),
     isKey = _dereq_('../internal/isKey');
@@ -3586,22 +3212,22 @@ function property(path) {
 
 module.exports = property;
 
-},{"../internal/baseProperty":36,"../internal/basePropertyDeep":37,"../internal/isKey":59}],79:[function(_dereq_,module,exports){
+},{"../internal/baseProperty":34,"../internal/basePropertyDeep":35,"../internal/isKey":57}],77:[function(_dereq_,module,exports){
 var createElement = _dereq_("./vdom/create-element.js")
 
 module.exports = createElement
 
-},{"./vdom/create-element.js":91}],80:[function(_dereq_,module,exports){
+},{"./vdom/create-element.js":89}],78:[function(_dereq_,module,exports){
 var diff = _dereq_("./vtree/diff.js")
 
 module.exports = diff
 
-},{"./vtree/diff.js":114}],81:[function(_dereq_,module,exports){
+},{"./vtree/diff.js":112}],79:[function(_dereq_,module,exports){
 var h = _dereq_("./virtual-hyperscript/index.js")
 
 module.exports = h
 
-},{"./virtual-hyperscript/index.js":99}],82:[function(_dereq_,module,exports){
+},{"./virtual-hyperscript/index.js":97}],80:[function(_dereq_,module,exports){
 /*!
  * Cross-Browser Split 1.1.1
  * Copyright 2007-2012 Steven Levithan <stevenlevithan.com>
@@ -3709,7 +3335,7 @@ module.exports = (function split(undef) {
   return self;
 })();
 
-},{}],83:[function(_dereq_,module,exports){
+},{}],81:[function(_dereq_,module,exports){
 'use strict';
 
 var OneVersionConstraint = _dereq_('individual/one-version');
@@ -3731,7 +3357,7 @@ function EvStore(elem) {
     return hash;
 }
 
-},{"individual/one-version":85}],84:[function(_dereq_,module,exports){
+},{"individual/one-version":83}],82:[function(_dereq_,module,exports){
 (function (global){
 'use strict';
 
@@ -3755,7 +3381,7 @@ function Individual(key, value) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],85:[function(_dereq_,module,exports){
+},{}],83:[function(_dereq_,module,exports){
 'use strict';
 
 var Individual = _dereq_('./index.js');
@@ -3779,7 +3405,7 @@ function OneVersion(moduleName, version, defaultValue) {
     return Individual(key, defaultValue);
 }
 
-},{"./index.js":84}],86:[function(_dereq_,module,exports){
+},{"./index.js":82}],84:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -3799,14 +3425,14 @@ if (typeof document !== 'undefined') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"min-document":1}],87:[function(_dereq_,module,exports){
+},{"min-document":1}],85:[function(_dereq_,module,exports){
 "use strict";
 
 module.exports = function isObject(x) {
 	return typeof x === "object" && x !== null;
 };
 
-},{}],88:[function(_dereq_,module,exports){
+},{}],86:[function(_dereq_,module,exports){
 var nativeIsArray = Array.isArray
 var toString = Object.prototype.toString
 
@@ -3816,12 +3442,12 @@ function isArray(obj) {
     return toString.call(obj) === "[object Array]"
 }
 
-},{}],89:[function(_dereq_,module,exports){
+},{}],87:[function(_dereq_,module,exports){
 var patch = _dereq_("./vdom/patch.js")
 
 module.exports = patch
 
-},{"./vdom/patch.js":94}],90:[function(_dereq_,module,exports){
+},{"./vdom/patch.js":92}],88:[function(_dereq_,module,exports){
 var isObject = _dereq_("is-object")
 var isHook = _dereq_("../vnode/is-vhook.js")
 
@@ -3920,7 +3546,7 @@ function getPrototype(value) {
     }
 }
 
-},{"../vnode/is-vhook.js":105,"is-object":87}],91:[function(_dereq_,module,exports){
+},{"../vnode/is-vhook.js":103,"is-object":85}],89:[function(_dereq_,module,exports){
 var document = _dereq_("global/document")
 
 var applyProperties = _dereq_("./apply-properties")
@@ -3968,7 +3594,7 @@ function createElement(vnode, opts) {
     return node
 }
 
-},{"../vnode/handle-thunk.js":103,"../vnode/is-vnode.js":106,"../vnode/is-vtext.js":107,"../vnode/is-widget.js":108,"./apply-properties":90,"global/document":86}],92:[function(_dereq_,module,exports){
+},{"../vnode/handle-thunk.js":101,"../vnode/is-vnode.js":104,"../vnode/is-vtext.js":105,"../vnode/is-widget.js":106,"./apply-properties":88,"global/document":84}],90:[function(_dereq_,module,exports){
 // Maps a virtual DOM tree onto a real DOM tree in an efficient manner.
 // We don't want to read all of the DOM nodes in the tree so we use
 // the in-order tree indexing to eliminate recursion down certain branches.
@@ -4055,7 +3681,7 @@ function ascending(a, b) {
     return a > b ? 1 : -1
 }
 
-},{}],93:[function(_dereq_,module,exports){
+},{}],91:[function(_dereq_,module,exports){
 var applyProperties = _dereq_("./apply-properties")
 
 var isWidget = _dereq_("../vnode/is-widget.js")
@@ -4208,7 +3834,7 @@ function replaceRoot(oldRoot, newRoot) {
     return newRoot;
 }
 
-},{"../vnode/is-widget.js":108,"../vnode/vpatch.js":111,"./apply-properties":90,"./update-widget":95}],94:[function(_dereq_,module,exports){
+},{"../vnode/is-widget.js":106,"../vnode/vpatch.js":109,"./apply-properties":88,"./update-widget":93}],92:[function(_dereq_,module,exports){
 var document = _dereq_("global/document")
 var isArray = _dereq_("x-is-array")
 
@@ -4290,7 +3916,7 @@ function patchIndices(patches) {
     return indices
 }
 
-},{"./create-element":91,"./dom-index":92,"./patch-op":93,"global/document":86,"x-is-array":88}],95:[function(_dereq_,module,exports){
+},{"./create-element":89,"./dom-index":90,"./patch-op":91,"global/document":84,"x-is-array":86}],93:[function(_dereq_,module,exports){
 var isWidget = _dereq_("../vnode/is-widget.js")
 
 module.exports = updateWidget
@@ -4307,7 +3933,7 @@ function updateWidget(a, b) {
     return false
 }
 
-},{"../vnode/is-widget.js":108}],96:[function(_dereq_,module,exports){
+},{"../vnode/is-widget.js":106}],94:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = AttributeHook;
@@ -4344,7 +3970,7 @@ AttributeHook.prototype.unhook = function (node, prop, next) {
 
 AttributeHook.prototype.type = 'AttributeHook';
 
-},{}],97:[function(_dereq_,module,exports){
+},{}],95:[function(_dereq_,module,exports){
 'use strict';
 
 var EvStore = _dereq_('ev-store');
@@ -4373,7 +3999,7 @@ EvHook.prototype.unhook = function(node, propertyName) {
     es[propName] = undefined;
 };
 
-},{"ev-store":83}],98:[function(_dereq_,module,exports){
+},{"ev-store":81}],96:[function(_dereq_,module,exports){
 'use strict';
 
 module.exports = SoftSetHook;
@@ -4392,7 +4018,7 @@ SoftSetHook.prototype.hook = function (node, propertyName) {
     }
 };
 
-},{}],99:[function(_dereq_,module,exports){
+},{}],97:[function(_dereq_,module,exports){
 'use strict';
 
 var isArray = _dereq_('x-is-array');
@@ -4531,7 +4157,7 @@ function errorString(obj) {
     }
 }
 
-},{"../vnode/is-thunk":104,"../vnode/is-vhook":105,"../vnode/is-vnode":106,"../vnode/is-vtext":107,"../vnode/is-widget":108,"../vnode/vnode.js":110,"../vnode/vtext.js":112,"./hooks/ev-hook.js":97,"./hooks/soft-set-hook.js":98,"./parse-tag.js":100,"x-is-array":88}],100:[function(_dereq_,module,exports){
+},{"../vnode/is-thunk":102,"../vnode/is-vhook":103,"../vnode/is-vnode":104,"../vnode/is-vtext":105,"../vnode/is-widget":106,"../vnode/vnode.js":108,"../vnode/vtext.js":110,"./hooks/ev-hook.js":95,"./hooks/soft-set-hook.js":96,"./parse-tag.js":98,"x-is-array":86}],98:[function(_dereq_,module,exports){
 'use strict';
 
 var split = _dereq_('browser-split');
@@ -4587,7 +4213,7 @@ function parseTag(tag, props) {
     return props.namespace ? tagName : tagName.toUpperCase();
 }
 
-},{"browser-split":82}],101:[function(_dereq_,module,exports){
+},{"browser-split":80}],99:[function(_dereq_,module,exports){
 'use strict';
 
 var DEFAULT_NAMESPACE = null;
@@ -4902,7 +4528,7 @@ function SVGAttributeNamespace(value) {
   }
 }
 
-},{}],102:[function(_dereq_,module,exports){
+},{}],100:[function(_dereq_,module,exports){
 'use strict';
 
 var isArray = _dereq_('x-is-array');
@@ -4966,7 +4592,7 @@ function isChildren(x) {
     return typeof x === 'string' || isArray(x);
 }
 
-},{"./hooks/attribute-hook":96,"./index.js":99,"./svg-attribute-namespace":101,"x-is-array":88}],103:[function(_dereq_,module,exports){
+},{"./hooks/attribute-hook":94,"./index.js":97,"./svg-attribute-namespace":99,"x-is-array":86}],101:[function(_dereq_,module,exports){
 var isVNode = _dereq_("./is-vnode")
 var isVText = _dereq_("./is-vtext")
 var isWidget = _dereq_("./is-widget")
@@ -5008,14 +4634,14 @@ function renderThunk(thunk, previous) {
     return renderedThunk
 }
 
-},{"./is-thunk":104,"./is-vnode":106,"./is-vtext":107,"./is-widget":108}],104:[function(_dereq_,module,exports){
+},{"./is-thunk":102,"./is-vnode":104,"./is-vtext":105,"./is-widget":106}],102:[function(_dereq_,module,exports){
 module.exports = isThunk
 
 function isThunk(t) {
     return t && t.type === "Thunk"
 }
 
-},{}],105:[function(_dereq_,module,exports){
+},{}],103:[function(_dereq_,module,exports){
 module.exports = isHook
 
 function isHook(hook) {
@@ -5024,7 +4650,7 @@ function isHook(hook) {
        typeof hook.unhook === "function" && !hook.hasOwnProperty("unhook"))
 }
 
-},{}],106:[function(_dereq_,module,exports){
+},{}],104:[function(_dereq_,module,exports){
 var version = _dereq_("./version")
 
 module.exports = isVirtualNode
@@ -5033,7 +4659,7 @@ function isVirtualNode(x) {
     return x && x.type === "VirtualNode" && x.version === version
 }
 
-},{"./version":109}],107:[function(_dereq_,module,exports){
+},{"./version":107}],105:[function(_dereq_,module,exports){
 var version = _dereq_("./version")
 
 module.exports = isVirtualText
@@ -5042,17 +4668,17 @@ function isVirtualText(x) {
     return x && x.type === "VirtualText" && x.version === version
 }
 
-},{"./version":109}],108:[function(_dereq_,module,exports){
+},{"./version":107}],106:[function(_dereq_,module,exports){
 module.exports = isWidget
 
 function isWidget(w) {
     return w && w.type === "Widget"
 }
 
-},{}],109:[function(_dereq_,module,exports){
+},{}],107:[function(_dereq_,module,exports){
 module.exports = "2"
 
-},{}],110:[function(_dereq_,module,exports){
+},{}],108:[function(_dereq_,module,exports){
 var version = _dereq_("./version")
 var isVNode = _dereq_("./is-vnode")
 var isWidget = _dereq_("./is-widget")
@@ -5126,7 +4752,7 @@ function VirtualNode(tagName, properties, children, key, namespace) {
 VirtualNode.prototype.version = version
 VirtualNode.prototype.type = "VirtualNode"
 
-},{"./is-thunk":104,"./is-vhook":105,"./is-vnode":106,"./is-widget":108,"./version":109}],111:[function(_dereq_,module,exports){
+},{"./is-thunk":102,"./is-vhook":103,"./is-vnode":104,"./is-widget":106,"./version":107}],109:[function(_dereq_,module,exports){
 var version = _dereq_("./version")
 
 VirtualPatch.NONE = 0
@@ -5150,7 +4776,7 @@ function VirtualPatch(type, vNode, patch) {
 VirtualPatch.prototype.version = version
 VirtualPatch.prototype.type = "VirtualPatch"
 
-},{"./version":109}],112:[function(_dereq_,module,exports){
+},{"./version":107}],110:[function(_dereq_,module,exports){
 var version = _dereq_("./version")
 
 module.exports = VirtualText
@@ -5162,7 +4788,7 @@ function VirtualText(text) {
 VirtualText.prototype.version = version
 VirtualText.prototype.type = "VirtualText"
 
-},{"./version":109}],113:[function(_dereq_,module,exports){
+},{"./version":107}],111:[function(_dereq_,module,exports){
 var isObject = _dereq_("is-object")
 var isHook = _dereq_("../vnode/is-vhook")
 
@@ -5222,7 +4848,7 @@ function getPrototype(value) {
   }
 }
 
-},{"../vnode/is-vhook":105,"is-object":87}],114:[function(_dereq_,module,exports){
+},{"../vnode/is-vhook":103,"is-object":85}],112:[function(_dereq_,module,exports){
 var isArray = _dereq_("x-is-array")
 
 var VPatch = _dereq_("../vnode/vpatch")
@@ -5651,7 +5277,7 @@ function appendPatch(apply, patch) {
     }
 }
 
-},{"../vnode/handle-thunk":103,"../vnode/is-thunk":104,"../vnode/is-vnode":106,"../vnode/is-vtext":107,"../vnode/is-widget":108,"../vnode/vpatch":111,"./diff-props":113,"x-is-array":88}],115:[function(_dereq_,module,exports){
+},{"../vnode/handle-thunk":101,"../vnode/is-thunk":102,"../vnode/is-vnode":104,"../vnode/is-vtext":105,"../vnode/is-widget":106,"../vnode/vpatch":109,"./diff-props":111,"x-is-array":86}],113:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -5693,6 +5319,15 @@ var Anchor = (function () {
       if (a.vec1) a.vec1 = a.vec1.sub(vec);
       if (a.vec2) a.vec2 = a.vec2.sub(vec);
       if (a.vec3) a.vec3 = a.vec3.sub(vec);
+      return a;
+    }
+  }, {
+    key: "multiply",
+    value: function multiply(scalar) {
+      var a = this.copy();
+      if (a.vec1) a.vec1 = a.vec1.multiply(scalar);
+      if (a.vec2) a.vec2 = a.vec2.multiply(scalar);
+      if (a.vec3) a.vec3 = a.vec3.multiply(scalar);
       return a;
     }
   }, {
@@ -5790,7 +5425,7 @@ var Anchor = (function () {
 
 exports.default = Anchor;
 
-},{"./bezier":116,"./vector":133}],116:[function(_dereq_,module,exports){
+},{"./bezier":114,"./vector":131}],114:[function(_dereq_,module,exports){
 "use strict";
 
 function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -6042,7 +5677,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
   module.exports = Bezier;
 })();
 
-},{}],117:[function(_dereq_,module,exports){
+},{}],115:[function(_dereq_,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })(); // This code was adapted from the brilliant color lib by MoOx
@@ -6055,10 +5690,6 @@ Object.defineProperty(exports, "__esModule", {
 var _colorConvert = _dereq_('color-convert');
 
 var _colorConvert2 = _interopRequireDefault(_colorConvert);
-
-var _colorString = _dereq_('color-string');
-
-var _colorString2 = _interopRequireDefault(_colorString);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6090,8 +5721,14 @@ var Color = (function () {
 
       // HEX
       else if (typeof a === 'string') {
-          var vals = _colorString2.default.getRgba(a);
-          if (vals) this.setValues('rgb', vals);else if (vals = _colorString2.default.getHsla(a)) this.setValues('hsl', vals);else if (vals = _colorString2.default.getHwb(a)) this.setValues('hwb', vals);else throw new Error("Unable to parse color from string \"" + a + "\"");
+
+          // convert HEX to RGB
+          var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);
+          if (result) {
+            this.setValues('rgb', [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)]);
+          } else {
+            throw new Error("Unable to parse color from string \"" + a + "\"");
+          }
           if (b) this.setValues('alpha', b);
         }
 
@@ -6251,51 +5888,6 @@ var Color = (function () {
     key: 'black',
     value: function black(val) {
       return this.setChannel("cmyk", 3, val);
-    }
-  }, {
-    key: 'hexString',
-    value: function hexString() {
-      return _colorString2.default.hexString(this.values.rgb);
-    }
-  }, {
-    key: 'rgbString',
-    value: function rgbString() {
-      return _colorString2.default.rgbString(this.values.rgb, this.values.alpha);
-    }
-  }, {
-    key: 'rgbaString',
-    value: function rgbaString() {
-      return _colorString2.default.rgbaString(this.values.rgb, this.values.alpha);
-    }
-  }, {
-    key: 'percentString',
-    value: function percentString() {
-      return _colorString2.default.percentString(this.values.rgb, this.values.alpha);
-    }
-  }, {
-    key: 'hslString',
-    value: function hslString() {
-      return _colorString2.default.hslString(this.values.hsl, this.values.alpha);
-    }
-  }, {
-    key: 'hslaString',
-    value: function hslaString() {
-      return _colorString2.default.hslaString(this.values.hsl, this.values.alpha);
-    }
-  }, {
-    key: 'hwbString',
-    value: function hwbString() {
-      return _colorString2.default.hwbString(this.values.hwb, this.values.alpha);
-    }
-  }, {
-    key: 'keyword',
-    value: function keyword() {
-      return _colorString2.default.keyword(this.values.rgb, this.values.alpha);
-    }
-  }, {
-    key: 'rgbNumber',
-    value: function rgbNumber() {
-      return this.values.rgb[0] << 16 | this.values.rgb[1] << 8 | this.values.rgb[2];
     }
   }, {
     key: 'luminosity',
@@ -6570,7 +6162,7 @@ Color.Convert = _colorConvert2.default;
 
 exports.default = Color;
 
-},{"color-convert":3,"color-string":4}],118:[function(_dereq_,module,exports){
+},{"color-convert":3}],116:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6614,7 +6206,7 @@ var Events = {
 
 exports.default = Events;
 
-},{}],119:[function(_dereq_,module,exports){
+},{}],117:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -6730,7 +6322,7 @@ var Grid = (function () {
 
 exports.default = Grid;
 
-},{"./group":120,"./mixins":121,"lodash/object/assign":72,"lodash/object/defaults":73}],120:[function(_dereq_,module,exports){
+},{"./group":118,"./mixins":119,"lodash/object/assign":70,"lodash/object/defaults":71}],118:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -6746,6 +6338,10 @@ var _without2 = _interopRequireDefault(_without);
 var _assign = _dereq_("lodash/object/assign");
 
 var _assign2 = _interopRequireDefault(_assign);
+
+var _each = _dereq_("lodash/collection/each");
+
+var _each2 = _interopRequireDefault(_each);
 
 var _mixins = _dereq_("./mixins");
 
@@ -6796,6 +6392,16 @@ var Group = (function () {
       _utils2.default.groupLogic(copy, this.parent, parent);
       return copy;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      (0, _each2.default)(this.children, function (child) {
+        child.vars.x *= scalar;
+        child.vars.y *= scalar;
+        child.scale(scalar);
+      });
+      return this;
+    }
   }]);
 
   return Group;
@@ -6807,7 +6413,7 @@ var Group = (function () {
 
 exports.default = Group;
 
-},{"./mixins":121,"./utils":132,"./vector":133,"lodash/array/without":8,"lodash/object/assign":72}],121:[function(_dereq_,module,exports){
+},{"./mixins":119,"./utils":130,"./vector":131,"lodash/array/without":6,"lodash/collection/each":7,"lodash/object/assign":70}],119:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6938,7 +6544,7 @@ exports.Moveable = Moveable;
 exports.Sizeable = Sizeable;
 exports.Styleable = Styleable;
 
-},{"./color":117,"./utils":132,"./vector":133}],122:[function(_dereq_,module,exports){
+},{"./color":115,"./utils":130,"./vector":131}],120:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -7364,7 +6970,7 @@ var Render = (function () {
 
 exports.default = Render;
 
-},{"./shapes/circle":124,"./shapes/line":126,"./shapes/rectangle":129,"lodash/array/flatten":6,"lodash/collection/each":9,"lodash/collection/map":11,"virtual-dom/create-element":79,"virtual-dom/diff":80,"virtual-dom/h":81,"virtual-dom/patch":89,"virtual-dom/virtual-hyperscript/svg":102}],123:[function(_dereq_,module,exports){
+},{"./shapes/circle":122,"./shapes/line":124,"./shapes/rectangle":127,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"virtual-dom/create-element":77,"virtual-dom/diff":78,"virtual-dom/h":79,"virtual-dom/patch":87,"virtual-dom/virtual-hyperscript/svg":100}],121:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -7678,7 +7284,7 @@ Rune.Sizeable = _mixins.Sizeable;
 
 module.exports = Rune;
 
-},{"./anchor":115,"./color":117,"./events":118,"./grid":119,"./group":120,"./mixins":121,"./render":122,"./shapes/circle":124,"./shapes/ellipse":125,"./shapes/line":126,"./shapes/path":127,"./shapes/polygon":128,"./shapes/rectangle":129,"./shapes/text":130,"./shapes/triangle":131,"./utils":132,"./vector":133,"lodash/object/assign":72,"lodash/object/defaults":73}],124:[function(_dereq_,module,exports){
+},{"./anchor":113,"./color":115,"./events":116,"./grid":117,"./group":118,"./mixins":119,"./render":120,"./shapes/circle":122,"./shapes/ellipse":123,"./shapes/line":124,"./shapes/path":125,"./shapes/polygon":126,"./shapes/rectangle":127,"./shapes/text":128,"./shapes/triangle":129,"./utils":130,"./vector":131,"lodash/object/assign":70,"lodash/object/defaults":71}],122:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -7727,6 +7333,12 @@ var Circle = (function () {
       return poly;
     }
   }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.radius *= scalar;
+      return this;
+    }
+  }, {
     key: "copy",
     value: function copy(parent) {
       var copy = new Circle();
@@ -7746,7 +7358,7 @@ var Circle = (function () {
 
 exports.default = Circle;
 
-},{"../mixins":121,"../utils":132,"./ellipse":125,"lodash/object/assign":72}],125:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"./ellipse":123,"lodash/object/assign":70}],123:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -7814,6 +7426,13 @@ var Ellipse = (function () {
       return poly;
     }
   }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.width *= scalar;
+      this.vars.height *= scalar;
+      return this;
+    }
+  }, {
     key: "copy",
     value: function copy(parent) {
       var copy = new Ellipse();
@@ -7832,7 +7451,7 @@ var Ellipse = (function () {
 
 exports.default = Ellipse;
 
-},{"../mixins":121,"../utils":132,"./polygon":128,"lodash/object/assign":72}],126:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"./polygon":126,"lodash/object/assign":70}],124:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -7846,6 +7465,10 @@ var _assign = _dereq_("lodash/object/assign");
 var _assign2 = _interopRequireDefault(_assign);
 
 var _mixins = _dereq_("../mixins");
+
+var _vector = _dereq_("../vector");
+
+var _vector2 = _interopRequireDefault(_vector);
 
 var _utils = _dereq_("../utils");
 
@@ -7877,6 +7500,16 @@ var Line = (function () {
       _utils2.default.groupLogic(copy, this.parent, parent);
       return copy;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      var start = new _vector2.default(this.vars.x, this.vars.y);
+      var end = new _vector2.default(this.vars.x2, this.vars.y2);
+      var vec = end.sub(start).multiply(scalar).add(start);
+      this.vars.x2 = vec.x;
+      this.vars.y2 = vec.y;
+      return this;
+    }
   }]);
 
   return Line;
@@ -7886,7 +7519,7 @@ var Line = (function () {
 
 exports.default = Line;
 
-},{"../mixins":121,"../utils":132,"lodash/object/assign":72}],127:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"../vector":131,"lodash/object/assign":70}],125:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8108,6 +7741,14 @@ var Path = (function () {
       return copy;
     }
   }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.anchors = (0, _map2.default)(this.vars.anchors, function (anchor) {
+        return anchor.multiply(scalar);
+      });
+      return this;
+    }
+  }, {
     key: "fillRule",
     value: function fillRule(val) {
       this.vars.fillRule = val;return this;
@@ -8132,7 +7773,7 @@ var Path = (function () {
 
 exports.default = Path;
 
-},{"../anchor":115,"../mixins":121,"../utils":132,"../vector":133,"./polygon":128,"lodash/collection/each":9,"lodash/collection/map":11,"lodash/object/assign":72}],128:[function(_dereq_,module,exports){
+},{"../anchor":113,"../mixins":119,"../utils":130,"../vector":131,"./polygon":126,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],126:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8356,6 +7997,14 @@ var Polygon = (function () {
 
       return (depth & 1) == 1;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.vectors = (0, _map2.default)(this.vars.vectors, function (vec) {
+        return vec.multiply(scalar);
+      });
+      return this;
+    }
   }]);
 
   return Polygon;
@@ -8365,7 +8014,7 @@ var Polygon = (function () {
 
 exports.default = Polygon;
 
-},{"../mixins":121,"../utils":132,"../vector":133,"lodash/array/flatten":6,"lodash/collection/each":9,"lodash/collection/map":11,"lodash/object/assign":72}],129:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"../vector":131,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],127:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8425,6 +8074,13 @@ var Rectangle = (function () {
       _utils2.default.groupLogic(copy, this.parent, parent);
       return copy;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.width *= scalar;
+      this.vars.height *= scalar;
+      return this;
+    }
   }]);
 
   return Rectangle;
@@ -8434,7 +8090,7 @@ var Rectangle = (function () {
 
 exports.default = Rectangle;
 
-},{"../mixins":121,"../utils":132,"./polygon":128,"lodash/object/assign":72}],130:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"./polygon":126,"lodash/object/assign":70}],128:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8466,6 +8122,7 @@ var Text = (function () {
     this.vars.text = text;
     this.vars.x = x;
     this.vars.y = y;
+    this.vars.fontSize = 16;
   }
 
   _createClass(Text, [{
@@ -8524,6 +8181,12 @@ var Text = (function () {
       _utils2.default.groupLogic(copy, this.parent, parent);
       return copy;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.fontSize *= scalar;
+      return this;
+    }
   }]);
 
   return Text;
@@ -8533,7 +8196,7 @@ var Text = (function () {
 
 exports.default = Text;
 
-},{"../mixins":121,"../utils":132,"lodash/object/assign":72}],131:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"lodash/object/assign":70}],129:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8586,6 +8249,15 @@ var Triangle = (function () {
       _utils2.default.groupLogic(copy, this.parent, parent);
       return copy;
     }
+  }, {
+    key: "scale",
+    value: function scale(scalar) {
+      this.vars.x2 *= scalar;
+      this.vars.y2 *= scalar;
+      this.vars.x3 *= scalar;
+      this.vars.y3 *= scalar;
+      return this;
+    }
   }]);
 
   return Triangle;
@@ -8595,7 +8267,7 @@ var Triangle = (function () {
 
 exports.default = Triangle;
 
-},{"../mixins":121,"../utils":132,"lodash/object/assign":72}],132:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":130,"lodash/object/assign":70}],130:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8638,7 +8310,7 @@ var Utils = {
 
 exports.default = Utils;
 
-},{}],133:[function(_dereq_,module,exports){
+},{}],131:[function(_dereq_,module,exports){
 "use strict";
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -8764,8 +8436,8 @@ var Vector = (function () {
 
 exports.default = Vector;
 
-},{"./utils":132}]},{},[123])(123)
+},{"./utils":130}]},{},[121])(121)
 });
 
 
-//# sourceMappingURL=rune.browser.js.map
+//# sourceMappingURL=rune.js.map
