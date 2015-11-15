@@ -164,7 +164,7 @@ In this class we'll look at grid systems and how to use them as guiding constrai
 
 ### Assignment for next week
 
-For next week you'll design a cover for a book of your choice. You can use form, color and typography, but not images. The main constraint is that you need to use a grid system to place elements on the page. 
+For next week you'll design a cover for a book of your choice. You can use form, color and typography, but not images. The main constraint is that you need to use a grid system to place elements on the page.
 
 The most important thing is that you think in systems. What happens if you randomize the grid? What happens when you rotate it? What happens when you overlay multiple grids? Come up with an idea first, and then implement it step by step. Think about all the things we've learned and bring to class a simple poster with a print of your book cover. You may scale up the cover for print if needed, to make it poster size.
 
@@ -209,13 +209,12 @@ Randomization is about letting the computer choose for us. This week we'll look 
 
 * Reading discussion
 * Lecture: **[Randomization](/lecture-randomization)**
-* [Vectors](/pvector)
-* [Geomerative](/geomerative)
+* Vectors
 
 
 ### Assignment for next week
 
-* For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in Processing. If in doubt, use [one of these famous Olivetti posters](/posters). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
+For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in code. If in doubt, get inspired by [some of these famous Olivetti posters](https://www.google.com/search?q=olivetti+posters&espv=2&biw=1436&bih=782&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIou-YmZGTyQIVBJYeCh2lnQJw). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
 
 
 Week 10: Repetition
@@ -229,7 +228,7 @@ Repetition is highly computational, still human beings have created patterns as 
 * Guest Lecture
 * Lecture: **[Computational Repetition](/lecture-repetition)**
 * [Assignment code review](/randomization-homework)
-* Exercise: 
+* Exercise:
 * Possible reading discussion
 
 
@@ -266,7 +265,7 @@ For next week, you will approach your final project as a one-week assignment. Yo
 Week 12: Motion
 ---------------
 
-Can a still image have movement? In this class we'll experiment with animation and movement in graphic design. We'll see what happens when we introduce physics in our graphic designs. Like a photograph is a snapshot of a moving world, so too can a printed graphic be a snapshot of a moving virtual world. 
+Can a still image have movement? In this class we'll experiment with animation and movement in graphic design. We'll see what happens when we introduce physics in our graphic designs. Like a photograph is a snapshot of a moving world, so too can a printed graphic be a snapshot of a moving virtual world.
 
 ### Class Overview
 
