@@ -1,7 +1,7 @@
 ---
 layout: example
-title: "Noise seed"
-description: "Using noiseseed to control the starting position of the noise"
+title: "Noise circle"
+description: "Manipulating the outline of a circle with perlin noise"
 ---
 
 // This sketch requires you to add Rune.Noise to your HTML page:
