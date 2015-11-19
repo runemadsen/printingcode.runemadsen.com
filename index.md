@@ -91,8 +91,10 @@ This week we'll take our first step into design theory by looking at basic shape
 * This week, I want you to design a simple book cover for the book [The Martian](https://en.wikipedia.org/wiki/The_Martian_(Weir_novel)). You can only use basic shapes (rectangle, triangle, ellipse, line) and black/white. Think about how you can use [the basic relationships](lecture-form#basic-relationships) (shape, position, dimension, rotation) to illustrate the point you're trying to make. Furthermore, think about how these concepts can be put into code. Print it on ITP's laser printer, and come to class prepared to talk about the decisions you made.
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
+Week 3: No class. Will reschedule
+---------------------------------
 
-Week 3: Form 2
+Week 4: Form 2
 --------------
 
 This week we'll look at more complex shapes, and how you can use algorithms to generate a multitude of expressions.
@@ -108,7 +110,7 @@ This week we'll look at more complex shapes, and how you can use algorithms to g
 Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objects to draw the two shapes, and please try to do a design that is better done in code than in hand. Print at AMS.
 
 
-Week 4: Color
+Week 5: Color
 -------------
 
 In this class we'll dive into color theory and look at color handling in Processing. We'll talk about the history of color, the difference between RGB and HSB, and investigate how to generate color schemes in code.
@@ -126,7 +128,7 @@ Bonus info: you are not allowed to hardcode the color values. The two sketches h
 If you're stuck, [here](https://c4.staticflickr.com/4/3232/2818300933_f549dbcb92_z.jpg) [are](http://books.bibliopolis.com/books/images/clients/walkaboutbooks/13374.jpg) [some](http://i.ebayimg.com/images/i/311087838188-0-1/s-l1000.jpg) [random](http://40.media.tumblr.com/tumblr_lry3pv7uX41qagc5do1_1280.jpg) [designs](https://peeped.files.wordpress.com/2011/05/ucla75.jpg) [for](http://i.stack.imgur.com/FABzK.jpg) [inspiration](http://payload.cargocollective.com/1/4/145416/1990407/randideas.gif).
 
 
-Week 5: Typography
+Week 6: Typography
 ------------------
 
 > To create a typeface that is easily malleable in the computational medium, the constituent shapes must be reduced to compact numerical forms.
@@ -146,7 +148,7 @@ This week we'll look at typography. We'll go through the basic unit measurement 
 * This week you're going to design a typeface based on the meaning of a word. Pick a word and make a typeface around it. The important thing is that you draw the letters using some kind of rule-based logic. Look at the examples I showed in class, and try to come up with your own typeface system - even if it's very simple. Your goal is to convince me that you can make a typeface that is better constructed in code than in Illustrator.
 
 
-Week 6: Grid Systems
+Week 7: Grid Systems
 --------------------
 
 > A grid system is not just a set of rules to follow... but it's also a set of rules to play off of–to break, even. Given the right grid – the right system of constraints – very good designers can create solutions that are both orderly and unexpected.
@@ -169,7 +171,7 @@ For next week you'll design a cover for a book of your choice. You can use form,
 The most important thing is that you think in systems. What happens if you randomize the grid? What happens when you rotate it? What happens when you overlay multiple grids? Come up with an idea first, and then implement it step by step. Think about all the things we've learned and bring to class a simple poster with a print of your book cover. You may scale up the cover for print if needed, to make it poster size.
 
 
-Week 7: Logo
+Week 8: Logo
 ------------
 
 To make a well-designed logo requires skills in form, color, type and grid. We'll look at everything from traditional logos to organic, computational logos, and we'll go through different techniques for making generative logos in Processing. This week's assignment is a 1 week midterm project.
@@ -189,7 +191,7 @@ Bring to class a poster with the same logo printed 3 times in different variatio
 
 
 
-Week 8: _Midterm Presentations_
+Week 9: _Midterm Presentations_
 --------------------------------
 
 This week will be midterm presentations.
@@ -200,7 +202,7 @@ This week will be midterm presentations.
 * Read [Design and the Play Instinct](http://www.reocities.com/paciunia/paulrandsbook.pdf) by Paul Rand.
 
 
-Week 9: Randomization
+Week 10: Randomization
 ---------------------
 
 Randomization is about letting the computer choose for us. This week we'll look at ways to create programs that create unique graphics. We'll look at basic randomness, Perlin noise, and how a simple thing like randomness can help you create unexpected things.
@@ -217,19 +219,17 @@ Randomization is about letting the computer choose for us. This week we'll look 
 For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in code. If in doubt, get inspired by [some of these famous Olivetti posters](https://www.google.com/search?q=olivetti+posters&espv=2&biw=1436&bih=782&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIou-YmZGTyQIVBJYeCh2lnQJw). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
 
 
-Week 10: Repetition
+Week 11: Repetition
 ------------------
 
 Repetition is highly computational, still human beings have created patterns as long as we have known creative expression. In this class we'll focus on the use of patterns in graphic design, and look at different repetition techniques and ways of creating custom patterns.
 
 ### Class Overview
 
-* Quick thoughts on final project
-* Guest Lecture
 * Lecture: **[Computational Repetition](/lecture-repetition)**
 * [Assignment code review](/randomization-homework)
-* Exercise:
-* Possible reading discussion
+* Draw loop and mouse events in Rune.js
+* Quick thoughts on final project
 
 
 ### Assignment for next week
@@ -238,12 +238,12 @@ From now on and until the end of the semester, we will be working on final proje
 
 * What is the content you're designing? (e.g. "I'm redesigning the logo for Bronx Zoo")
 * What is the intended form of your project? (e.g. "It will be a generative logo that can fit each animal")
-* What are your constraints? (e.g. "I will only use animal colors")
+* Why is this done in code?
 
 The presentation can only have 3 slides, with answers to these questions. You do not need to actually code or design anything. Remember, you cannot change your final project once you've given this presentation.
 
 
-Week 11: Transformation
+Week 12: Transformation
 ----------------------
 
 What happens to graphic files when we start to manipulate the pixels in code? Can we still preserve meaning while creating beauty with algorithms? This week we'll look at different techniques for manipulating pixel arrays. We will look at examples of transformation in graphic design even before the computer, compare these to recent examples of transformation in graphic design products, and go through photo filter algorithms in Processing.
@@ -260,9 +260,9 @@ What happens to graphic files when we start to manipulate the pixels in code? Ca
 
 ### Assignment for next week
 
-For next week, you will approach your final project as a one-week assignment. You will code, generate and print a version of your final project, and bring it to class for design critique. We do this, so you cannot spend 3 weeks thinking about the idea, and 2 days implementing it. Good ideas come from good work.
+Finals!
 
-Week 12: Motion
+Week 13: Motion
 ---------------
 
 Can a still image have movement? In this class we'll experiment with animation and movement in graphic design. We'll see what happens when we introduce physics in our graphic designs. Like a photograph is a snapshot of a moving world, so too can a printed graphic be a snapshot of a moving virtual world.
@@ -275,13 +275,13 @@ Can a still image have movement? In this class we'll experiment with animation a
 
 ### Assignment for next week
 
-You will now have 2 weeks to work on your final project, and I expect the final result to be worth 2 weeks of waiting. This means twice as much work as you've been doing in your 1-week assignments during the semester. Good luck!
+Finals!
 
 
-Week 13 + 14: _Final Presentations_
+Week 14: _Final Presentations_
 --------------------------------
 
-We will combine 2 classes into one long final class presentation. I will invite critics from the design, coding, and curating world, and you will each do a 6-8 minute presentation, followed by a short discussion.
+I will invite critics from the design, coding, and curating world, and you will each do a 6-8 minute presentation, followed by a short discussion.
 
 
 Libraries
