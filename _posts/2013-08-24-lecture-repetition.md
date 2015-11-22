@@ -20,36 +20,27 @@ In graphic design, we can repeat font style, graphic, line, icons, colors, etc. 
 
 {% picture repetition-c04c2b404062800bb91da70afe7b02e0.jpg %}
 
-Paul Rand had to manually arrange all those hearts, in order to simulate a very computational repetition. However, as programmers, we can distill his design rule into code. Here's that exact same design, recreated in Processing.
+Paul Rand had to manually arrange all those hearts, in order to simulate a very computational repetition. However, as programmers, we can distill his design rule into code. Here's that exact same design, recreated in code.
 
 {% picture repetition_rune-3957a470b24efe77e90c2b1ba82ba399.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 But now that we have the design rule in code, we can randomize some value, in order to create a dynamic design, where we quickly can explore different designs.
 
 {% picture repetition_rune2-f1c5bf9053be244618a920ce468d2162.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune3-99a53a94e5235a7645b3c9bb376d7af3.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune4-98ad088e49f9ee68b00b9fae2ff6e9d2.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune5-cf7b72b4c126d817a9302da66eaa36d3.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune6-e489bf3664a6bf9022f30644e2176d71.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune7-f118423aaffa9b430a9c857730366d47.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune8-2cf831399a750f7b1937d1496b8a8957.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 {% picture repetition_rune9-84b962a896baf344346bb735a86df120.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/repetition)
 
 If we really look at the graphic design masters, repetition is used throughout our graphic design history, and it can be used for many different purposes. Here's a few examples.
 
@@ -92,7 +83,7 @@ Repetition as Texture
 {% picture lewitt_texture2-e36aba3f361eb2bd9919ed7157649b0f.jpg %}
 
 
-Repetition in Processing
+Repetition in code
 ------------------------
 
 When it comes to repetition and tiling, there are 2 distinct types of patterns. The periodic tiling:
@@ -106,51 +97,55 @@ When it comes to repetition and tiling, there are 2 distinct types of patterns. 
 Periodic Tiling
 ---------------
 
-It's pretty easy to do periodic tiling in Processing. Here's an example of an extremely ugly pattern created with a for-loop.
+It's pretty easy to do periodic tiling in code. Here's an example of somehow simple pattern created with a single for-loop.
 
-{% picture simple_pattern-8f9be51ee7d8192d59bc710e814a75a3.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/simple_pattern)
+![Simple pattern](http://assets.runemadsen.com/pattern_simple-29f226b45ac173e3a9dbc47808391ef4.svg)
 
-Here's a slightly better looking cube pattern.
+[See example code](../examples/repetition/pattern_simple.html)
+
+Here's a slightly more complicated cube pattern, also using a single for-loop.
 
 {% picture cube_pattern-d39c6dbc38b160b1fc218299bf1e2261.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/cube_pattern)
 
-Here's that same cube pattern code, but using a function to clean up the main setup function.
+[See example code](../examples/repetition/pattern_cube.html)
+
+Here's that same cube pattern code, but using a function to clean up the code function.
 
 {% picture cube_pattern_class-682abcbc84d236227e2c45ef85cd124b.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/cube_pattern_function)
+
+[See example code](../examples/repetition/pattern_cube_function.html)
 
 Here I'm using the function twice to overlay two patterns
 
 {% picture cube_pattern_class_overlay-e930caf6936df88ffe8806713729f0cf.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/cube_pattern_function_overlay)
 
-However, these patterns only allow us to create stricly repetitive patterns. To do more sophisticated patterns, we need to learn about aperiodic tiling.
+[See example code](../examples/repetition/pattern_cube_overlay.html)
+
+However, these patterns only allow us to create strictly repetitive patterns. To do more sophisticated patterns, we need to learn about aperiodic tiling.
 
 
 Recursion
 ---------
 
-Crucial to the concept of aperiodic tiling is recursion. 
+Crucial to the concept of aperiodic tiling is recursion.
 
 {% picture recursion_ref-df6c04220a054cd5151bb520849051a1.jpg %}
 
-{% picture recursion-8496e76d4293a5b17186220ccf004756.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/recursion)
+![Recursion](http://assets.runemadsen.com/recursion_1-667d982e23ebae4fdb38bc21afd60e68.svg)
+
+[See example code](../examples/repetition/recursion_1.html)
 
 Or here's a slightly more usable example, where I'm splitting a rectangle via recursion.
 
 {% picture recursion2-58608d8045dd96513a43fb08db232f95.png %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/recursion2)
+
+[See example code](../examples/repetition/recursion_2.html)
 
 
 Aperiodic Tiling: Substitution Rules
 ------------------------------------
 
 **Simple aperiodic tiling**
-
-[Substitution Rule](http://web.media.mit.edu/~black/tiles/aperiodic.html)
 
 {% picture aperiodic_division_simple-3d5eb91e96e7c5bd797bae019ba7db62.jpg %}
 
@@ -163,7 +158,8 @@ Aperiodic Tiling: Substitution Rules
 {% picture aperiodic_division_simple5-6f34d0e4d36f98c57183c09bd16598cc.jpg %}
 
 {% picture aperiodic_division_simple6-d391059b4ff4842cd5a62dbc6737cbc1.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/aperiodic_tiling)
+
+[See example code](../examples/repetition/pattern_aperiodic_1.html)
 
 **Slightly more advanced aperiodic tiling**
 
@@ -182,7 +178,8 @@ Aperiodic Tiling: Substitution Rules
 {% picture aperiodic_division6-aa98859e6e390972ec2d39fab6bf611d.jpg %}
 
 {% picture aperiodic_pattern-9e0b343650d2dec9e9e879de610bff8c.jpg %}
-[Example on Github](https://github.com/runemadsen/printing-code/tree/master/repetition/aperiodic_tiling2)
+
+[See example code](../examples/repetition/pattern_aperiodic_2.html)
 
 
 Some Pattern Examples
@@ -209,14 +206,3 @@ Andy Gilmore
 {% picture gilmore9-ecd547c9cfaffe001de591efa3b4e2f1.jpg %}
 
 {% picture gilmore10-8641ac7d8ddd923ef2b26d37943dc3b8.jpg %}
-
-
-Links
------
-
-* [Inspirational Patterns #1](http://design.org/blog/patterns-and-graphic-design-yegor-legkov)
-* [Inspirational Patterns #2](http://pinterest.com/cukri/graphic-design-patterns-textures/)
-* [Fabric Patters](http://patternobserver.com/)
-* [Islamic Patterns Research Project](http://nomadinception.com/gallery-arabic-patterns-islamic-patterns-research.aspx)
-* [Pattern Substitution Rules](http://tilings.math.uni-bielefeld.de/substitution_rules/)
-* [More substitutions](http://web.media.mit.edu/~black/tiles/aperiodic.html)
