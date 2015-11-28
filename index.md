@@ -246,17 +246,12 @@ The presentation can only have 3 slides, with answers to these questions. You do
 Week 12: Transformation
 ----------------------
 
-What happens to graphic files when we start to manipulate the pixels in code? Can we still preserve meaning while creating beauty with algorithms? This week we'll look at different techniques for manipulating pixel arrays. We will look at examples of transformation in graphic design even before the computer, compare these to recent examples of transformation in graphic design products, and go through photo filter algorithms in Processing.
+How can we manipulate pixels in code? Can we still preserve meaning while creating beauty with algorithms? This week we'll look at different techniques for manipulating pixel arrays. We will look at examples of transformation in graphic design even before the computer, compare these to recent examples of transformation in graphic design products, and go through different image filter algorithms.
 
 ### Class Overview
 
-* Homework presentations
-* How to create a tiling pattern
+* Final proposals
 * Lecture: **[Pixel iteration and manipulation](/lecture-transformation)**
-* Design exercise. Break into groups and come up with a final idea for:
-  * A book cover
-  * An event poster
-  * A logo redesign
 
 ### Assignment for next week
 
