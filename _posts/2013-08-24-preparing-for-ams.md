@@ -5,61 +5,45 @@ date:       2013-08-24 19:15:22
 categories: printing-code
 ---
 
-Preparing Images For Printing At AMS
-====================================
+Preparing Images For Print
+==========================
 
-Unfortunately, the process of converting images from SVG to TIFF takes a few more steps than it really should. However, it'll be a breeze once you've done it a few times.
+In order to print your image, you need to convert it from vector graphics (SVG) to bitmap (TIFF).
+
+## Download your SVG
+
+First, install [SVG Crowbar](http://nytimes.github.io/svg-crowbar/), a Chrome bookmark that downloads your Rune.js SVG from the browser to your computer. When you've added this to your bookmarks, click the bookmark when viewing your sketch, and it'll download the SVG file to your computer.
 
 {% picture export_1-cadb453cd95f4c5c0abb66fd340fcc81.png %}
 
-First, install [SVG Crowbar](http://nytimes.github.io/svg-crowbar/), a Chrome bookmark that downloads an SVG from a webpage to your computer. When you've added this to your bookmarks, click the bookmark when viewing your sketch, and it'll download the SVG file to your computer.
+## Convert SVG to PNG
 
-{% picture export_2-e9e12dc457cafbe763e056efdfd2552a.png %}
+Now convert your SVG to a PNG sized according to your print dimensions. For this example, we'll assume that you want to print a 16 inch wide image (this will leave a little border on the 17 inch roll). The image needs to print at 300 dpi, which means that your PNG needs to be 4800 pixels wide (16 * 300 = 4800).
 
-Now open your image with Illustrator. If you do not have Illustrator installed, you can use one of ITP's computers or use a computer in the AMS studio.
+Now, go to [my online SVG converter](http://runemadsen.com/svg-converter/), drag your SVG on top of the converter, and set the width of the image to 4800 pixels. Click "convert", and you will now have a PNG image.
 
-It's helpful to open the Illustrator *Preferences* and under *Units* set *General* to inches. This will show inches as the main measurement, which is great for print.
+## Tweak in Photoshop
 
-{% picture export_3-1bf158896078ebbb77ce275816c23957.png %}
+Now open your new PNG in Photoshop. You will need to both change the DPI resolution and change the color profile.
 
-Now you need to resize the SVG so the dimensions match the printed paper. I'm trying to print this ugly circle, and I know that the paper is 17 inches wide. So I'm going to resize it to be 16 inches wide to allow some room around the edges.
+To change your PNG resolution, Choose *Image Size* from the *Image* menu. Under *Document Size*, change *Width* to 16 inches. Then change *Resolution* to 300 Pixels/Inch.
 
-So I first click *Document Setup*.
+{% picture image_size-18273d54a2e4999c510ac993ba7d93fd.png %}
 
-Then in the new window, I click *Edit Artboards*
-
-{% picture export_4-c4b944e4c4f65d76f3cf16d301b2b909.png %}
-
-In the top-right corner of Illustrator, I can now set new dimensions for the artboard. First I click the small icon named *Constrain Width and Height Proportions* to now stretch the image. Then I set the width to *16 inches*.
-
-{% picture export_5-22aa2b0e895f3e4913961b25920ef238.png %}
-
-You will now see that the artboard is much bigger than the content. So with the black arrow selected, highlight all content on the page, and resize the content to fit the window. Remember to hold down *Shift* to not stretch the content.
-
-During this process you can also trim away unneeded content or perform any other manipulations that you want.
-
-{% picture export_6-dada56847e02667c32b683b04b655da3.png %}
-
-Now click *Export*.
-
-{% picture export_7-ef6e820c29d485a193fda55da050fb80.png %}
-
-In the new window, choose *TIFF* as the output format, and click *Use Artboards* to constrain the exported image to your resized artboard.
-
-{% picture export_8-e7e61958b17830b5c42d9c0c6760b45d.png %}
-
-Now you need to open the exported TIFF in Photoshop to convert it to a different color profile. This is helpful to do while printing at AMS, as their screens are calibrated to their printer settings.
-
-{% picture export_9-90468045d1e33c6b9ffba17abd84347f.png %}
+Now you need to change the color profile of the image to Adobe 1998. This is the color profile that the AMS printers and screens are calibrated for, and if you don't do this, your colors will be off.
 
 Chose *Edit* and *Convert to Profile*.
 
-{% picture export_10-d9d1a0a29b836e23a611402ff03676ab.png %}
+{% picture export_9-90468045d1e33c6b9ffba17abd84347f.png %}
 
 Choose the *Adobe RGB 1998* profile and click *OK*.
+
+{% picture export_10-d9d1a0a29b836e23a611402ff03676ab.png %}
 
 If the colors don't look perfect, you can use *Hue/Saturation* or *Curves* to tweak the colors before printing.
 
 {% picture export_11-0abe39dbb5fbbfc29427c917cca5de1c.png %}
 
-When things look good, press *Save* and follow the AMS instructions for printing from their software.
+When things look good, choose *Save As* and save the image as a TIFF.
+
+Now your image is ready to print at AMS!

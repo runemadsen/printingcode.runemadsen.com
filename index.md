@@ -6,7 +6,7 @@ title: Rune Madsen
 About the class
 ===============
 
-**Printing Code** is a graduate course focused on programming design systems. Class time is divided between design topics like color, grid systems, and typography, and more computational topics like randomization, repetition, transformation and generative form. The students work to write software that abstract these design theories into code, and print the output on paper for design critique.
+**Programming Design Systems** is a graduate course focused on the intersection between graphic design and code. Class time is divided between design topics like color, grid systems, and typography, and more computational topics like randomization, repetition, transformation and generative form. The students work to write software that abstract these design theories into code, and print the output on paper for design critique.
 
 Weekly readings include relevant writings from the history of graphic design ([Josef Muller-Brockmann](http://bit.ly/KR2jkA), [Paul Rand](http://bit.ly/KzNyhy)), articles from the history of computation ([Vannevar Bush](http://bit.ly/9Zat9h), [Douglas Englebart](http://bit.ly/B4HDX)) and everything in between ([Sol Lewitt](http://bit.ly/BX1iy), [Edward Tufte](http://bit.ly/49i1Xj)).
 
@@ -49,12 +49,6 @@ Week 1: Hello World
 
 In this class we'll introduce ourselves, and talk a little bit about the class, graphic design and computation. Please read these texts before coming to the first class.
 
-### Readings for this week
-
-* [Form + Content](http://assets.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
-* [Software Structures](http://artport.whitney.org/commissions/softwarestructures/text.html) by Casey Reas
-* [On meta-design and algorithmic design systems](http://runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/) by Rune Madsen
-
 ### Class Overview
 
 * Introductions
@@ -66,6 +60,7 @@ In this class we'll introduce ourselves, and talk a little bit about the class, 
 
 ### Assignment for next week
 
+* Read [On meta-design and algorithmic design systems](http://runemadsen.com/blog/on-meta-design-and-algorithmic-design-systems/) by Rune Madsen
 * Read [Getting started with Rune.js](http://runemadsen.github.io/rune.js/)
 * Follow [these instructions](https://github.com/runemadsen/printing-code-projects) to set up your own projects folder.
 * On ITP's laser printer, print your first generated Rune.js sketch. A few rules about your code: You can only use black (0) and white (255). You are only allowed to use triangle(), rect() and ellipse() once each, and no other drawing functions are allowed (no beginShape or images). Bring to class a design of an ice cream cone. Yes, an ice cream cone.
@@ -91,10 +86,8 @@ This week we'll take our first step into design theory by looking at basic shape
 * This week, I want you to design a simple book cover for the book [The Martian](https://en.wikipedia.org/wiki/The_Martian_(Weir_novel)). You can only use basic shapes (rectangle, triangle, ellipse, line) and black/white. Think about how you can use [the basic relationships](lecture-form#basic-relationships) (shape, position, dimension, rotation) to illustrate the point you're trying to make. Furthermore, think about how these concepts can be put into code. Print it on ITP's laser printer, and come to class prepared to talk about the decisions you made.
 * Read [Paul Rand - Conversations with Students](http://assets.runemadsen.com/rand_conversations.pdf)
 
-Week 3: No class. Will reschedule
----------------------------------
 
-Week 4: Form 2
+Week 3: Form 2
 --------------
 
 This week we'll look at more complex shapes, and how you can use algorithms to generate a multitude of expressions.
@@ -107,10 +100,11 @@ This week we'll look at more complex shapes, and how you can use algorithms to g
 
 ### Assignment for next week
 
-Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objects to draw the two shapes, and please try to do a design that is better done in code than in hand. Print at AMS.
+* Write a sketch that generates 2 shapes on a page. The first shape should be your design of the word "wet". The second shape should be your design of the word "sharp".  Use only black and white. You have to use either `Rune.Polygon` or `Rune.Path` objects to draw the two shapes, and please try to do a design that is better done in code than in hand. Print at AMS.
+* Read [Form + Content](http://assets.runemadsen.com/rand_form_content.pdf) by Paul Rand (Design, Form and Chaos)
 
 
-Week 5: Color
+Week 4: Color
 -------------
 
 In this class we'll dive into color theory and look at color handling in Processing. We'll talk about the history of color, the difference between RGB and HSB, and investigate how to generate color schemes in code.
@@ -128,7 +122,7 @@ Bonus info: you are not allowed to hardcode the color values. The two sketches h
 If you're stuck, [here](https://c4.staticflickr.com/4/3232/2818300933_f549dbcb92_z.jpg) [are](http://books.bibliopolis.com/books/images/clients/walkaboutbooks/13374.jpg) [some](http://i.ebayimg.com/images/i/311087838188-0-1/s-l1000.jpg) [random](http://40.media.tumblr.com/tumblr_lry3pv7uX41qagc5do1_1280.jpg) [designs](https://peeped.files.wordpress.com/2011/05/ucla75.jpg) [for](http://i.stack.imgur.com/FABzK.jpg) [inspiration](http://payload.cargocollective.com/1/4/145416/1990407/randideas.gif).
 
 
-Week 6: Typography
+Week 5: Typography
 ------------------
 
 > To create a typeface that is easily malleable in the computational medium, the constituent shapes must be reduced to compact numerical forms.
@@ -148,7 +142,7 @@ This week we'll look at typography. We'll go through the basic unit measurement 
 * This week you're going to design a typeface based on the meaning of a word. Pick a word and make a typeface around it. The important thing is that you draw the letters using some kind of rule-based logic. Look at the examples I showed in class, and try to come up with your own typeface system - even if it's very simple. Your goal is to convince me that you can make a typeface that is better constructed in code than in Illustrator.
 
 
-Week 7: Grid Systems
+Week 6: Grid Systems
 --------------------
 
 > A grid system is not just a set of rules to follow... but it's also a set of rules to play off of–to break, even. Given the right grid – the right system of constraints – very good designers can create solutions that are both orderly and unexpected.
@@ -171,7 +165,7 @@ For next week you'll design a cover for a book of your choice. You can use form,
 The most important thing is that you think in systems. What happens if you randomize the grid? What happens when you rotate it? What happens when you overlay multiple grids? Come up with an idea first, and then implement it step by step. Think about all the things we've learned and bring to class a simple poster with a print of your book cover. You may scale up the cover for print if needed, to make it poster size.
 
 
-Week 8: Logo
+Week 7: Logo
 ------------
 
 To make a well-designed logo requires skills in form, color, type and grid. We'll look at everything from traditional logos to organic, computational logos, and we'll go through different techniques for making generative logos in Processing. This week's assignment is a 1 week midterm project.
@@ -191,7 +185,7 @@ Bring to class a poster with the same logo printed 3 times in different variatio
 
 
 
-Week 9: _Midterm Presentations_
+Week 8: _Midterm Presentations_
 --------------------------------
 
 This week will be midterm presentations.
@@ -202,7 +196,7 @@ This week will be midterm presentations.
 * Read [Design and the Play Instinct](http://www.reocities.com/paciunia/paulrandsbook.pdf) by Paul Rand.
 
 
-Week 10: Randomization
+Week 9: Randomization
 ---------------------
 
 Randomization is about letting the computer choose for us. This week we'll look at ways to create programs that create unique graphics. We'll look at basic randomness, Perlin noise, and how a simple thing like randomness can help you create unexpected things.
@@ -219,7 +213,7 @@ Randomization is about letting the computer choose for us. This week we'll look 
 For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in code. If in doubt, get inspired by [some of these famous Olivetti posters](https://www.google.com/search?q=olivetti+posters&espv=2&biw=1436&bih=782&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIou-YmZGTyQIVBJYeCh2lnQJw). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
 
 
-Week 11: Repetition
+Week 10: Repetition
 ------------------
 
 Repetition is highly computational, still human beings have created patterns as long as we have known creative expression. In this class we'll focus on the use of patterns in graphic design, and look at different repetition techniques and ways of creating custom patterns.
@@ -243,7 +237,7 @@ From now on and until the end of the semester, we will be working on final proje
 The presentation can only have 3 slides, with answers to these questions. You do not need to actually code or design anything. Remember, you cannot change your final project once you've given this presentation.
 
 
-Week 12: Transformation
+Week 11: Transformation
 ----------------------
 
 How can we manipulate pixels in code? Can we still preserve meaning while creating beauty with algorithms? This week we'll look at different techniques for manipulating pixel arrays. We will look at examples of transformation in graphic design even before the computer, compare these to recent examples of transformation in graphic design products, and go through different image filter algorithms.
@@ -257,7 +251,7 @@ How can we manipulate pixels in code? Can we still preserve meaning while creati
 
 Finals!
 
-Week 13: Motion
+Week 12: Motion
 ---------------
 
 Can a still image have movement? In this class we'll experiment with animation and movement in graphic design. We'll see what happens when we introduce physics in our graphic designs. Like a photograph is a snapshot of a moving world, so too can a printed graphic be a snapshot of a moving virtual world.
@@ -273,17 +267,16 @@ Can a still image have movement? In this class we'll experiment with animation a
 Finals!
 
 
+Week 13: Work on finals
+-----------------------
+
+Today we'll just be working on finals.
+
+
 Week 14: _Final Presentations_
 --------------------------------
 
 I will invite critics from the design, coding, and curating world, and you will each do a 6-8 minute presentation, followed by a short discussion.
-
-
-Libraries
----------
-
-* [Toxiclibs](http://toxiclibs.org/)
-* [Geomerative](http://www.ricardmarxer.com/geomerative) is a library for computational geometry.
 
 
 Recommended Readings

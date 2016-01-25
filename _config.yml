@@ -1,4 +1,4 @@
-name: Printing Code
+name: Programming Design Systems
 highlighter: pygments
 permalink: /:title
 exclude: [Gemfile, Gemfile.lock]
