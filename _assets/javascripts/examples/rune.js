@@ -5280,11 +5280,11 @@ function appendPatch(apply, patch) {
 },{"../vnode/handle-thunk":101,"../vnode/is-thunk":102,"../vnode/is-vnode":104,"../vnode/is-vtext":105,"../vnode/is-widget":106,"../vnode/vpatch":109,"./diff-props":111,"x-is-array":86}],113:[function(_dereq_,module,exports){
 "use strict";
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _bezier = _dereq_("./bezier");
 
@@ -5298,7 +5298,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Anchor = (function () {
+var Anchor = function () {
   function Anchor() {
     _classCallCheck(this, Anchor);
   }
@@ -5421,14 +5421,14 @@ var Anchor = (function () {
   }]);
 
   return Anchor;
-})();
+}();
 
 exports.default = Anchor;
 
-},{"./bezier":114,"./vector":131}],114:[function(_dereq_,module,exports){
+},{"./bezier":114,"./vector":132}],114:[function(_dereq_,module,exports){
 "use strict";
 
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 // This code was extracted from Bezier.js
 // A javascript Bezier curve library by Pomax.
@@ -5436,10 +5436,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 // http://pomax.github.io/bezierjs/
 
 (function () {
-  "use strict"
+  "use strict";
 
   // Math functions. I hate the Math namespace with a passion.
-  ;
+
   var abs = Math.abs,
       min = Math.min,
       max = Math.max,
@@ -5680,12 +5680,13 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 },{}],115:[function(_dereq_,module,exports){
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })(); // This code was adapted from the brilliant color lib by MoOx
-// See more here: https://github.com/MoOx/color
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // This code was adapted from the brilliant color lib by MoOx
+// See more here: https://github.com/MoOx/color
+
 
 var _colorConvert = _dereq_('color-convert');
 
@@ -5695,7 +5696,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Color = (function () {
+var Color = function () {
   function Color(a, b, c, d, e) {
     _classCallCheck(this, Color);
 
@@ -6154,9 +6155,10 @@ var Color = (function () {
   }]);
 
   return Color;
-})();
+}();
 
 // Modules should be accessible through Color
+
 
 Color.Convert = _colorConvert2.default;
 
@@ -6183,7 +6185,9 @@ var Events = {
     } else if (this._events[name]) {
       name = this._events[name];
       var i = name.length;
-      while (i--) if (name[i] === callback) name.splice(i - 1, 1);
+      while (i--) {
+        if (name[i] === callback) name.splice(i - 1, 1);
+      }
     } else if (arguments.length === 0) {
       this._events = {};
     }
@@ -6209,11 +6213,11 @@ exports.default = Events;
 },{}],117:[function(_dereq_,module,exports){
 "use strict";
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -6233,7 +6237,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Grid = (function () {
+var Grid = function () {
   function Grid(options) {
     _classCallCheck(this, Grid);
 
@@ -6316,7 +6320,7 @@ var Grid = (function () {
   }]);
 
   return Grid;
-})();
+}();
 
 (0, _assign2.default)(Grid.prototype, _mixins.Shapeable, _mixins.Moveable, { type: "grid" });
 
@@ -6325,11 +6329,11 @@ exports.default = Grid;
 },{"./group":118,"./mixins":119,"lodash/object/assign":70,"lodash/object/defaults":71}],118:[function(_dereq_,module,exports){
 "use strict";
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _without = _dereq_("lodash/array/without");
 
@@ -6357,7 +6361,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Group = (function () {
+var Group = function () {
   function Group(x, y) {
     _classCallCheck(this, Group);
 
@@ -6405,15 +6409,16 @@ var Group = (function () {
   }]);
 
   return Group;
-})();
+}();
 
 // Should we figure out a better way to do mixins for ES6?
+
 
 (0, _assign2.default)(Group.prototype, _mixins.Moveable, { type: "group" });
 
 exports.default = Group;
 
-},{"./mixins":119,"./utils":130,"./vector":131,"lodash/array/without":6,"lodash/collection/each":7,"lodash/object/assign":70}],119:[function(_dereq_,module,exports){
+},{"./mixins":119,"./utils":131,"./vector":132,"lodash/array/without":6,"lodash/collection/each":7,"lodash/object/assign":70}],119:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -6491,6 +6496,11 @@ var Sizeable = {
     this.vars = this.vars || {};
     this.vars.width = copy ? copy.vars.width : 0;
     this.vars.height = copy ? copy.vars.height : 0;
+  },
+
+  scaleSizeable: function scaleSizeable(scalar) {
+    this.vars.width *= scalar;
+    this.vars.height *= scalar;
   }
 
 };
@@ -6507,6 +6517,13 @@ var Styleable = {
       if (copy.vars.fill === false) this.vars.fill = false;else if (copy.vars.fill) this.vars.fill = copy.vars.fill.copy();
 
       if (copy.vars.stroke === false) this.vars.stroke = false;else if (copy.vars.stroke) this.vars.stroke = copy.vars.stroke.copy();
+
+      if (copy.vars.strokeWidth) this.vars.strokeWidth = copy.vars.strokeWidth;
+      if (copy.vars.strokeCap) this.vars.strokeCap = copy.vars.strokeCap;
+      if (copy.vars.strokeJoin) this.vars.strokeJoin = copy.vars.strokeJoin;
+      if (copy.vars.strokeMiterlimit) this.vars.strokeMiterlimit = copy.vars.strokeMiterlimit;
+      if (copy.vars.strokeDash) this.vars.strokeDash = copy.vars.strokeDash;
+      if (copy.vars.strokeDashOffset) this.vars.strokeDashOffset = copy.vars.strokeDashOffset;
     }
   },
 
@@ -6537,6 +6554,14 @@ var Styleable = {
   },
   strokeDashOffset: function strokeDashOffset(val) {
     this.vars.strokeDashOffset = val;return this;
+  },
+
+  scaleStyleable: function scaleStyleable(scalar) {
+    if (this.vars.strokeWidth) {
+      this.vars.strokeWidth *= scalar;
+    } else {
+      this.vars.strokeWidth = scalar;
+    }
   }
 };
 
@@ -6544,14 +6569,14 @@ exports.Moveable = Moveable;
 exports.Sizeable = Sizeable;
 exports.Styleable = Styleable;
 
-},{"./color":115,"./utils":130,"./vector":131}],120:[function(_dereq_,module,exports){
+},{"./color":115,"./utils":131,"./vector":132}],120:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _flatten = _dereq_("lodash/array/flatten");
 
@@ -6601,7 +6626,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Render = (function () {
+var Render = function () {
   function Render(params) {
     _classCallCheck(this, Render);
 
@@ -6653,6 +6678,8 @@ var Render = (function () {
         width: this.s(rect.vars.width),
         height: this.s(rect.vars.height)
       };
+      if (rect.vars.rx) attr.rx = this.s(rect.vars.rx);
+      if (rect.vars.ry) attr.ry = this.s(rect.vars.ry);
       this.transformAttribute(attr, rect);
       this.styleableAttributes(rect, attr);
       return (0, _svg2.default)('rect', attr);
@@ -6765,6 +6792,21 @@ var Render = (function () {
       }
 
       return (0, _svg2.default)('text', attr, text.vars.text);
+    }
+  }, {
+    key: "imageToSVG",
+    value: function imageToSVG(img) {
+      var attr = {
+        "xlink:href": this.s(img.vars.url),
+        x: this.s(img.vars.x),
+        y: this.s(img.vars.y)
+      };
+      this.optionalAttributes(img, attr, {
+        "width": "width",
+        "height": "height"
+      });
+      this.transformAttribute(attr, img);
+      return (0, _svg2.default)('image', attr);
     }
   }, {
     key: "groupToSVG",
@@ -6966,18 +7008,18 @@ var Render = (function () {
   }]);
 
   return Render;
-})();
+}();
 
 exports.default = Render;
 
-},{"./shapes/circle":122,"./shapes/line":124,"./shapes/rectangle":127,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"virtual-dom/create-element":77,"virtual-dom/diff":78,"virtual-dom/h":79,"virtual-dom/patch":87,"virtual-dom/virtual-hyperscript/svg":100}],121:[function(_dereq_,module,exports){
+},{"./shapes/circle":122,"./shapes/line":125,"./shapes/rectangle":128,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"virtual-dom/create-element":77,"virtual-dom/diff":78,"virtual-dom/h":79,"virtual-dom/patch":87,"virtual-dom/virtual-hyperscript/svg":100}],121:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _defaults = _dereq_("lodash/object/defaults");
 
@@ -6986,6 +7028,10 @@ var _defaults2 = _interopRequireDefault(_defaults);
 var _assign = _dereq_("lodash/object/assign");
 
 var _assign2 = _interopRequireDefault(_assign);
+
+var _each = _dereq_("lodash/collection/each");
+
+var _each2 = _interopRequireDefault(_each);
 
 var _vector = _dereq_("./vector");
 
@@ -7051,13 +7097,17 @@ var _text = _dereq_("./shapes/text");
 
 var _text2 = _interopRequireDefault(_text);
 
+var _image = _dereq_("./shapes/image");
+
+var _image2 = _interopRequireDefault(_image);
+
 var _mixins = _dereq_("./mixins");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Rune = (function () {
+var Rune = function () {
   function Rune(options) {
     _classCallCheck(this, Rune);
 
@@ -7101,21 +7151,28 @@ var Rune = (function () {
 
       // Specific browser events
       if (typeof window !== 'undefined') {
-        this.initMouseMove();
+        this.initMouseEvents();
       }
     }
   }, {
-    key: "initMouseMove",
-    value: function initMouseMove() {
-      var that = this;
-      var mouseMove = function mouseMove(e) {
-        var bounds = that.renderer.el.getBoundingClientRect();
-        that.trigger('mousemove', {
-          x: e.pageX - bounds.left,
-          y: e.pageY - bounds.top
+    key: "relativePos",
+    value: function relativePos(pageX, pageY) {
+      var bounds = this.renderer.el.getBoundingClientRect();
+      var relX = pageX - bounds.left;
+      var relY = pageY - bounds.top;
+      return { x: relX, y: relY };
+    }
+  }, {
+    key: "initMouseEvents",
+    value: function initMouseEvents() {
+      var mouseEvents = ['mousemove', 'mousedown', 'mouseup', 'click'];
+      (0, _each2.default)(mouseEvents, function (mouseEvent) {
+        var that = this;
+        this.renderer.el.addEventListener(mouseEvent, function (e) {
+          var rel = that.relativePos(e.pageX, e.pageY);
+          that.trigger(mouseEvent, { x: rel.x, y: rel.y });
         });
-      };
-      document.addEventListener('mousemove', mouseMove, false);
+      }, this);
     }
 
     // Shape functions
@@ -7183,6 +7240,13 @@ var Rune = (function () {
       var t = new _text2.default(textString, x, y);
       _utils2.default.groupLogic(t, this.stage, parent);
       return t;
+    }
+  }, {
+    key: "image",
+    value: function image(url, x, y, width, height, parent) {
+      var i = new _image2.default(url, x, y, width, height);
+      _utils2.default.groupLogic(i, this.stage, parent);
+      return i;
     }
   }, {
     key: "grid",
@@ -7256,7 +7320,7 @@ var Rune = (function () {
   }]);
 
   return Rune;
-})();
+}();
 
 (0, _assign2.default)(Rune, _utils2.default);
 (0, _assign2.default)(Rune.prototype, _events2.default);
@@ -7275,6 +7339,7 @@ Rune.Path = _path2.default;
 Rune.Polygon = _polygon2.default;
 Rune.Rectangle = _rectangle2.default;
 Rune.Text = _text2.default;
+Rune.Image = _image2.default;
 
 // Right now I need these for mixin tests.
 // Rewrite so we don't need them.
@@ -7284,14 +7349,14 @@ Rune.Sizeable = _mixins.Sizeable;
 
 module.exports = Rune;
 
-},{"./anchor":113,"./color":115,"./events":116,"./grid":117,"./group":118,"./mixins":119,"./render":120,"./shapes/circle":122,"./shapes/ellipse":123,"./shapes/line":124,"./shapes/path":125,"./shapes/polygon":126,"./shapes/rectangle":127,"./shapes/text":128,"./shapes/triangle":129,"./utils":130,"./vector":131,"lodash/object/assign":70,"lodash/object/defaults":71}],122:[function(_dereq_,module,exports){
+},{"./anchor":113,"./color":115,"./events":116,"./grid":117,"./group":118,"./mixins":119,"./render":120,"./shapes/circle":122,"./shapes/ellipse":123,"./shapes/image":124,"./shapes/line":125,"./shapes/path":126,"./shapes/polygon":127,"./shapes/rectangle":128,"./shapes/text":129,"./shapes/triangle":130,"./utils":131,"./vector":132,"lodash/collection/each":7,"lodash/object/assign":70,"lodash/object/defaults":71}],122:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -7311,7 +7376,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Circle = (function () {
+var Circle = function () {
   function Circle(x, y, radius) {
     _classCallCheck(this, Circle);
 
@@ -7335,6 +7400,7 @@ var Circle = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       this.vars.radius *= scalar;
       return this;
     }
@@ -7350,22 +7416,23 @@ var Circle = (function () {
   }]);
 
   return Circle;
-})();
+}();
 
 // Should we figure out a better way to do mixins for ES6?
+
 
 (0, _assign2.default)(Circle.prototype, _mixins.Moveable, _mixins.Styleable, { type: "circle" });
 
 exports.default = Circle;
 
-},{"../mixins":119,"../utils":130,"./ellipse":123,"lodash/object/assign":70}],123:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"./ellipse":123,"lodash/object/assign":70}],123:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -7385,7 +7452,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Ellipse = (function () {
+var Ellipse = function () {
   function Ellipse(x, y, width, height) {
     _classCallCheck(this, Ellipse);
 
@@ -7428,8 +7495,8 @@ var Ellipse = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
-      this.vars.width *= scalar;
-      this.vars.height *= scalar;
+      this.scaleSizeable(scalar);
+      this.scaleStyleable(scalar);
       return this;
     }
   }, {
@@ -7443,22 +7510,86 @@ var Ellipse = (function () {
   }]);
 
   return Ellipse;
-})();
+}();
 
 // Should we figure out a better way to do mixins for ES6?
+
 
 (0, _assign2.default)(Ellipse.prototype, _mixins.Moveable, _mixins.Sizeable, _mixins.Styleable, { type: "ellipse" });
 
 exports.default = Ellipse;
 
-},{"../mixins":119,"../utils":130,"./polygon":126,"lodash/object/assign":70}],124:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"./polygon":127,"lodash/object/assign":70}],124:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _assign = _dereq_("lodash/object/assign");
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _mixins = _dereq_("../mixins");
+
+var _utils = _dereq_("../utils");
+
+var _utils2 = _interopRequireDefault(_utils);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Image = function () {
+  function Image(url, x, y, width, height) {
+    _classCallCheck(this, Image);
+
+    this.moveable();
+    this.sizeable();
+    this.vars.url = url;
+    this.vars.x = x;
+    this.vars.y = y;
+    this.vars.width = width;
+    this.vars.height = height;
+  }
+
+  _createClass(Image, [{
+    key: "scale",
+    value: function scale(scalar) {
+      this.scaleSizeable(scalar);
+      return this;
+    }
+  }, {
+    key: "copy",
+    value: function copy(parent) {
+      var copy = new Image();
+      copy.vars.url = this.vars.url;
+      _utils2.default.copyMixinVars(this, copy);
+      _utils2.default.groupLogic(copy, this.parent, parent);
+      return copy;
+    }
+  }]);
+
+  return Image;
+}();
+
+// Should we figure out a better way to do mixins for ES6?
+
+
+(0, _assign2.default)(Image.prototype, _mixins.Moveable, _mixins.Sizeable, { type: "image" });
+
+exports.default = Image;
+
+},{"../mixins":119,"../utils":131,"lodash/object/assign":70}],125:[function(_dereq_,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -7478,7 +7609,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Line = (function () {
+var Line = function () {
   function Line(x, y, x2, y2) {
     _classCallCheck(this, Line);
 
@@ -7503,6 +7634,7 @@ var Line = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       var start = new _vector2.default(this.vars.x, this.vars.y);
       var end = new _vector2.default(this.vars.x2, this.vars.y2);
       var vec = end.sub(start).multiply(scalar).add(start);
@@ -7513,20 +7645,20 @@ var Line = (function () {
   }]);
 
   return Line;
-})();
+}();
 
 (0, _assign2.default)(Line.prototype, _mixins.Moveable, _mixins.Styleable, { type: "line" });
 
 exports.default = Line;
 
-},{"../mixins":119,"../utils":130,"../vector":131,"lodash/object/assign":70}],125:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"../vector":132,"lodash/object/assign":70}],126:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _each = _dereq_("lodash/collection/each");
 
@@ -7562,7 +7694,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Path = (function () {
+var Path = function () {
   function Path(x, y) {
     _classCallCheck(this, Path);
 
@@ -7743,6 +7875,7 @@ var Path = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       this.vars.anchors = (0, _map2.default)(this.vars.anchors, function (anchor) {
         return anchor.multiply(scalar);
       });
@@ -7767,20 +7900,20 @@ var Path = (function () {
   }]);
 
   return Path;
-})();
+}();
 
 (0, _assign2.default)(Path.prototype, _mixins.Moveable, _mixins.Styleable, { type: "path" });
 
 exports.default = Path;
 
-},{"../anchor":113,"../mixins":119,"../utils":130,"../vector":131,"./polygon":126,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],126:[function(_dereq_,module,exports){
+},{"../anchor":113,"../mixins":119,"../utils":131,"../vector":132,"./polygon":127,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],127:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -7812,7 +7945,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Polygon = (function () {
+var Polygon = function () {
   function Polygon(x, y) {
     _classCallCheck(this, Polygon);
 
@@ -8000,6 +8133,7 @@ var Polygon = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       this.vars.vectors = (0, _map2.default)(this.vars.vectors, function (vec) {
         return vec.multiply(scalar);
       });
@@ -8008,20 +8142,20 @@ var Polygon = (function () {
   }]);
 
   return Polygon;
-})();
+}();
 
 (0, _assign2.default)(Polygon.prototype, _mixins.Moveable, _mixins.Styleable, { type: "polygon" });
 
 exports.default = Polygon;
 
-},{"../mixins":119,"../utils":130,"../vector":131,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],127:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"../vector":132,"lodash/array/flatten":4,"lodash/collection/each":7,"lodash/collection/map":9,"lodash/object/assign":70}],128:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -8041,7 +8175,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Rectangle = (function () {
+var Rectangle = function () {
   function Rectangle(x, y, width, height) {
     _classCallCheck(this, Rectangle);
 
@@ -8055,6 +8189,13 @@ var Rectangle = (function () {
   }
 
   _createClass(Rectangle, [{
+    key: "round",
+    value: function round(rx, ry) {
+      if (!ry) ry = rx;
+      this.vars.rx = rx;
+      this.vars.ry = ry;
+    }
+  }, {
     key: "toPolygon",
     value: function toPolygon(opts, parent) {
       var poly = new _polygon2.default(this.vars.x, this.vars.y).lineTo(0, 0).lineTo(this.vars.width, 0).lineTo(this.vars.width, this.vars.height).lineTo(0, this.vars.height);
@@ -8077,27 +8218,27 @@ var Rectangle = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
-      this.vars.width *= scalar;
-      this.vars.height *= scalar;
+      this.scaleSizeable(scalar);
+      this.scaleStyleable(scalar);
       return this;
     }
   }]);
 
   return Rectangle;
-})();
+}();
 
 (0, _assign2.default)(Rectangle.prototype, _mixins.Moveable, _mixins.Sizeable, _mixins.Styleable, { type: "rectangle" });
 
 exports.default = Rectangle;
 
-},{"../mixins":119,"../utils":130,"./polygon":126,"lodash/object/assign":70}],128:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"./polygon":127,"lodash/object/assign":70}],129:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -8113,7 +8254,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Text = (function () {
+var Text = function () {
   function Text(text, x, y) {
     _classCallCheck(this, Text);
 
@@ -8184,26 +8325,27 @@ var Text = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       this.vars.fontSize *= scalar;
       return this;
     }
   }]);
 
   return Text;
-})();
+}();
 
 (0, _assign2.default)(Text.prototype, _mixins.Moveable, _mixins.Styleable, { type: "text" });
 
 exports.default = Text;
 
-},{"../mixins":119,"../utils":130,"lodash/object/assign":70}],129:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"lodash/object/assign":70}],130:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _assign = _dereq_("lodash/object/assign");
 
@@ -8219,7 +8361,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Triangle = (function () {
+var Triangle = function () {
   function Triangle(x, y, x2, y2, x3, y3) {
     _classCallCheck(this, Triangle);
 
@@ -8252,6 +8394,7 @@ var Triangle = (function () {
   }, {
     key: "scale",
     value: function scale(scalar) {
+      this.scaleStyleable(scalar);
       this.vars.x2 *= scalar;
       this.vars.y2 *= scalar;
       this.vars.x3 *= scalar;
@@ -8261,13 +8404,13 @@ var Triangle = (function () {
   }]);
 
   return Triangle;
-})();
+}();
 
 (0, _assign2.default)(Triangle.prototype, _mixins.Moveable, _mixins.Styleable, { type: "triangle" });
 
 exports.default = Triangle;
 
-},{"../mixins":119,"../utils":130,"lodash/object/assign":70}],130:[function(_dereq_,module,exports){
+},{"../mixins":119,"../utils":131,"lodash/object/assign":70}],131:[function(_dereq_,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8310,14 +8453,14 @@ var Utils = {
 
 exports.default = Utils;
 
-},{}],131:[function(_dereq_,module,exports){
+},{}],132:[function(_dereq_,module,exports){
 "use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _utils = _dereq_("./utils");
 
@@ -8327,7 +8470,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Vector = (function () {
+var Vector = function () {
   function Vector(x, y) {
     _classCallCheck(this, Vector);
 
@@ -8432,11 +8575,11 @@ var Vector = (function () {
   }]);
 
   return Vector;
-})();
+}();
 
 exports.default = Vector;
 
-},{"./utils":130}]},{},[121])(121)
+},{"./utils":131}]},{},[121])(121)
 });
 
 

@@ -1,11 +1,14 @@
-name: Programming Design Systems
-highlighter: pygments
-permalink: /:title
+title: Programming Design Systems
+baseurl: ""
+permalink: /:title/
 exclude: [Gemfile, Gemfile.lock]
 imageproxy_url: http://assets.runemadsen.com/600x
+gems:
+  - jekyll-assets
 assets:
-  js_compressor:  uglifier
-  css_compressor: sass
+  compress:
+    css: true
+    js: true
   sources:
     - _assets/javascripts
     - _assets/stylesheets

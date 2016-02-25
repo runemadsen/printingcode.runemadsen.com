@@ -20,7 +20,7 @@ module Jekyll
       # map into hashes with info we need in toc layout
       examples.map! { |page|
         {
-          "category" => page.dir.gsub("/examples/", ""),
+          "category" => page.dir.split("/")[2],
           "title" => page.data['title'],
           "description" => page.data['description'],
           "url" => page.url
