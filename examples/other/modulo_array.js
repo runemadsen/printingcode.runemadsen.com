@@ -1,7 +1,7 @@
 ---
 layout: example
-title: "Modulo"
-description: "Using modulo to color every other square"
+title: "Modulo array"
+description: "Using modulo to rotate through array values"
 ---
 
 var r = new Rune({
@@ -11,18 +11,16 @@ var r = new Rune({
   debug: true
 });
 
+var grays = [0, 100, 200];
+
 // loop 10 times
 for(var i = 0; i < 10; i++) {
 
   // draw a rectangle shape
   var myRectangle = r.rect(50 + (i * 50), 100, 50, 50)
     .stroke(false)
-
-  // use modulo to turn incrementing i into 2 numbers: 0 and 1
-  // if it's 0, color the rectangle.
-  if(i % 2 == 0) {
-    myRectangle.fill(255, 0, 0);
-  }
+    // fill with colors from the gray array in turn.
+    .fill(grays[i % grays.length]);
 }
 
 r.draw();
