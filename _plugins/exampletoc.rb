@@ -28,7 +28,7 @@ module Jekyll
       }
 
       # sort examples according to order
-      order = ["form", "color", "grid", "typography", "logo", "randomization", "repetition", "transformation", "motion", "3d"]
+      order = ["form", "color", "grid", "typography", "logo", "randomization", "repetition", "transformation", "motion", "3d", "other"]
       examples.sort! { |x,y| order.index(x["category"]) <=> order.index(y["category"]) }
 
       # loop through and create array of arrays for categories
