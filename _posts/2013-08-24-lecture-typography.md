@@ -71,7 +71,7 @@ Serif typefaces are called "serifs" because they have smaller lines (called seri
 
 {% picture 1-serif-0e3b1868cbeed16b8cb8e307bc106f68.jpg %}
 
-**Old Style Serifs** is a sub-category of serif typefaces. The main characteristic of old style characters is their diagonal stress (the thinnest parts of the letters appear on the angled strokes, rather than the vertical or horizontal ones). 
+**Old Style Serifs** is a sub-category of serif typefaces. The main characteristic of old style characters is their diagonal stress (the thinnest parts of the letters appear on the angled strokes, rather than the vertical or horizontal ones).
 
 {% picture 1-oldstyleserif-c0cf423ab4be1a631f5135c2a91e6c72.jpg %}
 
@@ -94,7 +94,7 @@ Sans-serif typefaces are just that: typefaces without serifs. We know them from 
 
 {% picture 1-sansserif-6c08d9fcff14542d31b9f810dfe6e491.jpg %}
 
-There are four basic classifications of sans-serif typefaces: Grotesque, Neo-grotesque, Humanist, and Geometric. 
+There are four basic classifications of sans-serif typefaces: Grotesque, Neo-grotesque, Humanist, and Geometric.
 
 **Grotesques** are the earliest, and include fonts like Franklin Gothic and Akzidenze Grotesk. These typefaces often have letterforms that are very similar to serif typefaces, minus the serifs.
 
@@ -114,9 +114,9 @@ There are four basic classifications of sans-serif typefaces: Grotesque, Neo-gro
 
 ### Script
 
-Scripts are based upon handwriting, and offer very fluid letterforms. There are two basic classifications: formal and casual. 
+Scripts are based upon handwriting, and offer very fluid letterforms. There are two basic classifications: formal and casual.
 
-**Formal scripts** are often reminiscent of the handwritten letterforms common in the 17th and 18th centuries. 
+**Formal scripts** are often reminiscent of the handwritten letterforms common in the 17th and 18th centuries.
 
 {% picture 1-formalscript-6323f7c63e56fe6df717648268b1d64e.jpg %}
 
@@ -141,7 +141,7 @@ Dingbats are specialty typefaces that consist of symbols and ornaments instead o
 
 ### Proportional vs. Monospaced
 
-Another way to categorize typefaces is by their spacing. 
+Another way to categorize typefaces is by their spacing.
 
 **Proportional typefaces** uses varied spacing depending on the actual letter width, while **monospaced typefaces** have an equal amount of space between all letters. You often use the latter in special environments, like IDE for programming, where you want the letters to line up.
 
@@ -251,7 +251,7 @@ You can manipulate text like you manipulate any other shape objects.
 
 ![Example text](http://assets.runemadsen.com/text-9d172fde80d71651c55000949d58da86.svg)
 
-[See example code](../examples/typography/text.html)
+[See example code](../examples/typography/text/index.html)
 
 
 Manipulating existing fonts
@@ -261,7 +261,7 @@ You can use the `Rune.Font` plugin to load existing fonts. Here's a simple sketc
 
 ![Rune.Font example](http://assets.runemadsen.com/font-d3a136bce2398dffc2854c13d94ad9fd.svg)
 
-[See example code](../examples/typography/font.html)
+[See example code](../examples/typography/font/index.html)
 
 
 Project Examples

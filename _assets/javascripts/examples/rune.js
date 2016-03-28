@@ -6632,6 +6632,8 @@ var Render = function () {
 
     this.params = params;
     this.tree = (0, _svg2.default)('svg', {
+      xmlns: 'http://www.w3.org/2000/svg',
+      'xmlns:xlink': 'http://www.w3.org/1999/xlink',
       width: this.s(params.width),
       height: this.s(params.height)
     });
@@ -6810,11 +6812,11 @@ var Render = function () {
     }
   }, {
     key: "groupToSVG",
-    value: function groupToSVG(group) {
+    value: function groupToSVG(group, opts) {
       if (!group.children || group.children.length == 0) return;
       var attr = {};
       this.transformAttribute(attr, group);
-      return (0, _svg2.default)('g', attr, this.objectsToSVG(group.children));
+      return (0, _svg2.default)('g', attr, this.objectsToSVG(group.children, opts));
     }
   }, {
     key: "gridToSVG",
@@ -6849,20 +6851,15 @@ var Render = function () {
     key: "styleableAttributes",
     value: function styleableAttributes(object, attr) {
 
-      function rgbString(col) {
-        var obj = col.rgb();
-        return "rgb(" + obj.r + ", " + obj.g + ", " + obj.b + ")";
-      }
-
       if (object.vars.fill === false) attr.fill = "none";else if (object.vars.fill) {
-        attr.fill = rgbString(object.vars.fill);
-        var alpha = object.vars.fill.alpha();
+        attr.fill = "rgb(" + object.vars.fill.values.rgb[0] + ", " + object.vars.fill.values.rgb[1] + ", " + object.vars.fill.values.rgb[2] + ")";
+        var alpha = object.vars.fill.values.alpha;
         if (alpha < 1) attr["fill-opacity"] = this.s(alpha);
       }
 
       if (object.vars.stroke === false) attr.stroke = "none";else if (object.vars.stroke) {
-        attr.stroke = rgbString(object.vars.stroke);
-        var alpha = object.vars.stroke.alpha();
+        attr.stroke = "rgb(" + object.vars.stroke.values.rgb[0] + ", " + object.vars.stroke.values.rgb[1] + ", " + object.vars.stroke.values.rgb[2] + ")";
+        var alpha = object.vars.stroke.values.alpha;
         if (alpha < 1) attr["stroke-opacity"] = this.s(alpha);
       }
 

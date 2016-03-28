@@ -25,11 +25,11 @@ Chance and weights
 
 The following sketch shows how to use `random()` to make something happen only a certain percent of the time.
 
-[See example code](../examples/randomization/chance.html)
+[See example code](../examples/randomization/chance/index.html)
 
 However, what if you want to do something a bit more sophisticated, like picking a random color from an array of colors, where each of the colors have a specific chance of getting picked? The following sketch shows how to do weighted randomness.
 
-[See example code](../examples/randomization/weighted.html)
+[See example code](../examples/randomization/weighted/index.html)
 
 
 Perlin Noise
@@ -39,24 +39,24 @@ Here's an example of how perlin noise is different than using `random()`. As you
 
 {% picture random_vs_noise-8670d2707d1d767afad267d2b8182538.jpg %}
 
-[See example code](../examples/randomization/random_vs_noise.html)
+[See example code](../examples/randomization/random_vs_noise/index.html)
 
 When you create a new `Rune.Noise` object, it will choose a random starting point for the noise. If you don't want the seed to be random, you can use `noiseSeed()` to set a specific starting position for the noise. You can also call `noiseSeed` in between `noise.get()` calls, which will re-seed the noise and give you different values from the same input.
 
 {% picture noise_seed-d86c7549da39cbf91c607cbc1520c4ce.jpg %}
 
-[See example code](../examples/randomization/noiseseed.html)
+[See example code](../examples/randomization/noiseseed/index.html)
 
 You can manipulate the octaves and falloff via the noiseDetail function.
 
 {% picture noise_detail-8ff03c04de4f473cf1e4547e11150408.jpg %}
 
-[See example code](../examples/randomization/noisedetail.html)
+[See example code](../examples/randomization/noisedetail/index.html)
 
 Perlin Noise can be used to do many things. One of things that it's great for is introducing a more organic feel into your sketches. Here's a sketch with a circle drawn with Perlin Noise.
 
 {% picture noise_organic-a0994847ef608c02f8de408e8f316edf.png %}
 
-[See example code](../examples/randomization/noise_circle.html)
+[See example code](../examples/randomization/noise_circle/index.html)
 
 You can also do perlin noise in two or three dimensions! I'll leave that up to you to figure out.

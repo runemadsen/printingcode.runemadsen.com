@@ -29,12 +29,10 @@ Logo
 
 * Add reading from Dynamic Identities to logo class
 * Add Stewart Smith Rubuik's Cube logo. https://chrome.com/cubelab/type
-* Add new MIT logo: http://www.fastcodesign.com/3037339/pentagrams-michael-bierut-rebrands-the-mit-media-lab
 
 Randomization
 -------------
 
-* PShape and toHex()
 * Add a talk about Gerstners programme idea: (p. 8 dot dot dot 4)
 * Real world design problem for excercise
 * Write more useful and beautiful examples
@@ -45,7 +43,6 @@ Repetition
 ----------
 
 * Add this to works/projects: http://glowinggreenhand.blogspot.com/2014/02/published.html
-* PShape and toHex()
 * Real world design problem for excercise
 * Port shape grammar from Fleen: https://code.google.com/p/fleen/
 * Add stuff about patterns from the symmetry book
@@ -55,36 +52,21 @@ Repetition
 Transformation
 --------------
 
-* PShape and toHex()
 * Real world design problem for excercise
-* USE GEOMERATIVE SVG FUNCTIONS IN IMAGE CLASS: (HelloPolygonize from examples, etc)
 
 
 Motion
 ------
 
-* PShape and toHex()
-* Real world design problem for excercise
-* Rename to "Simulation"
-* Use “Simulate” chapter in Form and Code: Swarms, Genetic Algorithms, particles, ...
-* Use Karl Sims more: Galapagos, evolving creatures, etc.
-* To motion class, add: Use “Simulate” chapter in Form and Code: Swarms, Genetic Algorithms, particles, so on.
+* Add easing library to Rune.js
+* Add interactivity examples (click with jquery, etc)
 * Add examples from "art of graphic design" p. 20 and forward (esp. 27)
-
-
-3D
----
-
-* PShape and toHex()
-* Real world design problem for excercise
-* New example: Make casa de musica logo in 3D
-* New example: Meshes and Toxiclibs
 
 
 Possible Texts To Read
 ----------------------
 
-* Add "the power of limits" - gyorgy doczi to reading list. 
+* Add "the power of limits" - gyorgy doczi to reading list.
 * Computers and the Visual Arts (PDF)
 * Dewey’s - Art as Experience
 * Martin Krampen

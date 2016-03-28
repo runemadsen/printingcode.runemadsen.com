@@ -11,7 +11,7 @@ var r = new Rune({
   debug: true
 });
 
-var jpg = new Rune.Pixels("posters.jpg");
+var jpg = new Rune.Pixels("../posters.jpg");
 jpg.load(function(err) {
 
   var size = 50;

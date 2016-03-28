@@ -88,11 +88,11 @@ All designs starts with a constrained area - let's call it the _format_. The for
 The rectangular format makes no attempt to emphasize any direction. It concentrates the viewport into a well-known shape, and makes it easy to understand the placement of the elements inside of it.
 
 {% picture format_square-fb0cf594632f5fb6f2c70bd6bd7e4389.jpg %}
-	
+
 The horizontal format is very natural, shaped to the way we experience the world. The human brain is optimized for analyzing horizontal movement (that orange thing moving behind the trees is probably a tiger!) in opposed to vertical movement.
-	
+
 {% picture format_horizontal-9fbd530a63a6da001195661e1b859e8b.jpg %}
-	
+
 The vertical format stands out and calls attention to itself. It's more aggressive and seems more "designed", which is probably why most posters have a vertical format.
 
 {% picture format_vertical-915ded32f14c7ae27cd1170e25506c3e.jpg %}
@@ -108,9 +108,9 @@ When we have the format in place we can draw stuff in it. Using color difference
 You all know the simple drawing functions like `rect()`, `ellipse()` and `triangle()`.
 
 The rectangle is very solid and recognizable.
-	
+
 {% picture rect-3a98672d7a9ed8e98805bb870a7689c5.jpg %}
-	
+
 The circle is smooth, and appears smaller than the rectangle, even though they have equal dimensions.
 
 {% picture circle-18e261c5e1f54f23b2dd56c905d05e0d.jpg %}
@@ -118,7 +118,7 @@ The circle is smooth, and appears smaller than the rectangle, even though they h
 The triangle is one of the simplest polygons possible, but it has a lot more movement than the square and the circle.
 
 {% picture triangle-0e0fcdb6aba85b6de24ff226d3600273.jpg %}
-	
+
 With these simple shapes we already have a range of expressions, and you need to chose them wisely as they all have a distinct style.
 
 Here a rectangle is used to convey technology, on a carton box for a dictating machine.
@@ -161,7 +161,7 @@ Position, Dimension and Rotation
 Thinking about your shapes and how much space they need to fill within the format is very important. A circle can seem lost in space...
 
 {% picture lost_in_space-0843da4c71876d87587b441f93305a2c.jpg %}
-	
+
 ... and dominant in space just by changing its placement and size.
 
 {% picture dominant_in_space-d55a85ac07f8c0746d06a0f0561f98c1.jpg %}
@@ -173,11 +173,11 @@ However, it's not only the size of the shapes, but also the size of the format t
 These are the options every designer must think about, weigh, and choose between. Because it changes meaning. A rectangle can lay dormant in space...
 
 {% picture dormant_rect-3019809101427188e6bd29b93e3cdacb.jpg %}
-	
+
 ... and become agitated by just changing its placement
 
 {% picture agitated_rect-192c91d40619567c1191d1e261fb5f87.jpg %}
-	
+
 The important thing here is that how we place things in the format matters. We can do this all sorts of ways.
 
 The "small" Beetle ad is a classic example of why this matters.
@@ -190,7 +190,7 @@ The same ad really wouldn't make any sense if the designer hadn't positioned and
 Placing shapes
 -----------------------
 
-Now that we know placement matters, let's look at how to do this in code. 
+Now that we know placement matters, let's look at how to do this in code.
 
 In Rune.js, placing things within the given format is about knowing how to use 4 key variables: x, y, width and height.
 
@@ -198,7 +198,7 @@ Using these variables, to place something on the screen requires basic math. Thi
 
 {% picture placement_calculations.jpg %}
 
-[See example code](../examples/form/positioning.html)
+[See example code](../examples/form/positioning/index.html)
 
 
 Basic Repetition
@@ -218,7 +218,7 @@ And here's how to recreate it in Processing.
 
 {% picture rand_repetition1_example-e65f2c0865d6da2c8ada3d388186dac1.jpg %}
 
-[See example code](../examples/form/spacing_even.html)
+[See example code](../examples/form/spacing_even/index.html)
 
 The important concept to understand here is how we use incrementing loop variables (x, y) and multiply them by the distance between the shapes.
 
@@ -246,9 +246,9 @@ This is very easy to create in Processing. Create 30 ellipses in a loop and give
 
 {% picture rand_random2_example-e3b6773256db50a880c75bf47ebbeacb.jpg %}
 
-[See example code](../examples/form/spacing_random.html)
+[See example code](../examples/form/spacing_random/index.html)
 
-Here it's a cover for the children's book "I know a lot of things". Notice how the rectangles are randomized, but still spaced out so they never overlap. 
+Here it's a cover for the children's book "I know a lot of things". Notice how the rectangles are randomized, but still spaced out so they never overlap.
 
 {% picture rand_random1-9154154415596c5e1ec92abfdc92b0e2.jpg %}
 
@@ -256,7 +256,7 @@ The same technique can be used in code by tweaking the rectangle grid example. B
 
 {% picture rand_random1_example-614acd1effaab5d1c2b616a1f24aff63.jpg %}
 
-[See example code](../examples/form/spacing_event_random.html)
+[See example code](../examples/form/spacing_event_random/index.html)
 
 
 More Form Examples
@@ -300,8 +300,8 @@ Brockmann plays with focus by placing the motorcycle in front. This would be a v
 Roman Verostko
 
 {% picture verostko2-5824a21d500b58f2517b3cf4a20b05f9.jpg %}
-	
-{% picture verostko3-e44d5e6b756a4d32f47aefeca42c71d5.jpg %}	
+
+{% picture verostko3-e44d5e6b756a4d32f47aefeca42c71d5.jpg %}
 
 {% picture book_cover-90f260500bda4cbcdf0d345a663ad0eb.jpg %}
 

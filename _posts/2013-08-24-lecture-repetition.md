@@ -101,25 +101,25 @@ It's pretty easy to do periodic tiling in code. Here's an example of somehow sim
 
 ![Simple pattern](http://assets.runemadsen.com/pattern_simple-29f226b45ac173e3a9dbc47808391ef4.svg)
 
-[See example code](../examples/repetition/pattern_simple.html)
+[See example code](../examples/repetition/pattern_simple/index.html)
 
 Here's a slightly more complicated cube pattern, also using a single for-loop.
 
 {% picture cube_pattern-d39c6dbc38b160b1fc218299bf1e2261.png %}
 
-[See example code](../examples/repetition/pattern_cube.html)
+[See example code](../examples/repetition/pattern_cube/index.html)
 
 Here's that same cube pattern code, but using a function to clean up the code function.
 
 {% picture cube_pattern_class-682abcbc84d236227e2c45ef85cd124b.png %}
 
-[See example code](../examples/repetition/pattern_cube_function.html)
+[See example code](../examples/repetition/pattern_cube_function/index.html)
 
 Here I'm using the function twice to overlay two patterns
 
 {% picture cube_pattern_class_overlay-e930caf6936df88ffe8806713729f0cf.png %}
 
-[See example code](../examples/repetition/pattern_cube_overlay.html)
+[See example code](../examples/repetition/pattern_cube_overlay/index.html)
 
 However, these patterns only allow us to create strictly repetitive patterns. To do more sophisticated patterns, we need to learn about aperiodic tiling.
 
@@ -133,13 +133,13 @@ Crucial to the concept of aperiodic tiling is recursion.
 
 ![Recursion](http://assets.runemadsen.com/recursion_1-667d982e23ebae4fdb38bc21afd60e68.svg)
 
-[See example code](../examples/repetition/recursion_1.html)
+[See example code](../examples/repetition/recursion_1/index.html)
 
 Or here's a slightly more usable example, where I'm splitting a rectangle via recursion.
 
 {% picture recursion2-58608d8045dd96513a43fb08db232f95.png %}
 
-[See example code](../examples/repetition/recursion_2.html)
+[See example code](../examples/repetition/recursion_2/index.html)
 
 
 Aperiodic Tiling: Substitution Rules
@@ -159,7 +159,7 @@ Aperiodic Tiling: Substitution Rules
 
 {% picture aperiodic_division_simple6-d391059b4ff4842cd5a62dbc6737cbc1.jpg %}
 
-[See example code](../examples/repetition/pattern_aperiodic_1.html)
+[See example code](../examples/repetition/pattern_aperiodic_1/index.html)
 
 **Slightly more advanced aperiodic tiling**
 
@@ -179,7 +179,7 @@ Aperiodic Tiling: Substitution Rules
 
 {% picture aperiodic_pattern-9e0b343650d2dec9e9e879de610bff8c.jpg %}
 
-[See example code](../examples/repetition/pattern_aperiodic_2.html)
+[See example code](../examples/repetition/pattern_aperiodic_2/index.html)
 
 
 Some Pattern Examples

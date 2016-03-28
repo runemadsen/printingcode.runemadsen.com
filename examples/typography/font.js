@@ -11,7 +11,7 @@ var r = new Rune({
 });
 
 // Create a new Rune.Font object
-var f = new Rune.Font("Roboto-Regular.ttf");
+var f = new Rune.Font("../Roboto-Regular.ttf");
 
 // load() will actually load the font file and call the function
 // when the loading is done.

@@ -105,7 +105,7 @@ Here's how to loop over image pixels with Rune.js. Keep in mind that drawing ima
 
 {% picture loop_rgb-6bb28d9cc82d7e8af8c5f5146f34ed9f.png %}
 
-[See example code](../examples/transformation/pixel_iteration.html)
+[See example code](../examples/transformation/pixel_iteration/index.html)
 
 
 Pixel Manipulation
@@ -123,4 +123,4 @@ Here's an example of using our basic tile pattern from last class, but extractin
 
 ![Pixel image](http://assets.runemadsen.com/pixel-pattern-0ffd267d600a4ad8bdd8990805025e69.svg)
 
-[See example code](../examples/transformation/pixel_pattern.html)
+[See example code](../examples/transformation/pixel_pattern/index.html)

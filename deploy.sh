@@ -1,3 +1,6 @@
+echo "\n\n-> Building production site"
+JEKYLL_ENV=production bundle exec jekyll build
+
 echo "\n\n-> Uploading to S3"
 
 # Sync everything that is not HTML to cache for a year

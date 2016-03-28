@@ -8,7 +8,7 @@ categories: printing-code
 Computational Color
 ===================
 
-If you expect to come out of this class knowing simple rules like "red is for love" or "green is for happiness", you'll be extremely disappointed today. 
+If you expect to come out of this class knowing simple rules like "red is for love" or "green is for happiness", you'll be extremely disappointed today.
 
 Color is way too subjective and dynamic to allow for so simple definitions. Actually, I'd rather stay away from telling you which colors to use when. Instead we will do 2 things:
 
@@ -31,25 +31,25 @@ Here's a quick example of how dynamic behavior color combination can have. This 
 
 ![Lies color](http://assets.runemadsen.com/lies_color-656336f40b381d069597b3bb0f744b64.svg)
 
-[See example code](../examples/color/lies_color.html)
+[See example code](../examples/color/lies_color/index.html)
 
 We can prove this by removing the grounds:
 
 {% picture itten_exchange2-e18896ea63b2570f24ce868640af63a3.jpg %}
-	
+
 The conclusion to this must be that color theory matters: Based on simple calculation we created an effect in the eye of the beholder.
 
 The problem with combining color only by numbers is that you can start to trust the numbers instead of your eyes. Here's another example of why this is problematic. In this example the small squares looks like the exact same color, but they are not even close. Because they keep a relative distance in brightness to their respective grounds, they look the same to the eye. We will investigate this further later when talking about simultaneous contrast.
 
 ![Lies contrast](http://assets.runemadsen.com/lies_contrast-aafeb06ee6b69f112abe734115cf61e3.svg)
 
-[See example code](../examples/color/lies_contrast.html)
+[See example code](../examples/color/lies_contrast/index.html)
 
 Again, let's remove the background and see.
 
 {% picture itten_example2_removed-3647f5a05e16cedd55f8eef5b89f0407.jpg %}
 
-	
+
 What is Color?
 --------------
 
@@ -61,12 +61,12 @@ This is why the sun turns red when setting. The atmosphere is a filter that remo
 
 {% picture sunset-2b180922495043cafb0ec791fea25ada.jpg %}
 
-Color is all around us. Color express meaning. It's a natural way of communication. 
+Color is all around us. Color express meaning. It's a natural way of communication.
 
 {% picture red-22ea9839571b3d1518e226e87a1b0ac5.jpg %}
 
 
-Subtractive vs. Additive Color Systems 
+Subtractive vs. Additive Color Systems
 --------------------------------------
 
 Let's say that you walk down to Blick and buy a beginner's painting set and mix all of the colors together in a bucket. What color will you get? - Black.
@@ -78,7 +78,7 @@ Obviously there are 2 different ways that colors mix: by addition and by subtrac
 This is Johannes Itten's color wheel. It's built on Goethe's color wheel, and this is the wheel that most of you are familiar with. The RYB wheel.
 
 {% picture circle_itten-34e42bc50440c00ddc77ad8d7c467f27.jpg %}
-	
+
 All colors created with paint or ink will combine in a **subtractive** way, meaning that if you mix all colors together, the resulting color will be black (pigments work by absorbing light and reflecting the remaining colors).
 
 If you use RGB as the primary colors when painting, you cannot mix yellow. This is why RYB was chosen as primary colors, and this had a tremendous impact on color use in art.
@@ -86,7 +86,7 @@ If you use RGB as the primary colors when painting, you cannot mix yellow. This 
 Then there's the RGB wheel:
 
 {% picture circle_rgb-6c00abe1aef3327613842268b97acb01.jpg %}
-	
+
 All colors created with light will combine in an **additive** way, meaning that if you mix all colors together, the resulting color will be white. RGB is just one model that simulates this.
 
 The truth is that color is a sliding spectrum, and color wheels are just basic ways of dividing this spectrum. Actually, you can use any three colors to define what's called [a color gamut](http://en.wikipedia.org/wiki/Gamut), a subset of all possible colors.
@@ -107,7 +107,7 @@ And if we want to draw a green color we do this:
 
 <pre >.fill(0, 255, 0); // this is green</pre>
 
-But once you start doing generative color, you realize that RGB is not a good way of working. For example, here's a color. 
+But once you start doing generative color, you realize that RGB is not a good way of working. For example, here's a color.
 
 {% picture hsb-8beb6fb67b65b877bd67089f011f071e.jpg %}
 
@@ -119,7 +119,7 @@ HSB is a color model that exists as a 3D color space, where hue, saturation and 
 
 This makes it much easier to move around in on the color wheel, because one of those axis is hue, the actual hue of the color.
 
-	
+
 HSV And Color modes in Rune.js
 --------------------------------
 
@@ -136,20 +136,20 @@ The first steps into working with HSB is to just draw simple colors on the scree
 
 ![Primary colors](http://assets.runemadsen.com/hsv_primary-4cf718847b609537bfda7e7b257f2879.svg)
 
-[See example code](../examples/color/hsv_primary.html)
+[See example code](../examples/color/hsv_primary/index.html)
 
 Now that we know how to move around the hue wheel, we can use this techniqe to draw a color circle.
 
 ![HSV color circle](http://assets.runemadsen.com/hsv_circle-7b001d00e3de6e7b93660b3340e6fe4b.svg)
 
-[See example code](../examples/color/hsv_circle.html)
+[See example code](../examples/color/hsv_circle/index.html)
 
 
 Rune.Color
 -----------
 
-See [Using colors](http://runemadsen.github.io/rune.js/#using-colors) in the Rune.js documentation. Also see the [color functions](../examples/color/color_functions.html) example.
-	
+See [Using colors](http://runemadsen.github.io/rune.js/#using-colors) in the Rune.js documentation. Also see the [color functions](../examples/color/color_functions/index.html) example.
+
 
 Generating Monochromatic Color Schemes
 --------------------------------------
@@ -162,15 +162,15 @@ One of the simplest possible ways of generating a color scheme is to pick a spec
 
 ![Color Scheme Brightness](http://assets.runemadsen.com/scheme_brightness-1baeb04a6599f3ab9ae5bfffe4202a28.svg)
 
-[See example code](../examples/color/scheme_brightness.html)
-	
+[See example code](../examples/color/scheme_brightness/index.html)
+
 This sketch has an even distribution in brightness values. You can easily imagine code that choose the values randomly.
 
 A slightly more sophisticated **monochromatic color scheme** would be to manipulate both saturation and brightness:
 
 [Color Scheme Saturation Brightness](http://assets.runemadsen.com/scheme_saturation_brightness-1baeb04a6599f3ab9ae5bfffe4202a28.svg)
 
-[See example code](../examples/color/scheme_saturation_brightness.html)
+[See example code](../examples/color/scheme_saturation_brightness/index.html)
 
 Monochromatic can be used for very simple and minimalistic graphics. Often you see it used with pure black or white to create contrast.
 
@@ -187,7 +187,7 @@ Traffic signs, here British traffic signs from the 1960's, generally have a mono
 We are hip. We are trendy. We use monochromatic color.
 
 {% picture bad_mono-746f3c1d5f85542436a302e72f3053c5.jpg %}
-	
+
 Here's an example of extremely bad use of a monochromatic color scheme. The only role of the color in this graph is to connect names with lines. How can we do that when the colors are almost identical?
 
 
@@ -202,7 +202,7 @@ We rotate 30 degrees around the color wheel because the standard color wheel has
 
 ![Color Scheme Analogous](http://assets.runemadsen.com/scheme_analogous-09358f900a818b5fc2da394f6a7f0c58.svg)
 
-[See example code](../examples/color/scheme_analogous.html)
+[See example code](../examples/color/scheme_analogous/index.html)
 
 {% picture analogous_trees-afb6b74a8dc302e576a0bb493b15cfd7.jpg %}
 
@@ -232,7 +232,7 @@ It's easy to find a complementary color in Rune.js. Notice the sharp contrast be
 
 ![Color Scheme Complementary](http://assets.runemadsen.com/scheme_complementary-bc8bfeb333dca403ebf4809331057da6.svg)
 
-[See example code](../examples/color/scheme_complementary.html)
+[See example code](../examples/color/scheme_complementary/index.html)
 
 
 Generating Triadic Color Schemes
@@ -246,7 +246,7 @@ Here's a "pure" triadic color scheme with colors found by rotating 120 degrees o
 
 ![Color Scheme Triadic](http://assets.runemadsen.com/scheme_triadic-b44a8cdd936e7d569cdc6fe22b8f20cb.svg)
 
-[See example code](../examples/color/scheme_triadic.html)
+[See example code](../examples/color/scheme_triadic/index.html)
 
 You may notice how this is the primary colors, which makes sense given the calculation.
 
@@ -268,9 +268,9 @@ This color scheme is basically the same as a double complementary color scheme. 
 
 ![Color Scheme Tetradic](http://assets.runemadsen.com/scheme_tetradic-d5fbb4abb4392472c9ec8a75227d528d.svg)
 
-[See example code](../examples/color/scheme_tetradic.html)
+[See example code](../examples/color/scheme_tetradic/index.html)
 
-Notice the cold/warm contrast in this color scheme. 
+Notice the cold/warm contrast in this color scheme.
 
 However, the rectangle does not need to be equal-sided. You could use the same base complementary pair, but with a smaller rectangle width used to pick the other complementary pair.
 
@@ -311,7 +311,7 @@ The following example shows both a linear increase and an exponential increase i
 
 ![Contrast light dark](http://assets.runemadsen.com/contrast_lightdark-4841cb3b8fdc5cc5dfdcaf9923564dc2.svg)
 
-[See example code](../examples/color/contrast_lightdark.html)
+[See example code](../examples/color/contrast_lightdark/index.html)
 
 {% picture dada-676926d7c279917e63b8f985417280a3.jpg %}
 
@@ -328,7 +328,7 @@ The contrast of saturation describes the contrast that a brilliant color has tow
 
 ![Contrast saturation](http://assets.runemadsen.com/contrast_saturation-92f50ce31c69482d6a2e817701a1e4d8.svg)
 
-[See example code](../examples/color/contrast_saturation.html)
+[See example code](../examples/color/contrast_saturation/index.html)
 
 This is an example of 2 colors with contrast in saturation.
 
@@ -375,7 +375,7 @@ It's important to realize the dynamic nature of the cold/warm contrast. People t
 
 ![Contrast cold warm](http://assets.runemadsen.com/contrast_hotcold-12a3d316ab1885fce7e8ac8ccbfce0a6.svg)
 
-[See example code](../examples/color/contrast_hotcold.html)
+[See example code](../examples/color/contrast_hotcold/index.html)
 
 
 Contrast of Extension
@@ -391,7 +391,7 @@ This "contrast of extension" varies depending on the background color, neighbor 
 
 ![Contrast extension](http://assets.runemadsen.com/contrast_extension-e4e05b32f24932616781c31cf31a1b03.svg)
 
-[See example code](../examples/color/contrast_extension.html)
+[See example code](../examples/color/contrast_extension/index.html)
 
 Goethe and later Itten proposed the following extension values for colors:
 
@@ -418,13 +418,13 @@ Here are two examples on how to generate random colors. First, here's a sketch w
 
 ![Random color](http://assets.runemadsen.com/random_colors-c42fe6cdc6336e1ddbd784fa1d03b345.svg)
 
-[See example code](../examples/color/random_colors.html)
+[See example code](../examples/color/random_colors/index.html)
 
 If you don't want to generate completely random colors, you can put a number of colors in a JavaScript array, and generate a random number to select one of the colors in the array.
 
 ![Random array](http://assets.runemadsen.com/random_array-8e804c2f5493499b20038903cc357ed7.svg)
 
-[See example code](../examples/color/random_array.html)
+[See example code](../examples/color/random_array/index.html)
 
 
 How to Find Opposite Brightness
@@ -436,4 +436,4 @@ This is really easy to do in Rune.js, as you can just use the `light()` function
 
 ![Color luminosity](http://assets.runemadsen.com/color_luminosity-39e8c9cec0f2b37e8a53c0c5558f082a.svg)
 
-[See example code](../examples/color/color_luminosity.html)
+[See example code](../examples/color/color_luminosity/index.html)

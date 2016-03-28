@@ -10,9 +10,9 @@ What is a grid system?
 
 There is nothing worse for an artist than a blank canvas. A grid system is a set of measurements a graphic designer can use to align and size objects within the given format. Although there are a few different categories of grid systems, there are no strict rules on what can or cannot be a grid. It's up to you. Any guides that help you shape the final design is okay.
 
-Relevant for us is how the grid is such a strict mathematical concept. It's perfect for manipulation in code. The traditional way of creating a grid is by doing it by hand in Photoshop or Illustrator. If you suddenly notice that you want a slimmer grid, you need to re-create the grid and move everything by hand. In code this is not the case, a we can be extremely flexible and try many iterations within minutes. It also allows us to use several grid systems on top of each other, distort the grid system by rotating or scaling it, or generating the grid modules randomly. 
+Relevant for us is how the grid is such a strict mathematical concept. It's perfect for manipulation in code. The traditional way of creating a grid is by doing it by hand in Photoshop or Illustrator. If you suddenly notice that you want a slimmer grid, you need to re-create the grid and move everything by hand. In code this is not the case, a we can be extremely flexible and try many iterations within minutes. It also allows us to use several grid systems on top of each other, distort the grid system by rotating or scaling it, or generating the grid modules randomly.
 
-The concept of a generative grid system is extremely powerful, but also extremely underused. Even a simple thing like a flexible grid program is non-existent today. 
+The concept of a generative grid system is extremely powerful, but also extremely underused. Even a simple thing like a flexible grid program is non-existent today.
 
 Today we'll go through the different types of grid systems, look at interesting examples, and look at how we can create and manipulate grid systems in code. If you feel like it, read [this brief introduction to the history of grid](http://www.graphics.com/modules.php?name=Sections&op=viewarticle&artid=620).
 
@@ -58,7 +58,7 @@ A **manuscript grid** is the most basic form of a grid. It is made up by a singl
 
 {% picture grid_manuscript-45c31f28f4d06d2f50f868f513e1de7f.jpg %}
 
-A **column grid** is what it says. It splits the page into columns, and is probably the most used grid type. Libraries like blueprint and 960.gs have ported the ideas of the column grid to the web. 
+A **column grid** is what it says. It splits the page into columns, and is probably the most used grid type. Libraries like blueprint and 960.gs have ported the ideas of the column grid to the web.
 
 {% picture grid_column-54d048acbae34b7df6e97fe75db6ec33.jpg %}
 
@@ -108,7 +108,7 @@ Coding a Manuscript Grid
 
 ![Manuscript grid](http://assets.runemadsen.com/grid_manuscript-66ba3e407bb6e64ecadb75feba6c7826.svg)
 
-[See example code](../examples/grid/grid_manuscript.html)
+[See example code](../examples/grid/grid_manuscript/index.html)
 
 
 Coding a Column Grid
@@ -116,14 +116,14 @@ Coding a Column Grid
 
 ![Column grid](http://assets.runemadsen.com/grid_column-042e9d5360a89854882771ddee96598f.svg)
 
-[See example code](../examples/grid/grid_column.html) 
+[See example code](../examples/grid/grid_column/index.html) 
 
 Coding a Modular Grid
 ---------------------
 
 ![Modular grid](http://assets.runemadsen.com/grid_modular-6ed764743f80198f45a92f2b74f11ba2.svg)
 
-[See example code](../examples/grid/grid_modular.html) 
+[See example code](../examples/grid/grid_modular/index.html) 
 
 
 Karl Gerstner's Flexible Grid
@@ -186,7 +186,7 @@ In code, it's amazingly easy to make something with multiple grids. Here's an ex
 
 ![Multiple grids](http://assets.runemadsen.com/grid_multiple-cc2e823ea42e519c605bead258f018ea.svg)
 
-[See example code](../examples/grid/grid_multiple.html)
+[See example code](../examples/grid/grid_multiple/index.html)
 
 
 Grid transformation
@@ -196,5 +196,4 @@ Grids can rotate and move like every other shape object.
 
 ![Rotate grid](http://assets.runemadsen.com/grid_rotate-0f6df96470a46ddb370ff940164c2083.svg)
 
-[See example code](../examples/grid/grid_rotation.html)
-
+[See example code](../examples/grid/grid_rotation/index.html)
