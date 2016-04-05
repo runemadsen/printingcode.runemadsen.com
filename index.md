@@ -24,6 +24,8 @@ The class aims not only to teach the students how to create physical prints via 
 
 ### Students
 
+* [Class Spring 2016](/students-spring-2016)
+* [Class Fall 2015](/students-fall-2015)
 * [Class Spring 2014](/students-spring-2014)
 * [Class Spring 2013](/students-spring-2013)
 * [Class Fall 2012](/students-2012)
