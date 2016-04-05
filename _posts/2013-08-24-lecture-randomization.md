@@ -11,17 +11,30 @@ Randomization
 
 When we talk about randomization in design, people often think about generative or algorithmic art, where an algorithm spins out of control and splatter thousands of random shapes on a canvas. This is not what this class is about.
 
+Randomization in the arts
+-------------------------
+
 The concept of randomization has been an essential tool for graphic designers way before the computer. Although entirely done by hand, random positioning and coloring has been used to create expressive and dynamic designs for a long time. With the computer we have the ability to move beyond simple random shapes and create design systems that are entirely dynamic in nature – code that specifies certain parameters that the algorithm can play within, and where randomization helps create new and exciting outputs within the broader design constraints. In this way of designing, the designer becomes more of a director who sets up the basic constraints of the design, and where the algorithm renders an original design within these constraints every time it runs.
 
 Dynamic logos, generative color schemes, and type systems are all possible because of the simple concept of letting the computer choose a number for you. The aim of this class is to introduce the basic concept of randomization, and to use it for aesthetically pleasing, good designs.
 
-Modulo
-------
+{% picture klee-47d8e240c0ade82ab0b354b055960690.jpg %}
 
-Although not specifically tied to randomization, let's talk about it!
+{% picture lewitt-dcefc4a7a529e3cab2e132763bc475d5.jpg %}
 
-Chance and weights
-------------
+{% picture randomrand1-9c622b0cf38a335eb224042d238d5026.jpg %}
+
+{% picture randomrand2-5a8c9560b99932fdf06ed8d3d5ab685e.jpg %}
+
+{% picture pintori1-68d4ed34729a7c30779199e2c4b69d40.jpg %}
+
+{% picture pintori2-86492848829e0215bd3c847c825a703b.jpg %}
+
+{% picture pintori3-0f24220b899b60aea3a2e72ae326d0c7.jpg %}
+
+
+Randomization techniques
+------------------------
 
 The following sketch shows how to use `random()` to make something happen only a certain percent of the time.
 
@@ -30,6 +43,10 @@ The following sketch shows how to use `random()` to make something happen only a
 However, what if you want to do something a bit more sophisticated, like picking a random color from an array of colors, where each of the colors have a specific chance of getting picked? The following sketch shows how to do weighted randomness.
 
 [See example code](../examples/randomization/weighted/index.html)
+
+You can also use a library like [seedrandom](https://github.com/davidbau/seedrandom) to have randomization, but have it always be the same random numbers.
+
+Random color scheme example.
 
 
 Perlin Noise
@@ -59,4 +76,8 @@ Perlin Noise can be used to do many things. One of things that it's great for is
 
 [See example code](../examples/randomization/noise_circle/index.html)
 
-You can also do perlin noise in two or three dimensions! I'll leave that up to you to figure out.
+Here's a more complex example where we draw an iceberg-like shape with perlin noise.
+
+![Iceberg](http://assets.runemadsen.com/iceberg-e36a4d5ccba47815c0386af3636f0956.svg)
+
+[See example code](../examples/randomization/noise_iceberg/index.html)

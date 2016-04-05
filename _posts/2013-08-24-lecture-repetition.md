@@ -83,16 +83,10 @@ Repetition as Texture
 {% picture lewitt_texture2-e36aba3f361eb2bd9919ed7157649b0f.jpg %}
 
 
-Repetition in code
-------------------------
+The `while` loop
+----------------
 
-When it comes to repetition and tiling, there are 2 distinct types of patterns. The periodic tiling:
-
-{% picture repetition_periodic-d500e846d6dbf01800e2cd72590c2910.jpg %}
-
-... and the aperiodic tiling:
-
-{% picture repetition_aperiodic-b9225313d4b2427f32d5b35a660aea08.png %}
+When you want to create randomly distanced things without overlapping.
 
 Periodic Tiling
 ---------------

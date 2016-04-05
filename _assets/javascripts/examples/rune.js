@@ -7998,6 +7998,16 @@ var Polygon = function () {
       return this.vectorAtLength(this.length() * scalar);
     }
   }, {
+    key: "area",
+    value: function area() {
+      var area = 0;
+      for (var i = 0; i < this.vars.vectors.length - 1; i++) {
+        area += this.vars.vectors[i].x * this.vars.vectors[i + 1].y - this.vars.vectors[i + 1].x * this.vars.vectors[i].y;
+      }
+      area /= 2;
+      return Math.abs(area);
+    }
+  }, {
     key: "bounds",
     value: function bounds() {
       var xmax = undefined;
@@ -8022,21 +8032,19 @@ var Polygon = function () {
   }, {
     key: "centroid",
     value: function centroid() {
-      var ps = this.vars.vectors;
       var areaAcc = 0.0;
       var xAcc = 0.0;
       var yAcc = 0.0;
-
-      for (var i = 0; i < ps.length - 1; i++) {
-        areaAcc += ps[i].x * ps[i + 1].y - ps[i + 1].x * ps[i].y;
-        xAcc += (ps[i].x + ps[i + 1].x) * (ps[i].x * ps[i + 1].y - ps[i + 1].x * ps[i].y);
-        yAcc += (ps[i].y + ps[i + 1].y) * (ps[i].x * ps[i + 1].y - ps[i + 1].x * ps[i].y);
+      for (var i = 0; i < this.vars.vectors.length; i++) {
+        var start = this.vars.vectors[i];
+        var stop = this.vars.vectors[(i + 1) % this.vars.vectors.length];
+        areaAcc += start.x * stop.y - stop.x * start.y;
+        xAcc += (start.x + stop.x) * (start.x * stop.y - stop.x * start.y);
+        yAcc += (start.y + stop.y) * (start.x * stop.y - stop.x * start.y);
       }
-
       areaAcc /= 2.0;
       var x = xAcc / (6.0 * areaAcc);
       var y = yAcc / (6.0 * areaAcc);
-
       return new _vector2.default(x, y);
     }
   }, {

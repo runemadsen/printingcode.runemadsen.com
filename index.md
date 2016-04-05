@@ -205,12 +205,12 @@ Randomization is about letting the computer choose for us. This week we'll look 
 
 * Reading discussion
 * Lecture: **[Randomization](/lecture-randomization)**
-* Vectors
+* [Solving the homework: Code walkthrough](/randomization-homework)
 
 
 ### Assignment for next week
 
-For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in code. If in doubt, get inspired by [some of these famous Olivetti posters](https://www.google.com/search?q=olivetti+posters&espv=2&biw=1436&bih=782&source=lnms&tbm=isch&sa=X&ved=0CAcQ_AUoAmoVChMIou-YmZGTyQIVBJYeCh2lnQJw). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
+For next week pick an existing piece of visual art (painting, ad, etc) that uses randomization as a key design principle, and recreate it in code. If in doubt, get inspired by [some of these famous Olivetti posters](http://www.giovannipintoriresearch.com/design-archive/). You should use at least some randomization concepts from this week's lecture in your sketch, in order to make the sketch dynamic. This means that it needs to look different every time it runs, but still have the visual style of the original work. Come to class prepared to show your print + to share how your sketch uses randomization. I'm looking for the simplest possible implementation, which means that it's up to you to set goals that are simple enough for you have time to code and print the assignment.
 
 
 Week 10: Repetition
@@ -221,7 +221,6 @@ Repetition is highly computational, still human beings have created patterns as 
 ### Class Overview
 
 * Lecture: **[Computational Repetition](/lecture-repetition)**
-* [Assignment code review](/randomization-homework)
 * Draw loop and mouse events in Rune.js
 * Quick thoughts on final project
 
@@ -249,7 +248,7 @@ How can we manipulate pixels in code? Can we still preserve meaning while creati
 
 ### Assignment for next week
 
-Finals!
+For next week, I want you to approach your final as a one-week project. Come to class with a print or digital project that implements your final idea, and be ready to discuss what works or doesn't work in your implementation.
 
 Week 12: Motion
 ---------------
@@ -258,7 +257,6 @@ Can a still image have movement? In this class we'll experiment with animation a
 
 ### Class Overview
 
-* Presentations of final project ideas
 * Lecture: **[Computational Motion](/lecture-motion)**
 * Work on final projects. I'll meet with each of you individually to talk through your project.
 
