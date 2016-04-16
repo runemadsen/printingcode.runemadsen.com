@@ -33,3 +33,5 @@ Final proposals
 * [Juan](http://assets.runemadsen.com/juan_finalproposal.pdf)
 * [Kris](http://assets.runemadsen.com/kris_finalproposal.pdf)
 * [Ella](http://assets.runemadsen.com/ella_finalproposal.pdf)
+* [Shir](http://assets.runemadsen.com/shir_finalproposal.pdf)
+* [Michelle](http://assets.runemadsen.com/michelle_finalproposal.pdf)
