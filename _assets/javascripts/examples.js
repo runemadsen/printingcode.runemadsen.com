@@ -4,3 +4,6 @@
 //= require examples/rune.pixels
 //= require examples/codemirror-compressed
 //= require application/underscore
+//= require examples/TweenLite.min
+//= require examples/TimelineLite.min
+//= require examples/EasePack.min
