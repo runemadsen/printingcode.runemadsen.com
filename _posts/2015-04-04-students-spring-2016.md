@@ -15,6 +15,8 @@ Student link
 * Eve [GitHub](https://github.com/evejweinberg/programming-design-systems-projects) [Blog](http://itpblog.evejweinberg.com/)
 * Marcela [GitHub](https://github.com/marrific/printing-code) [Blog](http://itp.marcelanowak.com/category/programming-design-systems/)
 * Yan [GitHub](https://github.com/YanZhaoDesign/programming-design-systems-projects)
+* Leslie [GitHub](https://github.com/LeslieRuckman/programingdesignsystems)
+* Kylin [GitHub](https://github.com/kylingoround/programming-design-systems-projects)
 
 
 Final proposals
@@ -35,3 +37,4 @@ Final proposals
 * [Ella](http://assets.runemadsen.com/ella_finalproposal.pdf)
 * [Shir](http://assets.runemadsen.com/shir_finalproposal.pdf)
 * [Michelle](http://assets.runemadsen.com/michelle_finalproposal.pdf)
+* [Kylin](http://assets.runemadsen.com/kylin_finalproposal.pdf)
